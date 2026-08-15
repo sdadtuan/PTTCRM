@@ -18,6 +18,9 @@ export const PATH_PAIRS: Array<[string, string]> = [
   ['/vi/phap-ly/cookie', '/en/legal/cookies'],
   ['/vi/tin-tuc', '/en/news'],
   ['/vi/su-kien', '/en/events'],
+  ['/vi/khach-hang', '/en/customers'],
+  ['/vi/giai-phap/education', '/en/solutions/education'],
+  ['/vi/giai-phap/pharma', '/en/solutions/pharma'],
 ];
 
 function parseAcceptLanguage(header: string): Array<{ tag: string; q: number }> {

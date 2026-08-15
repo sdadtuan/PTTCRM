@@ -44,7 +44,7 @@
   "industries": {
     "kicker": "Industry",
     "title": "Same platform. Different closing metric.",
-    "lead": "Wave 0: real estate, agency, F&B.",
+    "lead": "Wave 0: real estate, agency, F&B. Wave 1: education and pharma.",
     "items": [
       {
         "slug": "bds",

@@ -1,0 +1,12 @@
+{
+  "slug": "agency-portal-roas",
+  "po_signed": true,
+  "industry": "agency",
+  "sku": "agy",
+  "title_vi": "Agency đa client — portal ROAS theo hợp đồng",
+  "title_en": "Multi-client agency — contract-level ROAS portal",
+  "summary_vi": "Khách xem CPL/ROAS trên portal thay vì file Excel tuần.",
+  "summary_en": "Clients see CPL/ROAS on a portal instead of weekly spreadsheets.",
+  "cpl_vnd": 165000,
+  "roas": 3.4
+}

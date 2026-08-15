@@ -17,5 +17,8 @@ describe('switchLocalePath', () => {
     expect(switchLocalePath('/vi/giai-phap/agency', 'en')).toBe('/en/solutions/agency');
     expect(switchLocalePath('/vi/tin-tuc/closed-loop', 'en')).toBe('/en/news/closed-loop');
     expect(switchLocalePath('/en/events/demo-ngay-nganh', 'vi')).toBe('/vi/su-kien/demo-ngay-nganh');
+    expect(switchLocalePath('/vi/khach-hang', 'en')).toBe('/en/customers');
+    expect(switchLocalePath('/vi/giai-phap/education', 'en')).toBe('/en/solutions/education');
+    expect(switchLocalePath('/vi/giai-phap/pharma', 'en')).toBe('/en/solutions/pharma');
   });
 });

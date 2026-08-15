@@ -59,6 +59,46 @@
       "industry": "fnb",
       "skuNote": "Industry — one pack + attribution.",
       "ctaTitle": "See the industry playbook in a 60-minute demo."
+    },
+    "education": {
+      "title": "PTTCRM for education",
+      "painsLabel": "Industry pain",
+      "proofsLabel": "What the demo must show",
+      "proofsLead": "Metric names only — no invented case numbers.",
+      "pains": [
+        "Course inquiry leads scatter across inboxes.",
+        "No one knows which campaign enrolled.",
+        "Care and telesales see two pipelines."
+      ],
+      "proofs": [
+        "Metric: lead → enrollment",
+        "Metric: CPL by channel",
+        "Metric: lead response time"
+      ],
+      "sku": "ind",
+      "industry": "education",
+      "skuNote": "Industry — one pack + attribution.",
+      "ctaTitle": "See the industry playbook in a 60-minute demo."
+    },
+    "pharma": {
+      "title": "PTTCRM for pharma",
+      "painsLabel": "Industry pain",
+      "proofsLabel": "What the demo must show",
+      "proofsLead": "Metric names only — no invented case numbers.",
+      "pains": [
+        "OTC/DTC leads do not tie to campaigns.",
+        "Compliance and marketing use different files.",
+        "No quality lead measurement by channel."
+      ],
+      "proofs": [
+        "Metric: lead → order / registration",
+        "Metric: CPL by channel",
+        "Metric: lead response SLA"
+      ],
+      "sku": "ind",
+      "industry": "pharma",
+      "skuNote": "Industry — one pack + attribution.",
+      "ctaTitle": "See the industry playbook in a 60-minute demo."
     }
   }
 }

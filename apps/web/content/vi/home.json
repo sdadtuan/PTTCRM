@@ -44,7 +44,7 @@
   "industries": {
     "kicker": "Ngành",
     "title": "Cùng nền tảng. Khác metric chốt.",
-    "lead": "W0: bất động sản, agency, F&B.",
+    "lead": "W0: bất động sản, agency, F&B. W1: thêm giáo dục, pharma.",
     "items": [
       {
         "slug": "bds",

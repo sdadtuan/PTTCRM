@@ -19,3 +19,6 @@ export type {
 export { CMS_SLOT_KEYS } from './cms-types';
 
 export { assertNoRnosai, isAllowedCmsMarkdown } from './md-allow';
+
+export type { CaseStudy } from './case-types';
+export { formatCaseMetrics } from './case-types';

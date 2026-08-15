@@ -459,6 +459,31 @@
   font-weight: 600;
 }
 
+.case-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.case-card {
+  background: var(--ptt-surface);
+  border: 1px solid var(--ptt-line);
+  border-radius: 8px;
+  padding: 24px;
+}
+
+.case-card h2 {
+  font-size: 1.15rem;
+  font-weight: 500;
+  margin: 8px 0;
+}
+
+.case-metrics {
+  color: var(--ptt-teal);
+  font-size: 14px;
+  margin: 16px 0;
+}
+
 @media (max-width: 900px) {
   .hero-grid,
   .mod-row,
@@ -468,6 +493,10 @@
   .split,
   .form-page,
   .news-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-grid {
     grid-template-columns: 1fr;
   }
 

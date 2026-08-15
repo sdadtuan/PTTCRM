@@ -34,6 +34,10 @@ const COPY = {
     agencyD: 'Nhiều client, portal ROAS, SLA handoff.',
     fnb: 'F&B',
     fnbD: 'Campaign tới đặt chỗ / cửa hàng.',
+    education: 'Giáo dục',
+    educationD: 'Lead tư vấn tới đăng ký khóa.',
+    pharma: 'Pharma',
+    pharmaD: 'Lead OTC/DTC gắn campaign.',
     crm: 'CRM',
     crmD: 'Lead, pipeline, CSKH — một nguồn sự thật.',
     ads: 'Ads',
@@ -45,6 +49,7 @@ const COPY = {
     news: 'Tin tức',
     events: 'Sự kiện',
     about: 'Về chúng tôi',
+    customers: 'Khách hàng',
   },
   en: {
     solutions: 'Solutions',
@@ -68,6 +73,10 @@ const COPY = {
     agencyD: 'Multi-client, ROAS portal, handoff SLA.',
     fnb: 'F&B',
     fnbD: 'Campaign to reservation / store CRM.',
+    education: 'Education',
+    educationD: 'Inquiry lead to enrollment.',
+    pharma: 'Pharma',
+    pharmaD: 'OTC/DTC leads tied to campaigns.',
     crm: 'CRM',
     crmD: 'Leads, pipeline, care — one source of truth.',
     ads: 'Ads',
@@ -79,6 +88,7 @@ const COPY = {
     news: 'News',
     events: 'Events',
     about: 'About',
+    customers: 'Customers',
   },
 } as const;
 
@@ -96,6 +106,8 @@ export function buildNav(locale: Locale): NavGroup[] {
           { id: 'bds', href: '/en/solutions/real-estate', label: t.bds, desc: t.bdsD, icon: 'RE' },
           { id: 'agency', href: '/en/solutions/agency', label: t.agency, desc: t.agencyD, icon: 'AG' },
           { id: 'fnb', href: '/en/solutions/fnb', label: t.fnb, desc: t.fnbD, icon: 'F&B' },
+          { id: 'education', href: '/en/solutions/education', label: t.education, desc: t.educationD, icon: 'EDU' },
+          { id: 'pharma', href: '/en/solutions/pharma', label: t.pharma, desc: t.pharmaD, icon: 'PH' },
         ],
       },
       {
@@ -119,6 +131,7 @@ export function buildNav(locale: Locale): NavGroup[] {
         items: [
           { id: 'news', href: '/en/news', label: t.news },
           { id: 'events', href: '/en/events', label: t.events },
+          { id: 'customers', href: '/en/customers', label: t.customers },
           { id: 'about', href: '/en/about', label: t.about },
           { id: 'demo', href: demo, label: t.demo },
         ],
@@ -135,6 +148,8 @@ export function buildNav(locale: Locale): NavGroup[] {
         { id: 'bds', href: '/vi/giai-phap/bds', label: t.bds, desc: t.bdsD, icon: 'BĐS' },
         { id: 'agency', href: '/vi/giai-phap/agency', label: t.agency, desc: t.agencyD, icon: 'AG' },
         { id: 'fnb', href: '/vi/giai-phap/fnb', label: t.fnb, desc: t.fnbD, icon: 'F&B' },
+        { id: 'education', href: '/vi/giai-phap/education', label: t.education, desc: t.educationD, icon: 'EDU' },
+        { id: 'pharma', href: '/vi/giai-phap/pharma', label: t.pharma, desc: t.pharmaD, icon: 'PH' },
       ],
     },
     {
@@ -158,6 +173,7 @@ export function buildNav(locale: Locale): NavGroup[] {
       items: [
         { id: 'news', href: '/vi/tin-tuc', label: t.news },
         { id: 'events', href: '/vi/su-kien', label: t.events },
+        { id: 'customers', href: '/vi/khach-hang', label: t.customers },
         { id: 'about', href: '/vi/ve-chung-toi', label: t.about },
         { id: 'demo', href: demo, label: t.demo },
       ],

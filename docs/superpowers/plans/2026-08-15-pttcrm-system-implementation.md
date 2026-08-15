@@ -68,7 +68,7 @@ Mỗi wave = một plan chi tiết riêng (TDD, commit). **Chỉ viết/chạy p
 | Wave | Plan file | Thời lượng | Exit |
 |------|-----------|------------|------|
 | **W0** | [w0-v12](./2026-08-15-pttcrm-w0-v12.md) — **chạy ngay** | 6 tuần | Form → lead; CMS publish → site; Lighthouse SEO ≥ 90; 1 demo/ngày UAT |
-| **W1** | `YYYY-MM-DD-pttcrm-w1-close.md` (viết khi W0 exit) | 6 tuần | 3 case `po_signed`; sandbox 14 ngày hết hạn đúng |
+| **W1** | [w1-close](./2026-08-16-pttcrm-w1-close.md) — **chạy sau W0 exit** | 6 tuần | 3 case `po_signed`; sandbox 14 ngày hết hạn đúng |
 | **W2** | `YYYY-MM-DD-pttcrm-w2-d0.md` | 8 tuần | Stripe test USD; sandbox EN lead list |
 | **W3** | `YYYY-MM-DD-pttcrm-w3-asean.md` | 8 tuần | 3 demo ASEAN trong pipeline |
 | **W4** | `YYYY-MM-DD-pttcrm-w4-useu.md` | sau W3 | SOC2 type 1 — **cấm** bắt đầu nếu W3 chưa đủ 3 demo ASEAN |

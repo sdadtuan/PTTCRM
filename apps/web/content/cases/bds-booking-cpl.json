@@ -1,0 +1,12 @@
+{
+  "slug": "bds-booking-cpl",
+  "po_signed": true,
+  "industry": "bds",
+  "sku": "ind",
+  "title_vi": "BĐS — lead dự án tới booking có nguồn",
+  "title_en": "Real estate — project lead to booking with source",
+  "summary_vi": "Closed-loop từ ads tới booking theo dự án, một pipeline cho sàn và CĐT.",
+  "summary_en": "Closed-loop from ads to booking by project, one pipeline for broker and developer.",
+  "cpl_vnd": 180000,
+  "roas": 3.2
+}

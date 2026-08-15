@@ -59,6 +59,46 @@
       "industry": "fnb",
       "skuNote": "Industry — 1 pack ngành + attribution.",
       "ctaTitle": "Xem playbook ngành trên demo 60 phút."
+    },
+    "education": {
+      "title": "PTTCRM cho giáo dục",
+      "painsLabel": "Nỗi đau ngành",
+      "proofsLabel": "Proof trên demo",
+      "proofsLead": "Chỉ tên metric — site không bịa số case.",
+      "pains": [
+        "Lead tư vấn khóa học nằm rải rác inbox và form.",
+        "Không biết campaign nào ra đăng ký học.",
+        "CSKH và telesales nhìn hai pipeline."
+      ],
+      "proofs": [
+        "Metric: lead → đăng ký khóa",
+        "Metric: CPL theo kênh",
+        "Metric: tốc độ phản hồi lead"
+      ],
+      "sku": "ind",
+      "industry": "education",
+      "skuNote": "Industry — 1 pack ngành + attribution.",
+      "ctaTitle": "Xem playbook ngành trên demo 60 phút."
+    },
+    "pharma": {
+      "title": "PTTCRM cho pharma",
+      "painsLabel": "Nỗi đau ngành",
+      "proofsLabel": "Proof trên demo",
+      "proofsLead": "Chỉ tên metric — site không bịa số case.",
+      "pains": [
+        "Lead OTC/DTC không gắn được chiến dịch.",
+        "Compliance và marketing dùng file khác nhau.",
+        "Không đo được lead chất lượng theo kênh."
+      ],
+      "proofs": [
+        "Metric: lead → đơn hàng / đăng ký",
+        "Metric: CPL theo kênh",
+        "Metric: SLA phản hồi lead"
+      ],
+      "sku": "ind",
+      "industry": "pharma",
+      "skuNote": "Industry — 1 pack ngành + attribution.",
+      "ctaTitle": "Xem playbook ngành trên demo 60 phút."
     }
   }
 }

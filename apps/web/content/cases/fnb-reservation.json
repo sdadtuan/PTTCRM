@@ -1,0 +1,12 @@
+{
+  "slug": "fnb-reservation",
+  "po_signed": true,
+  "industry": "fnb",
+  "sku": "ind",
+  "title_vi": "F&B — campaign tới đặt chỗ theo cửa hàng",
+  "title_en": "F&B — campaign to reservation by store",
+  "summary_vi": "Gắn spend ads với đặt chỗ và tái đặt trên một CRM chuỗi.",
+  "summary_en": "Tie ad spend to reservations and repeat visits on one chain CRM.",
+  "cpl_vnd": 142000,
+  "roas": 2.9
+}
