@@ -1,0 +1,37 @@
+{
+  "items": {
+    "bao-mat": {
+      "title": "Chính sách bảo mật",
+      "lead": "Áp dụng cho site pttcrm.com và form Đăng ký Demo. Bản HTML này là preview; điều khoản production sẽ do pháp chế ký.",
+      "sections": [
+        {
+          "title": "Dữ liệu form demo",
+          "body": "Họ tên, email, số điện thoại, công ty, ngành, gói quan tâm, UTM, locale. Mục đích: Sales liên hệ và xếp lịch demo. Thời hạn: theo chính sách lưu trữ lead nội bộ."
+        },
+        {
+          "title": "Cookie",
+          "body": "Cần thiết: ngôn ngữ, consent, UTM first-touch. Phân tích / Pixel chỉ khi bạn chọn Đồng ý tất cả."
+        },
+        {
+          "title": "Liên hệ",
+          "body": "hello@pttcrm.com"
+        }
+      ]
+    },
+    "dieu-khoan": {
+      "title": "Điều khoản sử dụng",
+      "lead": "Preview HTML. Hợp đồng thương mại: tối thiểu 12 tháng, list price theo bảng giá, chiết khấu Sales tối đa 15% retainer.",
+      "sections": [
+        {
+          "title": "",
+          "body": "Site này giới thiệu sản phẩm PTTCRM. Đăng nhập staff dẫn tới hệ thống vận hành hiện có. Không cấp quyền dùng thử công khai."
+        }
+      ]
+    },
+    "cookie": {
+      "title": "Cookie",
+      "lead": "Cookie cần thiết: ngôn ngữ demo, consent. Phân tích và quảng cáo (Pixel) chỉ sau khi bấm Đồng ý tất cả. Demo HTML chưa gắn Pixel thật.",
+      "sections": []
+    }
+  }
+}

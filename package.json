@@ -1,0 +1,13 @@
+{
+  "name": "pttcrm",
+  "private": true,
+  "packageManager": "pnpm@9.15.0",
+  "scripts": {
+    "test": "vitest run",
+    "forbidden": "rg -n 'RNOSAI' apps/web && exit 1 || true"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.3",
+    "vitest": "^3.0.5"
+  }
+}

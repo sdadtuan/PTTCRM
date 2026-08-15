@@ -1,0 +1,64 @@
+{
+  "items": {
+    "bds": {
+      "title": "PTTCRM cho bất động sản",
+      "painsLabel": "Nỗi đau ngành",
+      "proofsLabel": "Proof trên demo",
+      "proofsLead": "Chỉ tên metric — site không bịa số case.",
+      "pains": [
+        "Lead dự án trộn với lead chung.",
+        "Không biết nguồn nào ra booking.",
+        "Sàn và CĐT nhìn hai file khác nhau."
+      ],
+      "proofs": [
+        "Metric: lead → booking theo dự án",
+        "Metric: CPL theo kênh",
+        "Metric: tốc độ phản hồi lead"
+      ],
+      "sku": "ind",
+      "industry": "bds",
+      "skuNote": "Industry — 1 pack ngành + attribution.",
+      "ctaTitle": "Xem playbook ngành trên demo 60 phút."
+    },
+    "agency": {
+      "title": "PTTCRM cho agency",
+      "painsLabel": "Nỗi đau ngành",
+      "proofsLabel": "Proof trên demo",
+      "proofsLead": "Chỉ tên metric — site không bịa số case.",
+      "pains": [
+        "ROAS từng client nằm ở file riêng.",
+        "Handoff Sales–Solution không có chủ.",
+        "Khách không có portal."
+      ],
+      "proofs": [
+        "Metric: CPL/ROAS theo client",
+        "Metric: SLA handoff",
+        "Metric: portal login của khách"
+      ],
+      "sku": "agy",
+      "industry": "agency",
+      "skuNote": "Agency OS — multi-client + portal.",
+      "ctaTitle": "Xem playbook ngành trên demo 60 phút."
+    },
+    "fnb": {
+      "title": "PTTCRM cho F&B",
+      "painsLabel": "Nỗi đau ngành",
+      "proofsLabel": "Proof trên demo",
+      "proofsLead": "Chỉ tên metric — site không bịa số case.",
+      "pains": [
+        "Campaign không gắn được lượt đặt.",
+        "Chuỗi cửa hàng không có CRM chung.",
+        "CSKH offline tách khỏi ads."
+      ],
+      "proofs": [
+        "Metric: campaign → đặt chỗ",
+        "Metric: lead theo cửa hàng",
+        "Metric: tái đặt / giữ khách"
+      ],
+      "sku": "ind",
+      "industry": "fnb",
+      "skuNote": "Industry — 1 pack ngành + attribution.",
+      "ctaTitle": "Xem playbook ngành trên demo 60 phút."
+    }
+  }
+}

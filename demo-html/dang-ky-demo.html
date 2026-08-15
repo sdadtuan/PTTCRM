@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Đăng ký Demo — PTTCRM</title>
+  <link rel="icon" href="assets/pttcrm-logo-monogram.png" />
+  <link rel="stylesheet" href="css/demo.css" />
+</head>
+<body data-root="." data-page="demo">
+  <div id="site-header"></div>
+  <main id="main" class="wrap form-page">
+    <div>
+      <p class="crumbs"><a href="index.html">PTTCRM</a> / <span data-i18n data-vi="Đăng ký Demo" data-en="Request demo"></span></p>
+      <h1 data-i18n data-vi="Đăng ký Demo 60 phút" data-en="Book a 60-minute demo"></h1>
+      <p class="lead" data-i18n data-vi="Sales liên hệ 08:30–18:00 GMT+7, T2–T6. Không dùng thử 30 ngày tự phục vụ." data-en="Sales replies 08:30–18:00 GMT+7, Mon–Fri. No public 30-day trial."></p>
+      <form id="demo-form" novalidate>
+        <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" />
+        <label for="full_name" data-i18n data-vi="Họ tên" data-en="Full name"></label>
+        <input id="full_name" name="full_name" required minlength="2" autocomplete="name" />
+        <div class="err" data-err="full_name"></div>
+        <label for="email">Email công ty</label>
+        <input id="email" name="email" type="email" required autocomplete="email" />
+        <div class="err" data-err="email"></div>
+        <label for="phone" data-i18n data-vi="Số điện thoại" data-en="Phone"></label>
+        <input id="phone" name="phone" required autocomplete="tel" />
+        <div class="err" data-err="phone"></div>
+        <label for="company" data-i18n data-vi="Công ty" data-en="Company"></label>
+        <input id="company" name="company" required minlength="2" />
+        <div class="err" data-err="company"></div>
+        <label for="industry" data-i18n data-vi="Ngành" data-en="Industry"></label>
+        <select id="industry" name="industry" required>
+          <option value="bds">Bất động sản / Real estate</option>
+          <option value="agency">Agency</option>
+          <option value="fnb">F&B</option>
+          <option value="education">Education</option>
+          <option value="pharma">Pharma</option>
+          <option value="other">Other</option>
+        </select>
+        <label for="sku_interest" data-i18n data-vi="Gói quan tâm" data-en="Plan of interest"></label>
+        <select id="sku_interest" name="sku_interest" required>
+          <option value="mkt">PTTCRM Marketing</option>
+          <option value="ind">PTTCRM Industry</option>
+          <option value="agy">PTTCRM Agency OS</option>
+        </select>
+        <label for="company_size" data-i18n data-vi="Quy mô (không bắt buộc)" data-en="Company size (optional)"></label>
+        <select id="company_size" name="company_size">
+          <option value="">—</option>
+          <option value="1-10">1–10</option>
+          <option value="11-30">11–30</option>
+          <option value="31-80">31–80</option>
+          <option value="81+">81+</option>
+        </select>
+        <label for="message" data-i18n data-vi="Nhu cầu (không bắt buộc)" data-en="Notes (optional)"></label>
+        <textarea id="message" name="message" maxlength="1000" placeholder="Ví dụ: muốn xem ROAS từng client trên portal"></textarea>
+        <label class="check">
+          <input type="checkbox" name="consent_privacy" required />
+          <span><span data-i18n data-vi="Tôi đồng ý" data-en="I agree to the"></span> <a href="phap-ly/bao-mat.html" data-i18n data-vi="Chính sách bảo mật" data-en="privacy policy"></a></span>
+        </label>
+        <div class="err" data-err="consent_privacy"></div>
+        <button class="btn btn-solid" type="submit" data-i18n data-vi="Gửi đăng ký" data-en="Submit request"></button>
+      </form>
+    </div>
+    <aside class="aside">
+      <div class="k" style="font-size:11px;letter-spacing:.1em;font-weight:700;color:#00727d">SAU KHI GỬI</div>
+      <ol>
+        <li data-i18n data-vi="Sales nhận lead trong hàng Demo PTTCRM." data-en="Sales receives the lead in the Demo inbox."></li>
+        <li data-i18n data-vi="Liên hệ dưới 4 giờ giờ hành chính." data-en="Contact within 4 business hours."></li>
+        <li data-i18n data-vi="Demo 60 phút: ads → lead → HĐ → ROAS." data-en="60-minute demo: ads → lead → contract → ROAS."></li>
+        <li data-i18n data-vi="Sandbox 14 ngày chỉ sau khi demo đạt chuẩn." data-en="14-day sandbox only after a qualified demo."></li>
+      </ol>
+      <p style="margin:20px 0 0;font-size:13px;color:#5a6c6e">024 7307 7979 · hello@pttcrm.com</p>
+    </aside>
+  </main>
+  <div id="site-footer"></div>
+  <script src="js/chrome.js"></script>
+  <script>
+    const q = new URLSearchParams(location.search);
+    if (q.get("industry")) document.getElementById("industry").value = q.get("industry");
+    if (q.get("sku")) document.getElementById("sku_interest").value = q.get("sku");
+    document.getElementById("demo-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const fd = new FormData(this);
+      if (fd.get("website")) { location.href = "cam-on.html"; return; }
+      let ok = true;
+      const set = (k, msg) => { const n = document.querySelector('[data-err="'+k+'"]'); if (n) n.textContent = msg || ""; };
+      ["full_name","email","phone","company","consent_privacy"].forEach((k) => set(k, ""));
+      if ((fd.get("full_name") || "").trim().length < 2) { set("full_name", "Tối thiểu 2 ký tự"); ok = false; }
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(fd.get("email") || "")) { set("email", "Email không hợp lệ"); ok = false; }
+      if (!/^(\+?[1-9]\d{7,14}|0\d{9})$/.test(fd.get("phone") || "")) { set("phone", "SĐT 0xxxxxxxxx hoặc E.164"); ok = false; }
+      if ((fd.get("company") || "").trim().length < 2) { set("company", "Tối thiểu 2 ký tự"); ok = false; }
+      if (!this.consent_privacy.checked) { set("consent_privacy", "Cần đồng ý bảo mật"); ok = false; }
+      if (ok) location.href = "cam-on.html";
+    });
+  </script>
+</body>
+</html>

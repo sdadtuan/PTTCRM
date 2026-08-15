@@ -1,0 +1,64 @@
+{
+  "items": {
+    "bds": {
+      "title": "PTTCRM for real estate",
+      "painsLabel": "Industry pain",
+      "proofsLabel": "What the demo must show",
+      "proofsLead": "Metric names only — no invented case numbers.",
+      "pains": [
+        "Project leads mix with generic leads.",
+        "No one knows which source booked.",
+        "Broker and developer see two files."
+      ],
+      "proofs": [
+        "Metric: lead → booking by project",
+        "Metric: CPL by channel",
+        "Metric: lead response time"
+      ],
+      "sku": "ind",
+      "industry": "bds",
+      "skuNote": "Industry — one pack + attribution.",
+      "ctaTitle": "See the industry playbook in a 60-minute demo."
+    },
+    "agency": {
+      "title": "PTTCRM for agencies",
+      "painsLabel": "Industry pain",
+      "proofsLabel": "What the demo must show",
+      "proofsLead": "Metric names only — no invented case numbers.",
+      "pains": [
+        "Per-client ROAS lives in separate files.",
+        "Sales–Solution handoff has no owner.",
+        "Clients have no portal."
+      ],
+      "proofs": [
+        "Metric: CPL/ROAS per client",
+        "Metric: handoff SLA",
+        "Metric: client portal login"
+      ],
+      "sku": "agy",
+      "industry": "agency",
+      "skuNote": "Agency OS — multi-client + portal.",
+      "ctaTitle": "See the industry playbook in a 60-minute demo."
+    },
+    "fnb": {
+      "title": "PTTCRM for F&B",
+      "painsLabel": "Industry pain",
+      "proofsLabel": "What the demo must show",
+      "proofsLead": "Metric names only — no invented case numbers.",
+      "pains": [
+        "Campaigns do not attach to reservations.",
+        "Stores have no shared CRM.",
+        "Offline care is split from ads."
+      ],
+      "proofs": [
+        "Metric: campaign → reservation",
+        "Metric: lead by store",
+        "Metric: repeat / retention"
+      ],
+      "sku": "ind",
+      "industry": "fnb",
+      "skuNote": "Industry — one pack + attribution.",
+      "ctaTitle": "See the industry playbook in a 60-minute demo."
+    }
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "showAmounts": false,
+  "title": "Commercial pricing",
+  "lead": "12-month minimum. No per-seat teaser. Industry is the core plan.",
+  "skus": [
+    {
+      "id": "mkt",
+      "name": "PTTCRM Marketing",
+      "includes": ["CRM + ad ingest", "Core KPI", "Demo form → sales inbox", "Existing staff login"],
+      "excludes": ["No industry playbook", "No multi-client portal"]
+    },
+    {
+      "id": "ind",
+      "name": "PTTCRM Industry",
+      "popular": true,
+      "includes": ["Everything in Marketing", "One industry pack", "Ads-to-contract attribution", "Industry demo"],
+      "excludes": ["No multi-client portal"]
+    },
+    {
+      "id": "agy",
+      "name": "PTTCRM Agency OS",
+      "includes": ["Everything in Industry", "Multi-client + portal", "Per-client ROAS", "Handoff SLA"],
+      "excludes": ["No payroll / ERP"]
+    }
+  ],
+  "note": "USD list from wave 2. Request a demo for a quote.",
+  "compareTitle": "Plan comparison",
+  "compareRows": [
+    { "label": "CRM leads / care", "mkt": "Yes", "ind": "Yes", "agy": "Yes" },
+    { "label": "Ad ingest", "mkt": "Yes", "ind": "Yes", "agy": "Yes" },
+    { "label": "Industry pack", "mkt": "—", "ind": "1", "agy": "1+" },
+    { "label": "Ads-to-contract", "mkt": "—", "ind": "Yes", "agy": "Yes" },
+    { "label": "Multi-client portal", "mkt": "—", "ind": "—", "agy": "Yes" },
+    { "label": "Handoff SLA", "mkt": "—", "ind": "—", "agy": "Yes" }
+  ],
+  "ctaTitle": "Not sure which plan? Pick it on the demo.",
+  "ctaButton": "Request demo"
+}

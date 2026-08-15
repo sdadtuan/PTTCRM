@@ -1,0 +1,17 @@
+{
+  "title": "Câu hỏi",
+  "items": [
+    {
+      "q": "Có dùng thử miễn phí không?",
+      "a": "Không. Demo 60 phút. Sau demo đạt chuẩn, Sales có thể mở sandbox 14 ngày."
+    },
+    {
+      "q": "Khác CRM giá rẻ ở chỗ nào?",
+      "a": "CRM giá rẻ lưu khách. PTTCRM đo ads nào ra hợp đồng và portal từng client."
+    },
+    {
+      "q": "Zalo có trên bản tiếng Anh không?",
+      "a": "Zalo là gói Việt Nam. English core: Meta + Google."
+    }
+  ]
+}

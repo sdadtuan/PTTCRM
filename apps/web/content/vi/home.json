@@ -1,0 +1,89 @@
+{
+  "slogan": "Một nền tảng, chuyên biệt từng ngành",
+  "metaDescription": "CRM tốt nhất về Marketing. Closed-loop ads → hợp đồng → ROAS. Chuyên biệt BĐS, agency, F&B.",
+  "hero": {
+    "kicker": "Marketing CRM",
+    "subtitle": "Nhìn ads nào ra hợp đồng. CPL, ROAS, SLA — một hệ, đúng ngành của bạn.",
+    "ctaDemo": "Đăng ký Demo 60 phút",
+    "ctaPricing": "Bảng giá"
+  },
+  "trust": "Cho đội đang chạy ads thật — không phải sổ danh bạ.",
+  "position": {
+    "kicker": "Vị trí",
+    "title": "Không phải CRM ghi chép. Không phải suite HR.",
+    "lead": "Buyer marketing quyết ở một câu: ads nào ra hợp đồng?",
+    "rows": [
+      {
+        "n": "01",
+        "title": "Closed-loop",
+        "body": "Spend Meta, Google, Zalo (gói Việt Nam) gắn cùng lead và hợp đồng. AM không xuất Excel để giải thích ROAS."
+      },
+      {
+        "n": "02",
+        "title": "Theo ngành",
+        "body": "BĐS chốt booking. Agency chốt ROAS từng client. F&B chốt đặt chỗ. Không một pipeline generic cho cả ba."
+      },
+      {
+        "n": "03",
+        "title": "Agency OS",
+        "body": "Nhiều client, một portal, một SLA. Khách thấy đúng số của họ — không thấy client khác."
+      }
+    ]
+  },
+  "modules": {
+    "kicker": "Nền tảng",
+    "title": "Bốn module. Không phình ERP.",
+    "lead": "Đủ để chạy marketing ra tiền.",
+    "items": [
+      { "slug": "crm", "k": "CRM", "title": "Lead & CSKH", "body": "Pipeline, SLA, một nguồn sự thật." },
+      { "slug": "ads", "k": "ADS", "title": "Meta · Google · Zalo", "body": "Ingest lead, gắn spend." },
+      { "slug": "portal", "k": "PORTAL", "title": "Cổng khách", "body": "CPL/ROAS theo hợp đồng." },
+      { "slug": "ai", "k": "AI", "title": "Chấm điểm & NBA", "body": "Lead score, bước kế tiếp." }
+    ]
+  },
+  "industries": {
+    "kicker": "Ngành",
+    "title": "Cùng nền tảng. Khác metric chốt.",
+    "lead": "W0: bất động sản, agency, F&B.",
+    "items": [
+      {
+        "slug": "bds",
+        "title": "Bất động sản",
+        "body": "Lead theo dự án. Metric: lead → booking, CPL theo kênh. Gói Industry.",
+        "link": "Xem BĐS →"
+      },
+      {
+        "slug": "agency",
+        "title": "Agency",
+        "body": "ROAS từng client trên portal. SLA handoff có chủ. Gói Agency OS.",
+        "link": "Xem Agency →"
+      },
+      {
+        "slug": "fnb",
+        "title": "F&B",
+        "body": "Campaign tới đặt chỗ / cửa hàng. Một CRM cho chuỗi. Gói Industry.",
+        "link": "Xem F&B →"
+      }
+    ]
+  },
+  "steps": {
+    "kicker": "Triển khai",
+    "title": "Bán theo demo. Không self-serve trial.",
+    "lead": "Sandbox 14 ngày chỉ sau khi demo đạt chuẩn.",
+    "items": [
+      { "n": "1", "title": "Đăng ký", "body": "Form 2 phút. Sales trong giờ hành chính." },
+      { "n": "2", "title": "Demo", "body": "60 phút: ads → lead → HĐ → portal." },
+      { "n": "3", "title": "Chốt gói", "body": "Marketing, Industry hoặc Agency OS." },
+      { "n": "4", "title": "Vận hành", "body": "Onboard theo ngành." }
+    ]
+  },
+  "newsTeaser": {
+    "kicker": "Tin tức",
+    "title": "Góc nhìn",
+    "allLink": "Tất cả tin tức →"
+  },
+  "cta": {
+    "title": "Sẵn sàng xem closed-loop trên data ngành của bạn?",
+    "button": "Đăng ký Demo"
+  }
+}

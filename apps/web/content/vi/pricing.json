@@ -1,0 +1,65 @@
+{
+  "showAmounts": true,
+  "title": "Bảng giá thương mại",
+  "lead": "Hợp đồng tối thiểu 12 tháng. Không niêm yết giá theo user. Industry là gói chốt.",
+  "skus": [
+    {
+      "id": "mkt",
+      "name": "PTTCRM Marketing",
+      "retainer_vnd": 4900000,
+      "setup_vnd": 8000000,
+      "userBand": "1–10 user",
+      "includes": [
+        "CRM lead, khách hàng, CSKH",
+        "Ingest lead Meta / Zalo",
+        "KPI cơ bản, UTM first-touch",
+        "Form demo → hàng Sales",
+        "Đăng nhập staff hiện có"
+      ],
+      "excludes": ["Không playbook ngành", "Không portal nhiều client"]
+    },
+    {
+      "id": "ind",
+      "name": "PTTCRM Industry",
+      "retainer_vnd": 9900000,
+      "setup_vnd": 12000000,
+      "popular": true,
+      "userBand": "1 industry pack",
+      "includes": [
+        "Toàn bộ gói Marketing",
+        "1 pack: BĐS / F&B / Education",
+        "Attribution ads → hợp đồng",
+        "Demo 60 phút theo ngành",
+        "Báo cáo metric chốt"
+      ],
+      "excludes": ["Không portal nhiều client", "Đổi pack = change order"]
+    },
+    {
+      "id": "agy",
+      "name": "PTTCRM Agency OS",
+      "retainer_vnd": 19900000,
+      "setup_vnd": 20000000,
+      "userBand": "5 client workspace",
+      "includes": [
+        "Toàn bộ gói Industry",
+        "Multi-client + scope",
+        "Portal ROAS từng khách",
+        "SLA handoff Sales → Solution",
+        "Hàng demo + owner Sales"
+      ],
+      "excludes": ["Không payroll / BHXH", "Không ERP"]
+    }
+  ],
+  "note": "User vượt 10: +490.000 VND/user/tháng. Client vượt 5 (Agency OS): +3.900.000 VND/client/tháng. Thanh toán năm −10%. Chiết khấu Sales tối đa 15% retainer.",
+  "compareTitle": "So sánh gói",
+  "compareRows": [
+    { "label": "CRM lead / CSKH", "mkt": "Có", "ind": "Có", "agy": "Có" },
+    { "label": "Ingest ads", "mkt": "Có", "ind": "Có", "agy": "Có" },
+    { "label": "Industry pack", "mkt": "—", "ind": "1", "agy": "1+" },
+    { "label": "Attribution ads→HĐ", "mkt": "—", "ind": "Có", "agy": "Có" },
+    { "label": "Portal multi-client", "mkt": "—", "ind": "—", "agy": "Có" },
+    { "label": "SLA handoff", "mkt": "—", "ind": "—", "agy": "Có" }
+  ],
+  "ctaTitle": "Chưa chắc gói nào? Để Sales chọn cùng bạn trên demo.",
+  "ctaButton": "Đăng ký Demo"
+}

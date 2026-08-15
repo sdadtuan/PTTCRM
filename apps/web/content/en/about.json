@@ -1,0 +1,18 @@
+{
+  "title": "About PTTCRM",
+  "lead": "A marketing CRM: one platform, specialized by industry.",
+  "cards": [
+    {
+      "title": "We do",
+      "body": "Closed-loop ads, industry CRM, client portal, scoring AI."
+    },
+    {
+      "title": "We don't",
+      "body": "HRM, ERP, GPS attendance, landing-page builders, cheap self-serve trials."
+    },
+    {
+      "title": "Contact",
+      "body": "hello@pttcrm.com\n+84 24 7307 7979"
+    }
+  ]
+}

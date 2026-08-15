@@ -1,0 +1,37 @@
+{
+  "items": {
+    "bao-mat": {
+      "title": "Privacy policy",
+      "lead": "Applies to pttcrm.com and the demo form. This HTML page is a preview; production terms will be counsel-signed.",
+      "sections": [
+        {
+          "title": "Demo form data",
+          "body": "Name, email, phone, company, industry, plan, UTM, locale. Purpose: sales contact and demo scheduling."
+        },
+        {
+          "title": "Cookies",
+          "body": "Essential: language, consent, first-touch UTM. Analytics / Pixel only after Accept all."
+        },
+        {
+          "title": "Contact",
+          "body": "hello@pttcrm.com"
+        }
+      ]
+    },
+    "dieu-khoan": {
+      "title": "Terms of use",
+      "lead": "HTML preview. Commercial term: 12 months minimum, list price on the pricing page, sales discount cap 15% of retainer.",
+      "sections": [
+        {
+          "title": "",
+          "body": "This site introduces PTTCRM. Staff login goes to the existing operations app. No public trial access is granted here."
+        }
+      ]
+    },
+    "cookie": {
+      "title": "Cookies",
+      "lead": "Essential cookies: demo language, consent. Analytics and ads (Pixel) only after Accept all. This HTML preview does not load a live Pixel.",
+      "sections": []
+    }
+  }
+}

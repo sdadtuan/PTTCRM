@@ -1,0 +1,285 @@
+.site-chrome {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.top {
+  position: sticky;
+  top: 0;
+  z-index: 220;
+  height: var(--header-h);
+  background: var(--ptt-surface);
+  border-bottom: 1px solid var(--ptt-line);
+  color: var(--ptt-ink);
+}
+
+.top-in {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: min(var(--content-max), calc(100% - 2rem));
+  margin-inline: auto;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  color: var(--ptt-ink);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.brand-mark {
+  width: 36px;
+  height: 36px;
+  background: #000;
+  border-radius: 8px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.brand-mark img {
+  width: 28px;
+  height: 28px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  flex: 1;
+  margin-left: 1rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-btn,
+.nav-link {
+  background: none;
+  border: none;
+  font: inherit;
+  color: var(--ptt-ink);
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.nav-btn:hover,
+.nav-link:hover {
+  background: var(--ptt-paper);
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-left: auto;
+}
+
+.locale {
+  display: flex;
+  gap: 0.25rem;
+  font-size: 13px;
+}
+
+.locale a {
+  color: var(--ptt-teal-ink);
+  padding: 0.25rem 0.35rem;
+}
+
+.locale a.active {
+  color: var(--ptt-teal);
+  font-weight: 600;
+}
+
+.mega {
+  display: none;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--header-h);
+  background: #fff;
+  border-bottom: 1px solid var(--ptt-line);
+  box-shadow: 0 12px 40px rgba(6, 20, 24, 0.08);
+  z-index: 221;
+}
+
+.mega.open {
+  display: block;
+}
+
+.mega-in {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  width: min(var(--content-max), calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1.5rem 0 2rem;
+}
+
+.mega-k {
+  composes: mono;
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ptt-teal-ink);
+  margin: 0 0 0.75rem;
+}
+
+.mega-link {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 8px;
+  color: var(--ptt-ink);
+}
+
+.mega-link:hover {
+  background: var(--ptt-paper);
+}
+
+.mega-ico {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  width: 2.5rem;
+  color: var(--ptt-teal);
+}
+
+.mega-txt strong {
+  display: block;
+  font-weight: 600;
+}
+
+.mega-txt span {
+  display: block;
+  font-size: 13px;
+  color: var(--ptt-teal-ink);
+  margin-top: 0.15rem;
+}
+
+.mega-feat {
+  background: var(--ptt-ink);
+  color: var(--ptt-node);
+  border-radius: 8px;
+  padding: 1.25rem;
+}
+
+.mega-feat h3 {
+  margin: 0.35rem 0;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.mega-feat p {
+  margin: 0 0 1rem;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+.nav-dim {
+  display: none;
+  position: fixed;
+  inset: 0;
+  top: var(--header-h);
+  background: rgba(6, 20, 24, 0.45);
+  z-index: 210;
+}
+
+.nav-dim.open {
+  display: block;
+}
+
+.site-main {
+  flex: 1;
+}
+
+.site-footer {
+  background: var(--ptt-ink);
+  color: var(--ptt-node);
+  padding: 3rem 0 2rem;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+}
+
+.site-footer a {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.site-footer a:hover {
+  color: var(--ptt-teal-bright);
+}
+
+.site-footer h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0 0 0.75rem;
+}
+
+.site-footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 14px;
+}
+
+.site-footer li + li {
+  margin-top: 0.35rem;
+}
+
+.cookie-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 300;
+  background: var(--ptt-surface);
+  border-top: 1px solid var(--ptt-line);
+  padding: 0.75rem 1rem;
+}
+
+.cookie-in {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  width: min(var(--content-max), calc(100% - 2rem));
+  margin: 0 auto;
+  font-size: 14px;
+}
+
+.menu-toggle {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: 1px solid var(--ptt-line);
+  border-radius: 8px;
+  padding: 0.35rem 0.6rem;
+}
+
+@media (max-width: 880px) {
+  .nav {
+    display: none;
+  }
+  .menu-toggle {
+    display: block;
+  }
+  .mega-in {
+    grid-template-columns: 1fr;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "title": "Questions",
+  "items": [
+    {
+      "q": "Is there a free self-serve trial?",
+      "a": "No. A 60-minute demo. After a qualified demo, sales may open a 14-day sandbox."
+    },
+    {
+      "q": "How is this different from a cheap CRM?",
+      "a": "Cheap CRMs store contacts. PTTCRM shows which ads become contracts, and a portal per client."
+    },
+    {
+      "q": "Is Zalo on the English product?",
+      "a": "Zalo is a Vietnam pack. English core: Meta + Google."
+    }
+  ]
+}

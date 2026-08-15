@@ -1,0 +1,64 @@
+{
+  "items": {
+    "crm": {
+      "crumb": "Product / CRM",
+      "title": "Marketing CRM",
+      "problems": [
+        "Leads sit in Excel and ad inboxes.",
+        "No one knows which campaign closed a contract.",
+        "Care and Sales see two different truths."
+      ],
+      "capabilities": [
+        "One pipeline: lead → customer → contract.",
+        "Response SLA and care board.",
+        "Lead source tied to UTM / campaign."
+      ],
+      "relatedTitle": "Other modules"
+    },
+    "ads": {
+      "crumb": "Product / Ads",
+      "title": "Ads — Meta and Google",
+      "problems": [
+        "Ad spend does not match CRM leads.",
+        "Channels stay in separate tools.",
+        "AMs cannot prove ROAS to the client."
+      ],
+      "capabilities": [
+        "Ingest Meta and Google leads.",
+        "Tie spend → lead → contract.",
+        "Zalo is a Vietnam pack, not on the English core."
+      ],
+      "relatedTitle": "Other modules"
+    },
+    "portal": {
+      "crumb": "Product / Portal",
+      "title": "Client portal",
+      "problems": [
+        "Clients ask for ROAS on a weekly spreadsheet.",
+        "Numbers are not split per client.",
+        "Approvals happen in chat."
+      ],
+      "capabilities": [
+        "CPL/ROAS dashboard per contract.",
+        "Approvals in the portal.",
+        "Scoped access — no other clients."
+      ],
+      "relatedTitle": "Other modules"
+    },
+    "ai": {
+      "crumb": "Product / AI",
+      "title": "AI Revenue",
+      "problems": [
+        "Good and junk leads share one queue.",
+        "No next step after the demo.",
+        "Renewal forecast is a guess."
+      ],
+      "capabilities": [
+        "Lead scoring.",
+        "Next-best action.",
+        "Renewal alerts — not a page chatbot."
+      ],
+      "relatedTitle": "Other modules"
+    }
+  }
+}

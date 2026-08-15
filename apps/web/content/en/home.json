@@ -1,0 +1,89 @@
+{
+  "slogan": "One platform, specialized by industry",
+  "metaDescription": "Marketing CRM. Closed-loop ads → contract → ROAS. Built for real estate, agencies, and F&B.",
+  "hero": {
+    "kicker": "Marketing CRM",
+    "subtitle": "See which ads become contracts. CPL, ROAS, SLA — one system, built around your industry.",
+    "ctaDemo": "Book a 60-minute demo",
+    "ctaPricing": "Pricing"
+  },
+  "trust": "For teams that run real ads — not a contact notebook.",
+  "position": {
+    "kicker": "Position",
+    "title": "Not a contact CRM. Not an HR suite.",
+    "lead": "Marketing buyers decide on one question: which ads become contracts?",
+    "rows": [
+      {
+        "n": "01",
+        "title": "Closed-loop",
+        "body": "Meta and Google spend land on the same lead and contract. AMs stop exporting spreadsheets to explain ROAS."
+      },
+      {
+        "n": "02",
+        "title": "By industry",
+        "body": "Real estate closes bookings. Agencies close per-client ROAS. F&B closes reservations. No generic pipeline for all three."
+      },
+      {
+        "n": "03",
+        "title": "Agency OS",
+        "body": "Many clients, one portal, one SLA. Each client sees only their numbers."
+      }
+    ]
+  },
+  "modules": {
+    "kicker": "Platform",
+    "title": "Four modules. Not an ERP.",
+    "lead": "Enough to turn marketing into revenue.",
+    "items": [
+      { "slug": "crm", "k": "CRM", "title": "Leads & care", "body": "Pipeline, SLA, one source of truth." },
+      { "slug": "ads", "k": "ADS", "title": "Meta · Google", "body": "Lead ingest and spend." },
+      { "slug": "portal", "k": "PORTAL", "title": "Client portal", "body": "CPL/ROAS per contract." },
+      { "slug": "ai", "k": "AI", "title": "Score & NBA", "body": "Lead score, next step." }
+    ]
+  },
+  "industries": {
+    "kicker": "Industry",
+    "title": "Same platform. Different closing metric.",
+    "lead": "Wave 0: real estate, agency, F&B.",
+    "items": [
+      {
+        "slug": "bds",
+        "title": "Real estate",
+        "body": "Leads by project. Metric: lead → booking, CPL by channel. Industry plan.",
+        "link": "View real estate →"
+      },
+      {
+        "slug": "agency",
+        "title": "Agency",
+        "body": "Per-client ROAS on the portal. Handoff SLA has an owner. Agency OS.",
+        "link": "View agency →"
+      },
+      {
+        "slug": "fnb",
+        "title": "F&B",
+        "body": "Campaign to reservation / store. One CRM for the chain. Industry plan.",
+        "link": "View F&B →"
+      }
+    ]
+  },
+  "steps": {
+    "kicker": "Rollout",
+    "title": "Sold through demo. No public self-serve trial.",
+    "lead": "A 14-day sandbox opens only after a qualified demo.",
+    "items": [
+      { "n": "1", "title": "Request", "body": "A two-minute form. Sales in business hours." },
+      { "n": "2", "title": "Demo", "body": "60 minutes: ads → lead → contract → portal." },
+      { "n": "3", "title": "Choose a plan", "body": "Marketing, Industry, or Agency OS." },
+      { "n": "4", "title": "Operate", "body": "Industry onboarding." }
+    ]
+  },
+  "newsTeaser": {
+    "kicker": "News",
+    "title": "Insight",
+    "allLink": "All news →"
+  },
+  "cta": {
+    "title": "Ready to see closed-loop on your industry data?",
+    "button": "Request demo"
+  }
+}
