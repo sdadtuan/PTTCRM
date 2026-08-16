@@ -6,12 +6,16 @@
     {
       "id": "mkt",
       "name": "PTTCRM Marketing",
+      "retainer_usd": 199,
+      "setup_usd": 400,
       "includes": ["CRM + ad ingest", "Core KPI", "Demo form → sales inbox", "Existing staff login"],
       "excludes": ["No industry playbook", "No multi-client portal"]
     },
     {
       "id": "ind",
       "name": "PTTCRM Industry",
+      "retainer_usd": 399,
+      "setup_usd": 600,
       "popular": true,
       "includes": ["Everything in Marketing", "One industry pack", "Ads-to-contract attribution", "Industry demo"],
       "excludes": ["No multi-client portal"]
@@ -19,6 +23,8 @@
     {
       "id": "agy",
       "name": "PTTCRM Agency OS",
+      "retainer_usd": 799,
+      "setup_usd": 1200,
       "includes": ["Everything in Industry", "Multi-client + portal", "Per-client ROAS", "Handoff SLA"],
       "excludes": ["No payroll / ERP"]
     }

@@ -39,12 +39,14 @@ const EN_LEGAL_SLUG: Record<string, string> = {
   'bao-mat': 'privacy',
   'dieu-khoan': 'terms',
   cookie: 'cookies',
+  dpa: 'dpa',
 };
 
 const VI_LEGAL_SLUG: Record<string, string> = {
   privacy: 'bao-mat',
   terms: 'dieu-khoan',
   cookies: 'cookie',
+  dpa: 'dpa',
 };
 
 export function getHome(locale: Locale): HomeContent {

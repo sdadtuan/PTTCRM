@@ -1,6 +1,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
+import { showUsdPrices } from '../src/lib/pricing-env';
 
 const root = join(__dirname);
 
@@ -22,10 +23,12 @@ describe('content contract', () => {
     expect(p.skus.find((s: { id: string }) => s.id === 'agy').retainer_vnd).toBe(19900000);
   });
 
-  test('EN pricing hides amounts', () => {
+  test('EN pricing USD in JSON; UI gated by env flag', () => {
     const p = JSON.parse(readFileSync(join(root, 'en/pricing.json'), 'utf8'));
     expect(p.showAmounts).toBe(false);
-    expect(JSON.stringify(p)).not.toMatch(/199|399|799/);
+    expect(p.skus.find((s: { id: string }) => s.id === 'mkt').retainer_usd).toBe(199);
+    expect(p.skus.find((s: { id: string }) => s.id === 'agy').setup_usd).toBe(1200);
+    expect(showUsdPrices()).toBe(process.env.NEXT_PUBLIC_USD_PRICE === '1');
   });
 
   test('home has no sku teaser key', () => {

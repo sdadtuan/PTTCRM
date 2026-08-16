@@ -1,0 +1,30 @@
+{
+  "title": "Tài nguyên",
+  "lead": "Tin, sự kiện, khách hàng và giới thiệu — một hub thay vì rải rác menu.",
+  "tiles": [
+    {
+      "id": "news",
+      "title": "Tin tức",
+      "desc": "Góc nhìn GTM và hướng dẫn — không số case bịa.",
+      "href": "/vi/tin-tuc"
+    },
+    {
+      "id": "events",
+      "title": "Sự kiện",
+      "desc": "Demo ngành và workshop.",
+      "href": "/vi/su-kien"
+    },
+    {
+      "id": "customers",
+      "title": "Khách hàng",
+      "desc": "Case PO ký — CPL/ROAS thật.",
+      "href": "/vi/khach-hang"
+    },
+    {
+      "id": "about",
+      "title": "Về chúng tôi",
+      "desc": "Một nền tảng, chuyên biệt từng ngành.",
+      "href": "/vi/ve-chung-toi"
+    }
+  ]
+}

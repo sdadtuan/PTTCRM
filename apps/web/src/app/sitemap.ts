@@ -20,6 +20,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     entry('/en/about'),
     entry('/vi/khach-hang'),
     entry('/en/customers'),
+    entry('/vi/tai-nguyen'),
+    entry('/en/resources'),
     entry('/vi/tin-tuc'),
     entry('/en/news'),
     entry('/vi/su-kien'),

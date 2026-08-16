@@ -21,6 +21,7 @@ export const PATH_PAIRS: Array<[string, string]> = [
   ['/vi/khach-hang', '/en/customers'],
   ['/vi/giai-phap/education', '/en/solutions/education'],
   ['/vi/giai-phap/pharma', '/en/solutions/pharma'],
+  ['/vi/tai-nguyen', '/en/resources'],
 ];
 
 function parseAcceptLanguage(header: string): Array<{ tag: string; q: number }> {

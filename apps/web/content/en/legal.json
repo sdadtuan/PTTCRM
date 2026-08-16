@@ -32,6 +32,20 @@
       "title": "Cookies",
       "lead": "Essential cookies: demo language, consent. Analytics and ads (Pixel) only after Accept all. This HTML preview does not load a live Pixel.",
       "sections": []
+    },
+    "dpa": {
+      "title": "Data Processing Agreement",
+      "lead": "Preview for EU/UK prospects. Production DPA will be counsel-signed. Download the PDF or read below.",
+      "sections": [
+        {
+          "title": "Scope",
+          "body": "Covers demo form data and essential cookies on pttcrm.com. Sub-processors listed in the PDF annex."
+        },
+        {
+          "title": "Download",
+          "body": "PDF: /legal/pttcrm-dpa-en.pdf"
+        }
+      ]
     }
   }
 }

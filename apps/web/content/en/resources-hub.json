@@ -1,0 +1,30 @@
+{
+  "title": "Resources",
+  "lead": "News, events, customers, and about — one hub instead of scattered menu links.",
+  "tiles": [
+    {
+      "id": "news",
+      "title": "News",
+      "desc": "GTM perspectives and guides — no fabricated case numbers.",
+      "href": "/en/news"
+    },
+    {
+      "id": "events",
+      "title": "Events",
+      "desc": "Industry demos and workshops.",
+      "href": "/en/events"
+    },
+    {
+      "id": "customers",
+      "title": "Customers",
+      "desc": "PO-signed cases — real CPL/ROAS.",
+      "href": "/en/customers"
+    },
+    {
+      "id": "about",
+      "title": "About",
+      "desc": "One platform, specialized by industry.",
+      "href": "/en/about"
+    }
+  ]
+}

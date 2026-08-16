@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { defaultConsent, parseConsent, serializeConsent, type Consent } from '@/lib/consent';
 
 const KEY = 'ptt_consent';
@@ -13,7 +14,8 @@ export function CookieBar({ locale }: Props) {
   const [draft, setDraft] = useState<Consent>(defaultConsent());
 
   useEffect(() => {
-    setConsent(parseConsent(localStorage.getItem(KEY)));
+    const raw = localStorage.getItem(KEY);
+    setConsent(raw ? parseConsent(raw) : null);
   }, []);
 
   function save(c: Consent) {
@@ -25,15 +27,19 @@ export function CookieBar({ locale }: Props) {
 
   if (consent !== null && !showOpts) return null;
 
-  const copy =
-    locale === 'en'
-      ? 'We use essential cookies. Analytics and ads run only with your consent.'
-      : 'Chúng tôi dùng cookie cần thiết. Phân tích và quảng cáo chỉ khi bạn đồng ý.';
-
   return (
     <div className="cookie-bar" role="dialog" aria-label="Cookie consent">
       <div className="cookie-in">
-        <p style={{ margin: 0, flex: '1 1 280px' }}>{copy}</p>
+        <p style={{ margin: 0, flex: '1 1 280px' }}>
+          {locale === 'en' ? (
+            <>
+              We use essential cookies. Analytics and ads run only with your consent.{' '}
+              <Link href="/en/legal/dpa">Data Processing Agreement</Link>.
+            </>
+          ) : (
+            'Chúng tôi dùng cookie cần thiết. Phân tích và quảng cáo chỉ khi bạn đồng ý.'
+          )}
+        </p>
         {showOpts && (
           <label style={{ fontSize: 13 }}>
             <input
@@ -59,7 +65,7 @@ export function CookieBar({ locale }: Props) {
         </button>
         {!showOpts && (
           <button className="btn btn-ghost" type="button" onClick={() => setShowOpts(true)}>
-            {locale === 'en' ? 'Options' : 'Tùy chọn'}
+            {locale === 'en' ? 'Manage preferences' : 'Tùy chọn'}
           </button>
         )}
         {showOpts && (

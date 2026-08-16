@@ -50,6 +50,7 @@ const COPY = {
     events: 'Sự kiện',
     about: 'Về chúng tôi',
     customers: 'Khách hàng',
+    hub: 'Tất cả tài nguyên',
   },
   en: {
     solutions: 'Solutions',
@@ -89,6 +90,7 @@ const COPY = {
     events: 'Events',
     about: 'About',
     customers: 'Customers',
+    hub: 'All resources',
   },
 } as const;
 
@@ -129,6 +131,7 @@ export function buildNav(locale: Locale): NavGroup[] {
         megaKicker: t.megaRes,
         featured: { title: t.featResH, body: t.featResP, cta: t.demo, href: demo },
         items: [
+          { id: 'hub', href: '/en/resources', label: t.hub },
           { id: 'news', href: '/en/news', label: t.news },
           { id: 'events', href: '/en/events', label: t.events },
           { id: 'customers', href: '/en/customers', label: t.customers },
@@ -171,6 +174,7 @@ export function buildNav(locale: Locale): NavGroup[] {
       megaKicker: t.megaRes,
       featured: { title: t.featResH, body: t.featResP, cta: t.demo, href: demo },
       items: [
+        { id: 'hub', href: '/vi/tai-nguyen', label: t.hub },
         { id: 'news', href: '/vi/tin-tuc', label: t.news },
         { id: 'events', href: '/vi/su-kien', label: t.events },
         { id: 'customers', href: '/vi/khach-hang', label: t.customers },

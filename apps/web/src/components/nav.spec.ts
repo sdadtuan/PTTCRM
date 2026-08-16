@@ -6,6 +6,6 @@ describe('buildNav', () => {
     const nav = buildNav('vi');
     expect(nav.map((n) => n.id)).toEqual(['solutions', 'platform', 'pricing', 'resources']);
     const res = nav.find((n) => n.id === 'resources');
-    expect(res?.items?.map((i) => i.id)).toEqual(['news', 'events', 'customers', 'about', 'demo']);
+    expect(res?.items?.map((i) => i.id)).toEqual(['hub', 'news', 'events', 'customers', 'about', 'demo']);
   });
 });

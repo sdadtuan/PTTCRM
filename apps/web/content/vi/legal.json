@@ -32,6 +32,16 @@
       "title": "Cookie",
       "lead": "Cookie cần thiết: ngôn ngữ demo, consent. Phân tích và quảng cáo (Pixel) chỉ sau khi bấm Đồng ý tất cả. Demo HTML chưa gắn Pixel thật.",
       "sections": []
+    },
+    "dpa": {
+      "title": "Thỏa thuận xử lý dữ liệu (DPA)",
+      "lead": "Bản preview cho khách EU/UK. Bản production do pháp chế ký.",
+      "sections": [
+        {
+          "title": "Phạm vi",
+          "body": "Áp dụng form demo và cookie cần thiết trên pttcrm.com."
+        }
+      ]
     }
   }
 }

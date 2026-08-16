@@ -20,5 +20,7 @@ describe('switchLocalePath', () => {
     expect(switchLocalePath('/vi/khach-hang', 'en')).toBe('/en/customers');
     expect(switchLocalePath('/vi/giai-phap/education', 'en')).toBe('/en/solutions/education');
     expect(switchLocalePath('/vi/giai-phap/pharma', 'en')).toBe('/en/solutions/pharma');
+    expect(switchLocalePath('/vi/tai-nguyen', 'en')).toBe('/en/resources');
+    expect(switchLocalePath('/en/resources', 'vi')).toBe('/vi/tai-nguyen');
   });
 });

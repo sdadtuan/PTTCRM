@@ -11,7 +11,11 @@ test('locale switch pricing', async ({ page }) => {
   await page.goto('/vi/bang-gia');
   await page.locator('.locale a').filter({ hasText: 'EN' }).click();
   await expect(page).toHaveURL(/\/en\/pricing/);
-  await expect(page.locator('body')).not.toContainText('199');
+  if (process.env.NEXT_PUBLIC_USD_PRICE === '1') {
+    await expect(page.getByText('$199')).toBeVisible();
+  } else {
+    await expect(page.locator('body')).not.toContainText('199');
+  }
 });
 
 test('news draft 404', async ({ page }) => {
