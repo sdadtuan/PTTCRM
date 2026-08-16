@@ -16,7 +16,7 @@ export default async function EnLayout({ children }: { children: React.ReactNode
           href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap"
           rel="stylesheet"
         />
-        <link rel="icon" href="/gomira-logo.png" type="image/png" />
+        <link rel="icon" href="/gomira-logo.svg" type="image/svg+xml" />
       </head>
       <body>
         <SiteChrome locale="en" pathname={pathname}>

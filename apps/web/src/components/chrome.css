@@ -61,8 +61,8 @@
 .brand-logo {
   display: block;
   width: auto;
-  height: 48px;
-  max-width: min(210px, 52vw);
+  height: 50px;
+  max-width: min(220px, 55vw);
   object-fit: contain;
   background: transparent !important;
 }
@@ -523,7 +523,7 @@
   }
 
   .brand-logo {
-    height: 40px;
-    max-width: min(168px, 52vw);
+    height: 42px;
+    max-width: min(190px, 58vw);
   }
 }
