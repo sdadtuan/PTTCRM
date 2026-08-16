@@ -3,8 +3,11 @@ import Link from 'next/link';
 import {
   articleHref,
   CATEGORY_LABELS,
+  customerHref,
+  customersListHref,
   eventHref,
   fetchArticles,
+  fetchCustomers,
   fetchEvents,
   formatArticleDate,
   newsListHref,
@@ -23,6 +26,7 @@ export async function HomeView({ locale }: Props) {
   const articles = (await fetchArticles(locale)).slice(0, 3);
   const events = await fetchEvents(locale, 'upcoming');
   const upcoming = events[0];
+  const customers = (await fetchCustomers(locale)).slice(0, 3);
 
   const demoHref = locale === 'en' ? '/en/request-demo' : '/vi/dang-ky-demo';
   const pricingHref = locale === 'en' ? '/en/pricing' : '/vi/bang-gia';
@@ -179,6 +183,32 @@ export async function HomeView({ locale }: Props) {
           ) : null}
         </div>
       </section>
+
+      {customers.length > 0 ? (
+        <section className="section section-wash">
+          <div className="wrap">
+            <p className="kicker">{c.customersTeaser.kicker}</p>
+            <h2>{c.customersTeaser.title}</h2>
+            <div className="news-grid" style={{ marginTop: 36 }}>
+              {customers.map((item, i) => (
+                <Link key={item.slug} className={`news-card${i === 0 ? ' feature' : ''}`} href={customerHref(locale, item.slug)}>
+                  <div className="news-thumb">
+                    <b>{String(i + 1).padStart(2, '0')}</b>
+                    <span>{item.industry.toUpperCase()}</span>
+                  </div>
+                  <div className="news-body">
+                    <h3>{item.title}</h3>
+                    <p>{item.summary}</p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <p style={{ marginTop: 28 }}>
+              <Link href={customersListHref(locale)}>{c.customersTeaser.allLink}</Link>
+            </p>
+          </div>
+        </section>
+      ) : null}
 
       <section className="section section-surface">
         <div className="wrap">

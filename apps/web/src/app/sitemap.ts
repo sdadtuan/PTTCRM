@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { articleHref, eventHref, fetchArticles, fetchEvents } from '@/lib/cms';
+import { articleHref, customerHref, eventHref, fetchArticles, fetchCustomers, fetchEvents } from '@/lib/cms';
 import { legalSlugs, productSlugs, solutionSlugs } from '@/lib/content';
 
 const BASE = 'https://pttcrm.com';
@@ -44,11 +44,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...legalSlugs('en').map((slug) => entry(`/en/legal/${slug}`)),
   ];
 
-  const [viArticles, enArticles, viEvents, enEvents] = await Promise.all([
+  const [viArticles, enArticles, viEvents, enEvents, viCustomers, enCustomers] = await Promise.all([
     fetchArticles('vi'),
     fetchArticles('en'),
     fetchEvents('vi'),
     fetchEvents('en'),
+    fetchCustomers('vi'),
+    fetchCustomers('en'),
   ]);
 
   const cmsRoutes: MetadataRoute.Sitemap = [
@@ -56,6 +58,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...enArticles.map((a) => entry(articleHref('en', a.slug))),
     ...viEvents.map((e) => entry(eventHref('vi', e.slug))),
     ...enEvents.map((e) => entry(eventHref('en', e.slug))),
+    ...viCustomers.map((c) => entry(customerHref('vi', c.slug))),
+    ...enCustomers.map((c) => entry(customerHref('en', c.slug))),
   ];
 
   return [...staticRoutes, ...cmsRoutes];

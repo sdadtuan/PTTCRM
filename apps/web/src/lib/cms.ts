@@ -1,10 +1,17 @@
 import type { Locale } from '@pttcrm/gtm-core';
 import type { CmsArticleCategory } from '@pttcrm/gtm-core';
 import { unstable_cache } from 'next/cache';
-import type { ArticleCard, ArticleDetail, EventCard, EventDetail } from './cms-public';
-import { getPublicArticle, getPublicEvent, listPublicArticles, listPublicEvents } from './cms-store';
+import type { ArticleCard, ArticleDetail, CustomerCard, CustomerDetail, EventCard, EventDetail } from './cms-public';
+import {
+  getPublicArticle,
+  getPublicCustomer,
+  getPublicEvent,
+  listPublicArticles,
+  listPublicCustomers,
+  listPublicEvents,
+} from './cms-store';
 
-export type { ArticleCard, ArticleDetail, EventCard, EventDetail } from './cms-public';
+export type { ArticleCard, ArticleDetail, CustomerCard, CustomerDetail, EventCard, EventDetail } from './cms-public';
 
 export function publicCmsPath(path: string, params: Record<string, string>): string {
   const q = new URLSearchParams(params);
@@ -35,6 +42,18 @@ const cachedEvent = unstable_cache(
   { tags: ['events'], revalidate: 60 },
 );
 
+const cachedCustomers = unstable_cache(
+  async (locale: Locale) => listPublicCustomers(locale),
+  ['cms-customers'],
+  { tags: ['customers'], revalidate: 60 },
+);
+
+const cachedCustomer = unstable_cache(
+  async (locale: Locale, slug: string) => getPublicCustomer(locale, slug),
+  ['cms-customer'],
+  { tags: ['customers'], revalidate: 60 },
+);
+
 export async function fetchArticles(locale: Locale, category?: string): Promise<ArticleCard[]> {
   return cachedArticles(locale, category);
 }
@@ -51,6 +70,14 @@ export async function fetchEvent(locale: Locale, slug: string): Promise<EventDet
   return cachedEvent(locale, slug);
 }
 
+export async function fetchCustomers(locale: Locale): Promise<CustomerCard[]> {
+  return cachedCustomers(locale);
+}
+
+export async function fetchCustomer(locale: Locale, slug: string): Promise<CustomerDetail | null> {
+  return cachedCustomer(locale, slug);
+}
+
 export function articleHref(locale: Locale, slug: string): string {
   return locale === 'en' ? `/en/news/${slug}` : `/vi/tin-tuc/${slug}`;
 }
@@ -65,6 +92,14 @@ export function newsListHref(locale: Locale): string {
 
 export function eventsListHref(locale: Locale): string {
   return locale === 'en' ? '/en/events' : '/vi/su-kien';
+}
+
+export function customerHref(locale: Locale, slug: string): string {
+  return locale === 'en' ? `/en/customers/${slug}` : `/vi/khach-hang/${slug}`;
+}
+
+export function customersListHref(locale: Locale): string {
+  return locale === 'en' ? '/en/customers' : '/vi/khach-hang';
 }
 
 export function formatArticleDate(iso: string, locale: Locale): string {

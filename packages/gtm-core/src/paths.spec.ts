@@ -18,6 +18,8 @@ describe('switchLocalePath', () => {
     expect(switchLocalePath('/vi/tin-tuc/closed-loop', 'en')).toBe('/en/news/closed-loop');
     expect(switchLocalePath('/en/events/demo-ngay-nganh', 'vi')).toBe('/vi/su-kien/demo-ngay-nganh');
     expect(switchLocalePath('/vi/khach-hang', 'en')).toBe('/en/customers');
+    expect(switchLocalePath('/vi/khach-hang/agency-portal-roas', 'en')).toBe('/en/customers/agency-portal-roas');
+    expect(switchLocalePath('/en/customers/agency-portal-roas', 'vi')).toBe('/vi/khach-hang/agency-portal-roas');
     expect(switchLocalePath('/vi/giai-phap/education', 'en')).toBe('/en/solutions/education');
     expect(switchLocalePath('/vi/giai-phap/pharma', 'en')).toBe('/en/solutions/pharma');
     expect(switchLocalePath('/vi/tai-nguyen', 'en')).toBe('/en/resources');

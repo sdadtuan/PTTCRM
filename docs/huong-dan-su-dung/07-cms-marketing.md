@@ -23,6 +23,7 @@
 |-----|------|
 | Articles | Soạn tin, category (`insight` / `nganh` / `huong-dan`), slug, VI/EN |
 | Events | Sự kiện, ngày bắt đầu/kết thúc, CTA (thường `/vi/dang-ky-demo`) |
+| Customers | Case khách hàng — **PO ký** mới publish; CPL/ROAS chỉ khi PO xác nhận số |
 | Media | Upload ảnh vào `/cms-media/` trên disk site (jpeg/png/webp/svg, ≤ 5MB) |
 | Slots | Gán URL ảnh + caption vào slot trang (home / product / solution) |
 
@@ -53,7 +54,7 @@ Seed W0 (6 bài từ `demo-html/tin-tuc`) tự nạp lần đầu nếu store tr
 
 ## 5. Case khách hàng
 
-Case nằm JSON repo (`apps/web/content/cases/`), không CMS tự do.
+Soạn trong tab **Customers** (`/cms`). Seed W0 lấy 3 case từ `apps/web/content/cases/`.
 
 | Gate | Hành vi site |
 |------|----------------|

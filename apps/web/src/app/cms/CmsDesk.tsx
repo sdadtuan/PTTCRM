@@ -3,7 +3,7 @@
 import { CMS_SLOT_KEYS } from '@pttcrm/gtm-core';
 import { useEffect, useState } from 'react';
 
-type Tab = 'articles' | 'events' | 'media' | 'slots';
+type Tab = 'articles' | 'events' | 'customers' | 'media' | 'slots';
 
 type Article = {
   id: string;
@@ -38,6 +38,23 @@ type EventRow = {
   cta_url: string | null;
 };
 
+type CustomerRow = {
+  id: string;
+  slug: string;
+  status: string;
+  po_signed: boolean;
+  metrics_verified: boolean;
+  industry: string;
+  sku: string;
+  title_vi: string;
+  title_en: string | null;
+  summary_vi: string;
+  summary_en: string | null;
+  body_vi: string;
+  cpl_vnd: number;
+  roas: number;
+};
+
 type MediaRow = { id: string; public_url: string; filename: string; alt_vi: string };
 type SlotRow = { slot_key: string; media_url: string | null; caption_vi: string | null };
 
@@ -56,6 +73,23 @@ const emptyArticle = (): Article => ({
   cover_url: '',
   alt_vi: '',
   alt_en: '',
+});
+
+const emptyCustomer = (): CustomerRow => ({
+  id: '',
+  slug: '',
+  status: 'draft',
+  po_signed: false,
+  metrics_verified: false,
+  industry: 'agency',
+  sku: 'ind',
+  title_vi: '',
+  title_en: '',
+  summary_vi: '',
+  summary_en: '',
+  body_vi: '',
+  cpl_vnd: 0,
+  roas: 0,
 });
 
 const emptyEvent = (): EventRow => ({
@@ -86,20 +120,24 @@ export function CmsDesk() {
   const [err, setErr] = useState('');
   const [articles, setArticles] = useState<Article[]>([]);
   const [events, setEvents] = useState<EventRow[]>([]);
+  const [customers, setCustomers] = useState<CustomerRow[]>([]);
   const [media, setMedia] = useState<MediaRow[]>([]);
   const [slots, setSlots] = useState<SlotRow[]>([]);
   const [article, setArticle] = useState<Article>(emptyArticle());
   const [event, setEvent] = useState<EventRow>(emptyEvent());
+  const [customer, setCustomer] = useState<CustomerRow>(emptyCustomer());
 
   async function reload() {
-    const [a, e, m, s] = await Promise.all([
+    const [a, e, c, m, s] = await Promise.all([
       api<Article[]>('/api/cms/admin/articles'),
       api<EventRow[]>('/api/cms/admin/events'),
+      api<CustomerRow[]>('/api/cms/admin/customers'),
       api<MediaRow[]>('/api/cms/admin/media'),
       api<SlotRow[]>('/api/cms/admin/slots'),
     ]);
     setArticles(a);
     setEvents(e);
+    setCustomers(c);
     setMedia(m);
     setSlots(s);
   }
@@ -118,14 +156,14 @@ export function CmsDesk() {
       <header className="cms-top">
         <div>
           <h1>CMS PTTCRM</h1>
-          <p>Tin / sự kiện / media / slot — lưu trên site, không qua hệ thống khác.</p>
+          <p>Tin / sự kiện / khách hàng / media / slot — lưu trên site, không qua hệ thống khác.</p>
         </div>
         <button className="cms-btn" type="button" onClick={logout}>
           Đăng xuất
         </button>
       </header>
       <div className="cms-tabs" role="tablist">
-        {(['articles', 'events', 'media', 'slots'] as Tab[]).map((t) => (
+        {(['articles', 'events', 'customers', 'media', 'slots'] as Tab[]).map((t) => (
           <button key={t} type="button" role="tab" aria-selected={tab === t} onClick={() => setTab(t)}>
             {t}
           </button>
@@ -375,6 +413,184 @@ export function CmsDesk() {
                     setErr('');
                     try {
                       setEvent(await api<EventRow>(`/api/cms/admin/events/${event.id}/archive`, { method: 'POST' }));
+                      await reload();
+                    } catch (ex) {
+                      setErr(ex instanceof Error ? ex.message : 'archive_failed');
+                    }
+                  }}
+                >
+                  Archive
+                </button>
+              )}
+            </div>
+          </form>
+        </div>
+      )}
+
+      {tab === 'customers' && (
+        <div className="cms-grid">
+          <div className="cms-list">
+            <button type="button" onClick={() => setCustomer(emptyCustomer())}>
+              + Case mới
+            </button>
+            {customers.map((row) => (
+              <button
+                key={row.id}
+                type="button"
+                aria-current={customer.id === row.id}
+                onClick={() => setCustomer(row)}
+              >
+                {row.title_vi || row.slug}
+                <small>
+                  {row.status} · {row.industry} · PO {row.po_signed ? 'ký' : 'chưa'}
+                </small>
+              </button>
+            ))}
+          </div>
+          <form
+            className="cms-form"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              setErr('');
+              try {
+                const body = {
+                  ...customer,
+                  cpl_vnd: Number(customer.cpl_vnd) || 0,
+                  roas: Number(customer.roas) || 0,
+                };
+                const saved = customer.id
+                  ? await api<CustomerRow>(`/api/cms/admin/customers/${customer.id}`, {
+                      method: 'PATCH',
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(body),
+                    })
+                  : await api<CustomerRow>('/api/cms/admin/customers', {
+                      method: 'POST',
+                      headers: { 'content-type': 'application/json' },
+                      body: JSON.stringify(body),
+                    });
+                setCustomer(saved);
+                await reload();
+              } catch (ex) {
+                setErr(ex instanceof Error ? ex.message : 'save_failed');
+              }
+            }}
+          >
+            <label>
+              Slug
+              <input value={customer.slug} onChange={(e) => setCustomer({ ...customer, slug: e.target.value })} required />
+            </label>
+            <label>
+              Ngành
+              <select value={customer.industry} onChange={(e) => setCustomer({ ...customer, industry: e.target.value })}>
+                <option value="bds">bds</option>
+                <option value="agency">agency</option>
+                <option value="fnb">fnb</option>
+                <option value="education">education</option>
+                <option value="pharma">pharma</option>
+              </select>
+            </label>
+            <label>
+              SKU
+              <select value={customer.sku} onChange={(e) => setCustomer({ ...customer, sku: e.target.value })}>
+                <option value="mkt">mkt</option>
+                <option value="ind">ind</option>
+                <option value="agy">agy</option>
+              </select>
+            </label>
+            <label>
+              Title VI
+              <input value={customer.title_vi} onChange={(e) => setCustomer({ ...customer, title_vi: e.target.value })} />
+            </label>
+            <label>
+              Title EN
+              <input value={customer.title_en ?? ''} onChange={(e) => setCustomer({ ...customer, title_en: e.target.value })} />
+            </label>
+            <label>
+              Summary VI
+              <textarea value={customer.summary_vi} onChange={(e) => setCustomer({ ...customer, summary_vi: e.target.value })} />
+            </label>
+            <label>
+              Body VI
+              <textarea value={customer.body_vi} onChange={(e) => setCustomer({ ...customer, body_vi: e.target.value })} />
+            </label>
+            <label>
+              <span>
+                <input
+                  type="checkbox"
+                  checked={customer.po_signed}
+                  onChange={(e) =>
+                    setCustomer({
+                      ...customer,
+                      po_signed: e.target.checked,
+                      metrics_verified: e.target.checked ? customer.metrics_verified : false,
+                    })
+                  }
+                />{' '}
+                PO đã ký (bắt buộc để publish)
+              </span>
+            </label>
+            <label>
+              <span>
+                <input
+                  type="checkbox"
+                  checked={customer.metrics_verified}
+                  disabled={!customer.po_signed}
+                  onChange={(e) => setCustomer({ ...customer, metrics_verified: e.target.checked })}
+                />{' '}
+                PO xác nhận số (mới hiện CPL/ROAS)
+              </span>
+            </label>
+            <label>
+              CPL VND
+              <input
+                type="number"
+                value={customer.cpl_vnd}
+                onChange={(e) => setCustomer({ ...customer, cpl_vnd: Number(e.target.value) })}
+              />
+            </label>
+            <label>
+              ROAS
+              <input
+                type="number"
+                step="0.1"
+                value={customer.roas}
+                onChange={(e) => setCustomer({ ...customer, roas: Number(e.target.value) })}
+              />
+            </label>
+            <div className="cms-actions">
+              <button className="cms-btn cms-btn-solid" type="submit">
+                Lưu draft
+              </button>
+              {customer.id && (
+                <button
+                  className="cms-btn"
+                  type="button"
+                  onClick={async () => {
+                    setErr('');
+                    try {
+                      setCustomer(
+                        await api<CustomerRow>(`/api/cms/admin/customers/${customer.id}/publish`, { method: 'POST' }),
+                      );
+                      await reload();
+                    } catch (ex) {
+                      setErr(ex instanceof Error ? ex.message : 'publish_failed');
+                    }
+                  }}
+                >
+                  Publish
+                </button>
+              )}
+              {customer.id && (
+                <button
+                  className="cms-btn cms-btn-danger"
+                  type="button"
+                  onClick={async () => {
+                    setErr('');
+                    try {
+                      setCustomer(
+                        await api<CustomerRow>(`/api/cms/admin/customers/${customer.id}/archive`, { method: 'POST' }),
+                      );
                       await reload();
                     } catch (ex) {
                       setErr(ex instanceof Error ? ex.message : 'archive_failed');

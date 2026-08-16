@@ -3,7 +3,7 @@ import type { Locale } from '@pttcrm/gtm-core';
 export type NavItemLink = { id: string; href: string; label: string; desc?: string; icon?: string };
 
 export type NavGroup = {
-  id: 'solutions' | 'platform' | 'pricing' | 'markets' | 'resources';
+  id: 'solutions' | 'platform' | 'pricing' | 'customers' | 'markets' | 'resources';
   label: string;
   href?: string;
   megaKicker?: string;
@@ -135,6 +135,7 @@ export function buildNav(locale: Locale): NavGroup[] {
         ],
       },
       { id: 'pricing', label: t.pricing, href: '/en/pricing' },
+      { id: 'customers', label: t.customers, href: '/en/customers' },
       {
         id: 'markets',
         label: t.markets,
@@ -197,6 +198,7 @@ export function buildNav(locale: Locale): NavGroup[] {
       ],
     },
     { id: 'pricing', label: t.pricing, href: '/vi/bang-gia' },
+    { id: 'customers', label: t.customers, href: '/vi/khach-hang' },
     {
       id: 'resources',
       label: t.resources,

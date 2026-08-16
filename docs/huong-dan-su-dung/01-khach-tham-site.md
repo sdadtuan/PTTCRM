@@ -9,13 +9,14 @@
 
 Header (không hiện số điện thoại):
 
-**Giải pháp ▾ · Nền tảng ▾ · Bảng giá · Tài nguyên ▾ · VI|EN · Đăng nhập · Đăng ký Demo**
+**Giải pháp ▾ · Nền tảng ▾ · Bảng giá · Khách hàng · Tài nguyên ▾ · VI|EN · Đăng nhập · Đăng ký Demo**
 
 | Nhóm | Việc | Ví dụ path VI | Path EN |
 |------|------|---------------|---------|
 | Giải pháp | Ngành | `/vi/giai-phap/bds` | `/en/solutions/bds` |
 | Nền tảng | 4 module | `/vi/san-pham/crm` | `/en/product/crm` |
 | Bảng giá | 3 SKU | `/vi/bang-gia` | `/en/pricing` |
+| Khách hàng | Case PO ký | `/vi/khach-hang` | `/en/customers` |
 | Tài nguyên | Hub | `/vi/tai-nguyen` | `/en/resources` |
 | Đăng nhập | Staff | `https://rs.pttads.vn/login` | cùng |
 | Demo | Form | `/vi/dang-ky-demo` | `/en/request-demo` |
@@ -38,8 +39,9 @@ Thứ tự khối:
 6. Bốn bước triển khai (đăng ký → demo → chốt gói → vận hành)  
 7. Teaser tin **published** (tối đa 3)  
 8. Một sự kiện upcoming nếu CMS có  
-9. FAQ  
-10. CTA Demo  
+9. Teaser khách hàng **published + PO ký** (tối đa 3)  
+10. FAQ  
+11. CTA Demo  
 
 **Không** có 3 card giá trên home.
 

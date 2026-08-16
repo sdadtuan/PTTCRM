@@ -82,6 +82,11 @@
     "title": "Insight",
     "allLink": "All news →"
   },
+  "customersTeaser": {
+    "kicker": "Customers",
+    "title": "Industry outcomes",
+    "allLink": "All customers →"
+  },
   "cta": {
     "title": "Ready to see closed-loop on your industry data?",
     "button": "Request demo"

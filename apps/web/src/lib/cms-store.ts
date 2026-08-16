@@ -2,16 +2,20 @@ import { existsSync, mkdirSync, readFileSync, renameSync, writeFileSync } from '
 import path from 'node:path';
 import {
   assertNoRnosai,
+  canShowCaseMetrics,
   CMS_SLOT_KEYS,
+  formatCaseMetrics,
   isAllowedCmsMarkdown,
   type CmsArticleCategory,
   type CmsArticleStatus,
   type CmsEventStatus,
   type CmsSlotKey,
+  type Industry,
   type Locale,
+  type SkuInterest,
 } from '@pttcrm/gtm-core';
 import { parseArticleHtml, resolveDemoHtmlDir, SEED_ARTICLES } from './cms-html-seed';
-import type { ArticleCard, ArticleDetail, EventCard, EventDetail } from './cms-public';
+import type { ArticleCard, ArticleDetail, CustomerCard, CustomerDetail, EventCard, EventDetail } from './cms-public';
 
 const SLUG_RE = /^[a-z0-9-]+$/;
 const MEDIA_BASE = '/cms-media';
@@ -74,6 +78,26 @@ export type StoredSlot = {
   updated_at: string;
 };
 
+export type StoredCustomer = {
+  id: string;
+  slug: string;
+  status: CmsArticleStatus;
+  po_signed: boolean;
+  metrics_verified: boolean;
+  industry: Industry;
+  sku: SkuInterest;
+  title_vi: string;
+  title_en: string | null;
+  summary_vi: string;
+  summary_en: string | null;
+  body_vi: string;
+  body_en: string | null;
+  cpl_vnd: number;
+  roas: number;
+  cover_url: string | null;
+  updated_at: string;
+};
+
 export type CmsStore = {
   version: 1;
   seeded: boolean;
@@ -81,13 +105,30 @@ export type CmsStore = {
   events: StoredEvent[];
   media: StoredMedia[];
   slots: StoredSlot[];
+  customers: StoredCustomer[];
 };
 
 export type ArticleDraft = Partial<StoredArticle> & { slug?: string; category?: CmsArticleCategory };
 export type EventDraft = Partial<StoredEvent> & { slug?: string; start_at?: string; end_at?: string };
+export type CustomerDraft = Partial<StoredCustomer> & { slug?: string };
+
+const INDUSTRIES = new Set<Industry>(['bds', 'agency', 'fnb', 'education', 'pharma', 'other']);
+const SKUS = new Set<SkuInterest>(['mkt', 'ind', 'agy']);
 
 function emptyStore(): CmsStore {
-  return { version: 1, seeded: false, articles: [], events: [], media: [], slots: [] };
+  return { version: 1, seeded: false, articles: [], events: [], media: [], slots: [], customers: [] };
+}
+
+function normalizeStore(raw: Partial<CmsStore>): CmsStore {
+  return {
+    version: 1,
+    seeded: Boolean(raw.seeded),
+    articles: raw.articles ?? [],
+    events: raw.events ?? [],
+    media: raw.media ?? [],
+    slots: raw.slots ?? [],
+    customers: raw.customers ?? [],
+  };
 }
 
 export function resolveCmsDir(cwd = process.cwd()): string {
@@ -136,12 +177,17 @@ export function readStore(dir = resolveCmsDir()): CmsStore {
     writeStore(seeded, dir);
     return seeded;
   }
-  const parsed = JSON.parse(readFileSync(file, 'utf8')) as CmsStore;
+  let parsed = normalizeStore(JSON.parse(readFileSync(file, 'utf8')) as Partial<CmsStore>);
+  let dirty = false;
   if (!parsed.seeded && parsed.articles.length === 0) {
-    const seeded = seedStore(dir, parsed);
-    writeStore(seeded, dir);
-    return seeded;
+    parsed = seedStore(dir, parsed);
+    dirty = true;
   }
+  if (parsed.customers.length === 0) {
+    parsed = { ...parsed, customers: seedCustomersFromRepo() };
+    dirty = true;
+  }
+  if (dirty) writeStore(parsed, dir);
   return parsed;
 }
 
@@ -180,7 +226,56 @@ export function seedStore(dir = resolveCmsDir(), base = emptyStore()): CmsStore 
     }
   }
   void dir;
-  return { ...base, version: 1, seeded: true, articles };
+  return { ...normalizeStore(base), version: 1, seeded: true, articles, customers: seedCustomersFromRepo() };
+}
+
+function resolveCasesDir(cwd = process.cwd()): string | null {
+  const candidates = [path.join(cwd, 'content/cases'), path.join(cwd, 'apps/web/content/cases')];
+  return candidates.find((p) => existsSync(p)) ?? null;
+}
+
+export function seedCustomersFromRepo(): StoredCustomer[] {
+  const dir = resolveCasesDir();
+  if (!dir) return [];
+  const files = ['agency-portal-roas.json', 'bds-booking-cpl.json', 'fnb-reservation.json'];
+  const rows: StoredCustomer[] = [];
+  for (const file of files) {
+    const full = path.join(dir, file);
+    if (!existsSync(full)) continue;
+    const raw = JSON.parse(readFileSync(full, 'utf8')) as {
+      slug: string;
+      po_signed: boolean;
+      metrics_verified: boolean;
+      industry: Industry;
+      sku: SkuInterest;
+      title_vi: string;
+      title_en?: string;
+      summary_vi: string;
+      summary_en?: string;
+      cpl_vnd: number;
+      roas: number;
+    };
+    rows.push({
+      id: `cus_seed_${raw.slug}`,
+      slug: raw.slug,
+      status: raw.po_signed ? 'published' : 'draft',
+      po_signed: raw.po_signed,
+      metrics_verified: raw.metrics_verified,
+      industry: raw.industry,
+      sku: raw.sku,
+      title_vi: raw.title_vi,
+      title_en: raw.title_en ?? null,
+      summary_vi: raw.summary_vi,
+      summary_en: raw.summary_en ?? null,
+      body_vi: raw.summary_vi,
+      body_en: raw.summary_en ?? null,
+      cpl_vnd: raw.cpl_vnd,
+      roas: raw.roas,
+      cover_url: null,
+      updated_at: nowIso(),
+    });
+  }
+  return rows;
 }
 
 function pickLocale<T>(locale: Locale, vi: T, en: T | null | undefined): T {
@@ -474,6 +569,105 @@ export function putSlot(
 
 export function listSlotsAdmin(store = readStore()): StoredSlot[] {
   return store.slots;
+}
+
+function toCustomerCard(row: StoredCustomer, locale: Locale): CustomerCard {
+  return {
+    slug: row.slug,
+    industry: row.industry,
+    sku: row.sku,
+    title: pickLocale(locale, row.title_vi, row.title_en),
+    summary: pickLocale(locale, row.summary_vi, row.summary_en),
+    metrics_label: canShowCaseMetrics(row) ? formatCaseMetrics(row, locale) : undefined,
+  };
+}
+
+export function listPublicCustomers(locale: Locale, store = readStore()): CustomerCard[] {
+  return store.customers
+    .filter((c) => c.status === 'published' && c.po_signed)
+    .sort((a, b) => b.updated_at.localeCompare(a.updated_at))
+    .map((c) => toCustomerCard(c, locale));
+}
+
+export function getPublicCustomer(locale: Locale, slug: string, store = readStore()): CustomerDetail | null {
+  const row = store.customers.find((c) => c.slug === slug && c.status === 'published' && c.po_signed);
+  if (!row) return null;
+  return {
+    ...toCustomerCard(row, locale),
+    body: pickLocale(locale, row.body_vi, row.body_en) || pickLocale(locale, row.summary_vi, row.summary_en),
+  };
+}
+
+export function listCustomersAdmin(store = readStore()): StoredCustomer[] {
+  return [...store.customers].sort((a, b) => b.updated_at.localeCompare(a.updated_at));
+}
+
+export function upsertCustomer(draft: CustomerDraft, dir = resolveCmsDir()): StoredCustomer {
+  const store = readStore(dir);
+  const existing = draft.id ? store.customers.find((c) => c.id === draft.id) : undefined;
+  const slug = (draft.slug ?? existing?.slug ?? '').trim();
+  assertSlug(slug);
+  if (store.customers.some((c) => c.slug === slug && c.id !== existing?.id)) {
+    throw new Error('CMS_SLUG_TAKEN');
+  }
+  const industry = draft.industry ?? existing?.industry ?? 'agency';
+  const sku = draft.sku ?? existing?.sku ?? 'ind';
+  if (!INDUSTRIES.has(industry)) throw new Error('CMS_INVALID_INDUSTRY');
+  if (!SKUS.has(sku)) throw new Error('CMS_INVALID_SKU');
+  const po_signed = draft.po_signed ?? existing?.po_signed ?? false;
+  const metrics_verified = draft.metrics_verified ?? existing?.metrics_verified ?? false;
+  if (metrics_verified && !po_signed) throw new Error('CMS_METRICS_NEED_PO');
+  const next: StoredCustomer = {
+    id: existing?.id ?? nid('cus'),
+    slug,
+    status: existing?.status ?? 'draft',
+    po_signed,
+    metrics_verified,
+    industry,
+    sku,
+    title_vi: draft.title_vi ?? existing?.title_vi ?? '',
+    title_en: draft.title_en !== undefined ? draft.title_en : (existing?.title_en ?? null),
+    summary_vi: draft.summary_vi ?? existing?.summary_vi ?? '',
+    summary_en: draft.summary_en !== undefined ? draft.summary_en : (existing?.summary_en ?? null),
+    body_vi: draft.body_vi ?? existing?.body_vi ?? draft.summary_vi ?? existing?.summary_vi ?? '',
+    body_en: draft.body_en !== undefined ? draft.body_en : (existing?.body_en ?? null),
+    cpl_vnd: draft.cpl_vnd ?? existing?.cpl_vnd ?? 0,
+    roas: draft.roas ?? existing?.roas ?? 0,
+    cover_url: draft.cover_url !== undefined ? draft.cover_url : (existing?.cover_url ?? null),
+    updated_at: nowIso(),
+  };
+  assertTextClean(next.title_vi, next.title_en, next.summary_vi, next.summary_en, next.body_vi, next.body_en);
+  if (existing) {
+    store.customers = store.customers.map((c) => (c.id === existing.id ? next : c));
+  } else {
+    store.customers.unshift(next);
+  }
+  writeStore(store, dir);
+  return next;
+}
+
+export function publishCustomer(id: string, dir = resolveCmsDir()): StoredCustomer {
+  const store = readStore(dir);
+  const row = store.customers.find((c) => c.id === id);
+  if (!row) throw new Error('CMS_NOT_FOUND');
+  if (!row.title_vi.trim() || !row.summary_vi.trim()) throw new Error('CMS_PUBLISH_MISSING_VI');
+  if (!row.po_signed) throw new Error('CMS_CUSTOMER_NEED_PO');
+  if (row.metrics_verified && (!row.cpl_vnd || !row.roas)) throw new Error('CMS_METRICS_INCOMPLETE');
+  assertTextClean(row.title_vi, row.title_en, row.summary_vi, row.summary_en, row.body_vi, row.body_en);
+  row.status = 'published';
+  row.updated_at = nowIso();
+  writeStore(store, dir);
+  return row;
+}
+
+export function archiveCustomer(id: string, dir = resolveCmsDir()): StoredCustomer {
+  const store = readStore(dir);
+  const row = store.customers.find((c) => c.id === id);
+  if (!row) throw new Error('CMS_NOT_FOUND');
+  row.status = 'archived';
+  row.updated_at = nowIso();
+  writeStore(store, dir);
+  return row;
 }
 
 export function errorStatus(err: unknown): number {

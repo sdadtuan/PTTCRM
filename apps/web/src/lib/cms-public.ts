@@ -31,3 +31,16 @@ export type EventCard = {
 export type EventDetail = EventCard & {
   body: string;
 };
+
+export type CustomerCard = {
+  slug: string;
+  industry: string;
+  sku: string;
+  title: string;
+  summary: string;
+  metrics_label?: string;
+};
+
+export type CustomerDetail = CustomerCard & {
+  body: string;
+};

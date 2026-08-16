@@ -6,9 +6,12 @@ import {
   archiveArticle,
   getPublicArticle,
   listPublicArticles,
+  listPublicCustomers,
   publishArticle,
+  publishCustomer,
   readStore,
   upsertArticle,
+  upsertCustomer,
 } from './cms-store';
 
 const dirs: string[] = [];
@@ -57,6 +60,35 @@ describe('cms-store', () => {
     expect(listPublicArticles('vi').some((a) => a.slug === 'draft-loop')).toBe(true);
     archiveArticle(draft.id, dir);
     expect(listPublicArticles('vi').some((a) => a.slug === 'draft-loop')).toBe(false);
+  });
+
+  test('seeds signed customer cases without showing unverified metrics', () => {
+    const dir = tmpCms();
+    const store = readStore(dir);
+    expect(store.customers.length).toBeGreaterThanOrEqual(3);
+    const cards = listPublicCustomers('vi', store);
+    expect(cards.map((c) => c.slug)).toContain('agency-portal-roas');
+    expect(cards.every((c) => c.metrics_label === undefined)).toBe(true);
+  });
+
+  test('cannot verify metrics without PO and cannot publish without PO', () => {
+    tmpCms();
+    expect(() =>
+      upsertCustomer({
+        slug: 'no-po-metrics',
+        title_vi: 'Case nháp',
+        summary_vi: 'Dek',
+        po_signed: false,
+        metrics_verified: true,
+      }),
+    ).toThrow(/CMS_METRICS_NEED_PO/);
+    const draft = upsertCustomer({
+      slug: 'wait-po',
+      title_vi: 'Case chờ PO',
+      summary_vi: 'Dek',
+      po_signed: false,
+    });
+    expect(() => publishCustomer(draft.id)).toThrow(/CMS_CUSTOMER_NEED_PO/);
   });
 
   test('rejects forbidden engine name on save', () => {

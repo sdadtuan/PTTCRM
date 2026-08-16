@@ -82,6 +82,11 @@
     "title": "Góc nhìn",
     "allLink": "Tất cả tin tức →"
   },
+  "customersTeaser": {
+    "kicker": "Khách hàng",
+    "title": "Kết quả theo ngành",
+    "allLink": "Tất cả khách hàng →"
+  },
   "cta": {
     "title": "Sẵn sàng xem closed-loop trên data ngành của bạn?",
     "button": "Đăng ký Demo"

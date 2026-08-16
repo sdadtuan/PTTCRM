@@ -66,6 +66,9 @@ function swapCmsSlug(pathname: string, to: Locale): string | null {
     if (pathname.startsWith('/vi/su-kien/')) {
       return `/en/events/${pathname.slice('/vi/su-kien/'.length)}`;
     }
+    if (pathname.startsWith('/vi/khach-hang/')) {
+      return `/en/customers/${pathname.slice('/vi/khach-hang/'.length)}`;
+    }
     return null;
   }
   if (pathname.startsWith('/en/news/')) {
@@ -73,6 +76,9 @@ function swapCmsSlug(pathname: string, to: Locale): string | null {
   }
   if (pathname.startsWith('/en/events/')) {
     return `/vi/su-kien/${pathname.slice('/en/events/'.length)}`;
+  }
+  if (pathname.startsWith('/en/customers/')) {
+    return `/vi/khach-hang/${pathname.slice('/en/customers/'.length)}`;
   }
   return null;
 }

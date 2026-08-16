@@ -12,16 +12,20 @@ import {
 import {
   addMedia,
   archiveArticle,
+  archiveCustomer,
   archiveEvent,
   errorStatus,
   listArticlesAdmin,
+  listCustomersAdmin,
   listEventsAdmin,
   listMediaAdmin,
   listSlotsAdmin,
   publishArticle,
+  publishCustomer,
   publishEvent,
   putSlot,
   upsertArticle,
+  upsertCustomer,
   upsertEvent,
 } from '@/lib/cms-store';
 
@@ -57,6 +61,7 @@ export async function GET(request: NextRequest, ctx: { params: Promise<{ path: s
   const [head] = segs;
   if (head === 'articles') return NextResponse.json(listArticlesAdmin());
   if (head === 'events') return NextResponse.json(listEventsAdmin());
+  if (head === 'customers') return NextResponse.json(listCustomersAdmin());
   if (head === 'media') return NextResponse.json(listMediaAdmin());
   if (head === 'slots') return NextResponse.json(listSlotsAdmin());
   return NextResponse.json({ error: 'not_found' }, { status: 404 });
@@ -104,6 +109,20 @@ export async function POST(request: NextRequest, ctx: { params: Promise<{ path: 
       const body = await request.json();
       return NextResponse.json(upsertEvent(body), { status: 201 });
     }
+    if (segs[0] === 'customers' && segs[1] && segs[2] === 'publish') {
+      const row = publishCustomer(segs[1]);
+      bump(['customers', 'sitemap']);
+      return NextResponse.json(row);
+    }
+    if (segs[0] === 'customers' && segs[1] && segs[2] === 'archive') {
+      const row = archiveCustomer(segs[1]);
+      bump(['customers', 'sitemap']);
+      return NextResponse.json(row);
+    }
+    if (segs[0] === 'customers' && !segs[1]) {
+      const body = await request.json();
+      return NextResponse.json(upsertCustomer(body), { status: 201 });
+    }
     if (segs[0] === 'media' && !segs[1]) {
       const form = await request.formData();
       const file = form.get('file');
@@ -142,6 +161,9 @@ export async function PATCH(request: NextRequest, ctx: { params: Promise<{ path:
     }
     if (segs[0] === 'events' && segs[1] && !segs[2]) {
       return NextResponse.json(upsertEvent({ ...body, id: segs[1] }));
+    }
+    if (segs[0] === 'customers' && segs[1] && !segs[2]) {
+      return NextResponse.json(upsertCustomer({ ...body, id: segs[1] }));
     }
   } catch (err) {
     return jsonError(err);

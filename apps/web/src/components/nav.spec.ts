@@ -4,13 +4,14 @@ import { buildNav } from './nav';
 describe('buildNav', () => {
   test('sales-led order and resources', () => {
     const nav = buildNav('vi');
-    expect(nav.map((n) => n.id)).toEqual(['solutions', 'platform', 'pricing', 'resources']);
+    expect(nav.map((n) => n.id)).toEqual(['solutions', 'platform', 'pricing', 'customers', 'resources']);
     const res = nav.find((n) => n.id === 'resources');
     expect(res?.items?.map((i) => i.id)).toEqual(['hub', 'news', 'events', 'customers', 'about', 'demo']);
   });
 
   test('EN nav includes ASEAN markets', () => {
     const nav = buildNav('en');
+    expect(nav.map((n) => n.id)).toEqual(['solutions', 'platform', 'pricing', 'customers', 'markets', 'resources']);
     expect(nav.map((n) => n.id)).toContain('markets');
     const markets = nav.find((n) => n.id === 'markets');
     expect(markets?.items?.some((i) => i.href === '/en/partners')).toBe(true);

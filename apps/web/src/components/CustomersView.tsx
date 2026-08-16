@@ -1,68 +1,66 @@
 import type { Locale } from '@pttcrm/gtm-core';
-import { canShowCaseMetrics, formatCaseMetrics } from '@pttcrm/gtm-core';
 import Link from 'next/link';
-import { listSignedCases } from '@/lib/cases';
+import { customerHref, customersListHref, fetchCustomers } from '@/lib/cms';
 import './pages.css';
 
 type Props = { locale: Locale };
 
-export function CustomersView({ locale }: Props) {
-  const cases = listSignedCases();
-  const demoBase = locale === 'en' ? '/en/request-demo' : '/vi/dang-ky-demo';
-  const home = locale === 'en' ? '/en' : '/vi';
+const INDUSTRY_LABEL: Record<Locale, Record<string, string>> = {
+  vi: { bds: 'BĐS', agency: 'AGENCY', fnb: 'F&B', education: 'GIÁO DỤC', pharma: 'PHARMA', other: 'KHÁC' },
+  en: { bds: 'RE', agency: 'AGENCY', fnb: 'F&B', education: 'EDU', pharma: 'PHARMA', other: 'OTHER' },
+};
+
+export async function CustomersView({ locale }: Props) {
+  const items = await fetchCustomers(locale);
+  const title = locale === 'vi' ? 'Khách hàng' : 'Customers';
+  const empty =
+    locale === 'vi'
+      ? 'Chưa có case published — tạo tại /cms (cần PO ký).'
+      : 'No published cases yet — create them at /cms after PO sign-off.';
+  const demoHref = locale === 'en' ? '/en/request-demo' : '/vi/dang-ky-demo';
 
   return (
     <>
       <section className="mast">
         <div className="wrap page-hero">
-          <p className="crumbs">
-            <Link href={home}>PTTCRM</Link> / {locale === 'vi' ? 'Khách hàng' : 'Customers'}
-          </p>
-          <h1>{locale === 'vi' ? 'Khách hàng & kết quả' : 'Customers & outcomes'}</h1>
+          <h1>{title}</h1>
           <p className="lead">
             {locale === 'vi'
-              ? 'Case qualitative theo ngành. CPL/ROAS chỉ hiện khi PO xác nhận số (metrics_verified).'
-              : 'Industry outcomes in qualitative form. CPL/ROAS appear only after PO-verified metrics.'}
+              ? 'Kết quả theo ngành. CPL/ROAS chỉ hiện khi PO đã xác nhận số.'
+              : 'Industry outcomes. CPL/ROAS appear only after PO-verified metrics.'}
           </p>
         </div>
       </section>
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          {cases.length === 0 ? (
+          {items.length === 0 ? (
             <>
-              <p className="lead">
-                {locale === 'vi' ? 'Case đang cập nhật.' : 'Case studies are being updated.'}
-              </p>
-              <Link className="btn btn-solid" href={demoBase}>
+              <p className="lead">{empty}</p>
+              <Link className="btn btn-solid" href={demoHref}>
                 {locale === 'vi' ? 'Đăng ký Demo' : 'Request demo'}
               </Link>
             </>
           ) : (
-            <div className="case-grid">
-              {cases.map((c) => {
-                const title = locale === 'en' && c.title_en ? c.title_en : c.title_vi;
-                const summary = locale === 'en' && c.summary_en ? c.summary_en : c.summary_vi;
-                const demoHref = `${demoBase}?industry=${c.industry}&sku=${c.sku}`;
-                return (
-                  <article key={c.slug} className="case-card">
-                    <span className="k">{c.industry.toUpperCase()}</span>
-                    <h2>{title}</h2>
-                    <p>{summary}</p>
-                    {canShowCaseMetrics(c) ? (
-                      <p className="case-metrics mono">{formatCaseMetrics(c, locale)}</p>
+            <div className="news-grid">
+              {items.map((c, i) => (
+                <Link key={c.slug} className={`news-card${i === 0 ? ' feature' : ''}`} href={customerHref(locale, c.slug)}>
+                  <div className="news-thumb">
+                    <b>{String(i + 1).padStart(2, '0')}</b>
+                    <span>{INDUSTRY_LABEL[locale][c.industry] ?? c.industry.toUpperCase()}</span>
+                  </div>
+                  <div className="news-body">
+                    <h3>{c.title}</h3>
+                    <p>{c.summary}</p>
+                    {c.metrics_label ? (
+                      <p className="case-metrics">{c.metrics_label}</p>
                     ) : (
                       <p className="muted">
-                        {locale === 'vi'
-                          ? 'Số liệu đang chờ PO xác nhận — không hiển thị CPL/ROAS.'
-                          : 'Metrics pending PO verification — CPL/ROAS withheld.'}
+                        {locale === 'vi' ? 'Số liệu đang chờ PO xác nhận.' : 'Metrics pending PO verification.'}
                       </p>
                     )}
-                    <Link className="btn btn-solid" href={demoHref}>
-                      {locale === 'vi' ? 'Đăng ký Demo' : 'Request demo'}
-                    </Link>
-                  </article>
-                );
-              })}
+                  </div>
+                </Link>
+              ))}
             </div>
           )}
         </div>
@@ -70,3 +68,5 @@ export function CustomersView({ locale }: Props) {
     </>
   );
 }
+
+export { customersListHref };
