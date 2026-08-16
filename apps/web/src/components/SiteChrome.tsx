@@ -25,6 +25,7 @@ export function SiteChrome({ locale, pathname, children }: Props) {
   const [openMega, setOpenMega] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openGroup, setOpenGroup] = useState<string | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const [feat, setFeat] = useState<{ title: string; body: string; cta: string; href: string } | null>(
     nav.find((g) => g.id === 'solutions')?.featured ?? null,
   );
@@ -44,6 +45,15 @@ export function SiteChrome({ locale, pathname, children }: Props) {
     document.body.classList.toggle('nav-locked', mobileOpen);
     return () => document.body.classList.remove('nav-locked');
   }, [mobileOpen]);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 12);
+    }
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
@@ -72,15 +82,15 @@ export function SiteChrome({ locale, pathname, children }: Props) {
       <a className="skip" href="#main">
         {locale === 'en' ? 'Skip to content' : 'Tới nội dung'}
       </a>
-      <header className="top" onMouseLeave={closeMega}>
+      <header className={`top${scrolled ? ' top-scrolled' : ''}`} onMouseLeave={closeMega}>
         <div className="top-in wrap">
           <Link className="brand" href={home} onMouseEnter={closeMega} onClick={closeMobile}>
             <Image
               className="brand-logo"
               src="/gomira-logo.png"
               alt="Gomira"
-              width={132}
-              height={36}
+              width={176}
+              height={48}
               priority
             />
           </Link>
