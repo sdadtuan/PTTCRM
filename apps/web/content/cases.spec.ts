@@ -10,12 +10,15 @@ describe('case study contract', () => {
       const raw = readFileSync(join(root, f), 'utf8');
       const c = JSON.parse(raw) as {
         po_signed?: boolean;
+        metrics_verified?: boolean;
         cpl_vnd?: number;
         roas?: number;
       };
       expect(raw).not.toMatch(/RNOSAI/);
       expect(raw.toLowerCase()).not.toMatch(/30 ngày|30-day trial|dùng thử 30/);
-      if (c.po_signed) {
+      expect(typeof c.metrics_verified).toBe('boolean');
+      if (c.metrics_verified) {
+        expect(c.po_signed).toBe(true);
         expect(c.cpl_vnd).toBeGreaterThan(0);
         expect(c.roas).toBeGreaterThan(0);
       }

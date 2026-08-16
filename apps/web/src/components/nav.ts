@@ -98,6 +98,7 @@ const COPY = {
     allMarkets: 'All markets',
     partners: 'Partners',
     trust: 'Trust Center',
+    security: 'Security pack',
     systemStatus: 'System status',
   },
 } as const;
@@ -159,6 +160,7 @@ export function buildNav(locale: Locale): NavGroup[] {
           { id: 'customers', href: '/en/customers', label: t.customers },
           { id: 'about', href: '/en/about', label: t.about },
           { id: 'trust', href: '/en/trust', label: t.trust },
+          { id: 'security', href: '/en/trust/security', label: t.security },
           { id: 'status', href: '/en/status', label: t.systemStatus },
           { id: 'demo', href: demo, label: t.demo },
         ],

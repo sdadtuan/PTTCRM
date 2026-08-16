@@ -4,6 +4,8 @@ import type { Industry, SkuInterest } from './validate-demo';
 export type CaseStudy = {
   slug: string;
   po_signed: boolean;
+  /** PO-attested numbers. False → qualitative card only (BR-GTM-018). */
+  metrics_verified: boolean;
   industry: Industry;
   sku: SkuInterest;
   title_vi: string;
@@ -13,6 +15,12 @@ export type CaseStudy = {
   cpl_vnd: number;
   roas: number;
 };
+
+export function canShowCaseMetrics(
+  c: Pick<CaseStudy, 'po_signed' | 'metrics_verified'>,
+): boolean {
+  return c.po_signed === true && c.metrics_verified === true;
+}
 
 function formatVnd(amount: number, locale: Locale): string {
   if (locale === 'vi') {

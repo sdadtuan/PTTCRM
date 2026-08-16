@@ -3,7 +3,8 @@ import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import { showUsdPrices } from '../src/lib/pricing-env';
 import { MARKET_SLUGS, getMarketPlaybook } from '../src/lib/market-content';
-import { getTrustContent } from '../src/lib/trust-content';
+import { getSecurityPack, getSubprocessorsContent, getTrustContent } from '../src/lib/trust-content';
+import { publicSubprocessorRows } from '../src/lib/public-trust';
 
 const root = join(__dirname);
 
@@ -29,6 +30,22 @@ describe('content contract', () => {
     expect(trust.soc2.po_approved).toBe(false);
     expect(trust.soc2.report_url).toBeNull();
     expect(trust.data_residency.primary_region.toLowerCase()).toContain('singapore');
+  });
+
+  test('published subprocessors have no PO_ placeholders', () => {
+    const rows = publicSubprocessorRows(getSubprocessorsContent().rows);
+    expect(rows.length).toBeGreaterThan(0);
+    for (const row of rows) {
+      expect(row.name).not.toMatch(/^PO_/);
+    }
+  });
+
+  test('security pack does not claim SSO GA or issued SOC2', () => {
+    const pack = getSecurityPack();
+    const body = pack.sections.map((s) => s.body).join(' ');
+    expect(body).toMatch(/in progress/i);
+    expect(body).toMatch(/roadmap/i);
+    expect(body).toMatch(/not claimed as generally available/i);
   });
 
   test('ASEAN market JSON matches slug', () => {

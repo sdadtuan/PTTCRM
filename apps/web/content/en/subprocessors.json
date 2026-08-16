@@ -1,24 +1,18 @@
 {
   "title": "Sub-processors",
-  "lead": "Third parties that process personal data on behalf of PTTCRM for the marketing site and demo flow. PO/legal to replace placeholders before production.",
+  "lead": "Third parties that process personal data for the PTTCRM marketing site and demo request flow. Additional vendors are added here only after legal review — placeholder names are never published.",
   "rows": [
     {
-      "name": "PO_CLOUD_PROVIDER",
-      "purpose": "Application hosting and database (Singapore region)",
+      "name": "Amazon Web Services, Inc.",
+      "purpose": "Application hosting and database in Singapore (ap-southeast-1)",
       "region": "Singapore",
-      "dpa_url": null
+      "dpa_url": "https://aws.amazon.com/compliance/gdpr-center/"
     },
     {
       "name": "Stripe, Inc.",
-      "purpose": "USD setup payment (test/production per contract)",
+      "purpose": "USD setup payment (test or production per contract)",
       "region": "United States / EU SCCs",
       "dpa_url": "https://stripe.com/legal/dpa"
-    },
-    {
-      "name": "PO_EMAIL_PROVIDER",
-      "purpose": "Transactional email (sandbox credentials, notifications)",
-      "region": "PO to confirm",
-      "dpa_url": null
     }
   ],
   "seo": {

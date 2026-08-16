@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import type { PartnersContent } from '@/lib/market-content';
+import { publicPartnerFeatured } from '@/lib/public-trust';
 import './pages.css';
 
 type Props = {
@@ -8,7 +9,8 @@ type Props = {
 };
 
 export function PartnersView({ content }: Props) {
-  const { featured, cta } = content;
+  const { cta } = content;
+  const featured = publicPartnerFeatured(content.featured);
 
   return (
     <>
@@ -23,24 +25,34 @@ export function PartnersView({ content }: Props) {
       </section>
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap">
-          <article className="resource-tile" style={{ maxWidth: 560 }}>
-            <Image
-              src={featured.logo_path}
-              alt={`${featured.name} logo`}
-              width={120}
-              height={48}
-              style={{ marginBottom: 16 }}
-            />
-            <h2>{featured.name}</h2>
-            <p>{featured.description_en}</p>
-            {featured.website_url ? (
+          {featured ? (
+            <article className="resource-tile" style={{ maxWidth: 560 }}>
+              <Image
+                src={featured.logo_path}
+                alt={`${featured.name} logo`}
+                width={120}
+                height={48}
+                style={{ marginBottom: 16 }}
+              />
+              <h2>{featured.name}</h2>
+              <p>{featured.description_en}</p>
+              {featured.website_url ? (
+                <p>
+                  <a href={featured.website_url} target="_blank" rel="noopener noreferrer">
+                    {featured.website_url.replace(/^https?:\/\//, '')}
+                  </a>
+                </p>
+              ) : null}
+            </article>
+          ) : (
+            <article className="resource-tile" style={{ maxWidth: 560 }}>
+              <h2>Partner program</h2>
               <p>
-                <a href={featured.website_url} target="_blank" rel="noopener noreferrer">
-                  {featured.website_url.replace(/^https?:\/\//, '')}
-                </a>
+                Featured partner profiles publish after a signed bio, logo, and website. Until then
+                this page is the program CTA only.
               </p>
-            ) : null}
-          </article>
+            </article>
+          )}
           <p style={{ marginTop: 24 }}>
             <Link className="btn btn-solid" href={cta.href}>
               {cta.label}

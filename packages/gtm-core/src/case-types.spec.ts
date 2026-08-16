@@ -1,5 +1,13 @@
 import { describe, expect, test } from 'vitest';
-import { formatCaseMetrics } from './case-types';
+import { canShowCaseMetrics, formatCaseMetrics } from './case-types';
+
+describe('canShowCaseMetrics', () => {
+  test('hides metrics unless PO verified', () => {
+    expect(canShowCaseMetrics({ po_signed: true, metrics_verified: false })).toBe(false);
+    expect(canShowCaseMetrics({ po_signed: true, metrics_verified: true })).toBe(true);
+    expect(canShowCaseMetrics({ po_signed: false, metrics_verified: true })).toBe(false);
+  });
+});
 
 describe('formatCaseMetrics', () => {
   test('formats VI case line', () => {

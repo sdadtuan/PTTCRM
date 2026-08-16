@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import type { SubprocessorsContent } from '@/lib/trust-content';
+import { publicSubprocessorRows } from '@/lib/public-trust';
 import './pages.css';
 
 type Props = {
@@ -31,7 +32,7 @@ export function SubprocessorsView({ content }: Props) {
                 </tr>
               </thead>
               <tbody>
-                {content.rows.map((row) => (
+                {publicSubprocessorRows(content.rows).map((row) => (
                   <tr key={row.name}>
                     <td>{row.name}</td>
                     <td>{row.purpose}</td>

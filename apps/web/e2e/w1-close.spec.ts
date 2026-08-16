@@ -1,10 +1,10 @@
 import { test, expect } from '@playwright/test';
 
-test('customers page shows signed metrics only', async ({ page }) => {
+test('customers page withholds unverified metrics', async ({ page }) => {
   await page.goto('/vi/khach-hang');
-  await expect(page.locator('.case-metrics').first()).toContainText('CPL');
-  await expect(page.locator('.case-metrics').first()).toContainText('ROAS');
   await expect(page.getByRole('heading', { level: 1 })).toContainText('Khách hàng');
+  await expect(page.getByText(/không hiển thị CPL\/ROAS/i).first()).toBeVisible();
+  await expect(page.locator('.case-metrics')).toHaveCount(0);
 });
 
 test('education demo prefill', async ({ page }) => {

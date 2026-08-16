@@ -3,7 +3,7 @@
     "country_code": "sg",
     "name": "PO_PARTNER_NAME",
     "logo_path": "/partners/po-partner.svg",
-    "description_en": "PO-approved partner profile — replace with signed partner bio, services, and territory before production launch.",
+    "description_en": "Draft partner slot. The public page shows the partner program CTA until a signed name and website replace this draft.",
     "website_url": "https://example.com",
     "po_approved": true
   },

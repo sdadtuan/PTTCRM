@@ -11,9 +11,10 @@ test.describe('W3 ASEAN', () => {
     await expect(demo).toHaveAttribute('href', /market=th/);
   });
 
-  test('partners page shows featured partner', async ({ page }) => {
+  test('partners page hides draft placeholder', async ({ page }) => {
     await page.goto('/en/partners');
-    await expect(page.getByRole('heading', { name: 'PO_PARTNER_NAME' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Partner program' })).toBeVisible();
+    await expect(page.getByText('PO_PARTNER_NAME')).toHaveCount(0);
   });
 
   test('demo form prefills market from query', async ({ page }) => {

@@ -16,6 +16,7 @@ describe('buildNav', () => {
     expect(markets?.items?.some((i) => i.href === '/en/partners')).toBe(true);
     const res = nav.find((n) => n.id === 'resources');
     expect(res?.items?.some((i) => i.href === '/en/trust')).toBe(true);
+    expect(res?.items?.some((i) => i.href === '/en/trust/security')).toBe(true);
     expect(res?.items?.some((i) => i.href === '/en/status')).toBe(true);
   });
 });

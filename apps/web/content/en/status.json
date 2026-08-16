@@ -4,6 +4,8 @@
   "sla_statement": "PTTCRM targets 99.9% monthly availability for the marketing site, demo form API, and public CMS read path.",
   "availability_pct": 99.9,
   "fallback_degraded_message": "Live status is temporarily unavailable. Components may still be operational — contact hello@pttcrm.com for urgent issues.",
+  "incidents_empty": "No incidents recorded in this window.",
+  "history_pending": "90-day uptime publishes after 30 days of measured production data. We do not backfill a perfect history.",
   "seo": {
     "title": "System status | PTTCRM",
     "description": "PTTCRM public system status and 99.9% availability target."

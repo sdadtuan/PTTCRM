@@ -137,6 +137,8 @@ Chi tiết: [w4-useu](./2026-08-16-pttcrm-w4-useu.md).
 
 ---
 
+**W4A credibility (code):** [w4a-credibility](./2026-08-16-pttcrm-w4a-credibility.md) — ẩn placeholder công khai, `metrics_verified`, status incident/history trung thực, security pack. Không thay exit SOC2 Type I.
+
 ## W4+ (ngoài plan W4)
 
 - Dịch toàn bộ ops-web EN (129 màn) — wave riêng sau Trust.

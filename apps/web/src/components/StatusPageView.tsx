@@ -85,6 +85,36 @@ export function StatusPageView({ copy }: Props) {
             ))}
           </div>
 
+          <h2>90-day history</h2>
+          {data?.uptime_90d_pct != null ? (
+            <p>
+              Measured uptime: <strong>{data.uptime_90d_pct}%</strong>
+            </p>
+          ) : (
+            <p className="muted">{copy.history_pending}</p>
+          )}
+          {data && data.history.length > 0 ? (
+            <p className="muted" style={{ fontSize: 13 }}>
+              {data.history.length} measured day{data.history.length === 1 ? '' : 's'}
+            </p>
+          ) : null}
+
+          <h2>Incidents</h2>
+          {(data?.incidents ?? []).length === 0 ? (
+            <p className="muted">{copy.incidents_empty}</p>
+          ) : (
+            <ul>
+              {(data?.incidents ?? []).map((inc) => (
+                <li key={inc.id}>
+                  <strong>{inc.title}</strong> · {inc.severity} · {inc.started_at}
+                  {inc.resolved_at ? ` → ${inc.resolved_at}` : ' (open)'}
+                  <br />
+                  {inc.summary}
+                </li>
+              ))}
+            </ul>
+          )}
+
           <p style={{ marginTop: 28 }}>
             <Link href="/en/trust">Trust Center</Link> · <Link href="/en/request-demo">Request demo</Link>
           </p>

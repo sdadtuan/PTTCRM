@@ -21,7 +21,7 @@ export { CMS_SLOT_KEYS } from './cms-types';
 export { assertNoRnosai, isAllowedCmsMarkdown } from './md-allow';
 
 export type { CaseStudy } from './case-types';
-export { formatCaseMetrics } from './case-types';
+export { canShowCaseMetrics, formatCaseMetrics } from './case-types';
 
 export { USD_LIST_PRICE, formatUsd, minUsdPerUser } from './usd-prices';
 
@@ -37,7 +37,17 @@ export {
 export type {
   PublicComponentStatus,
   PublicStatusComponent,
+  PublicStatusDay,
+  PublicStatusIncident,
+  PublicStatusIncidentSeverity,
   PublicStatusResponse,
+  PublicPartnerFeatured,
   SubprocessorRow,
 } from './trust-types';
-export { isPublicComponentStatus, parsePublicStatusResponse } from './trust-types';
+export {
+  buildStatusHistory,
+  isPlaceholderVendor,
+  isPublicComponentStatus,
+  isPublishablePartner,
+  parsePublicStatusResponse,
+} from './trust-types';

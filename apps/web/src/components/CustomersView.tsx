@@ -1,5 +1,5 @@
 import type { Locale } from '@pttcrm/gtm-core';
-import { formatCaseMetrics } from '@pttcrm/gtm-core';
+import { canShowCaseMetrics, formatCaseMetrics } from '@pttcrm/gtm-core';
 import Link from 'next/link';
 import { listSignedCases } from '@/lib/cases';
 import './pages.css';
@@ -21,8 +21,8 @@ export function CustomersView({ locale }: Props) {
           <h1>{locale === 'vi' ? 'Khách hàng & kết quả' : 'Customers & outcomes'}</h1>
           <p className="lead">
             {locale === 'vi'
-              ? 'Chỉ số dưới đây do PO phê duyệt (po_signed). Không số marketing bịa.'
-              : 'Metrics below are PO-approved (po_signed). No fabricated marketing numbers.'}
+              ? 'Case qualitative theo ngành. CPL/ROAS chỉ hiện khi PO xác nhận số (metrics_verified).'
+              : 'Industry outcomes in qualitative form. CPL/ROAS appear only after PO-verified metrics.'}
           </p>
         </div>
       </section>
@@ -48,7 +48,15 @@ export function CustomersView({ locale }: Props) {
                     <span className="k">{c.industry.toUpperCase()}</span>
                     <h2>{title}</h2>
                     <p>{summary}</p>
-                    <p className="case-metrics mono">{formatCaseMetrics(c, locale)}</p>
+                    {canShowCaseMetrics(c) ? (
+                      <p className="case-metrics mono">{formatCaseMetrics(c, locale)}</p>
+                    ) : (
+                      <p className="muted">
+                        {locale === 'vi'
+                          ? 'Số liệu đang chờ PO xác nhận — không hiển thị CPL/ROAS.'
+                          : 'Metrics pending PO verification — CPL/ROAS withheld.'}
+                      </p>
+                    )}
                     <Link className="btn btn-solid" href={demoHref}>
                       {locale === 'vi' ? 'Đăng ký Demo' : 'Request demo'}
                     </Link>

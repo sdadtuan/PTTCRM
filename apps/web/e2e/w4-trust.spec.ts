@@ -37,6 +37,22 @@ test.describe('W4 Trust & Status', () => {
     await expect(page.locator('.prose').getByText('99.9%', { exact: true })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Marketing site' })).toBeVisible();
     await expect(page.locator('.resource-tile').first()).toContainText('Operational');
+    await expect(page.getByRole('heading', { name: 'Incidents' })).toBeVisible();
+    await expect(page.getByText('No incidents recorded in this window.')).toBeVisible();
+  });
+
+  test('security pack and no placeholders on trust surfaces', async ({ page }) => {
+    await page.goto('/en/trust/security');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(/Security pack/i);
+    await expect(page.getByRole('heading', { name: 'SSO and MFA' })).toBeVisible();
+    expect(await page.content()).not.toMatch(/PO_/);
+    expect(await page.content()).not.toMatch(/RNOSAI/);
+  });
+
+  test('customers withhold unverified metrics', async ({ page }) => {
+    await page.goto('/en/customers');
+    await expect(page.getByText(/CPL\/ROAS withheld/i).first()).toBeVisible();
+    await expect(page.getByText(/CPL 180/)).toHaveCount(0);
   });
 
   test('no RNOSAI on trust pages', async ({ page }) => {

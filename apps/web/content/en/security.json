@@ -1,0 +1,38 @@
+{
+  "title": "Security pack",
+  "lead": "Answers procurement and IT typically ask before a PTTCRM demo. Nothing here claims a certificate that has not been issued.",
+  "sections": [
+    {
+      "title": "Encryption and access",
+      "body": "Transport uses TLS 1.2+. Staff access to demo inbox and CMS is least-privilege and audited. The marketing site does not embed the operations console."
+    },
+    {
+      "title": "Data residency",
+      "body": "Production CRM and portal data is hosted in Singapore (AWS ap-southeast-1) unless a contract says otherwise. Marketing-site demo leads are stored in the same region."
+    },
+    {
+      "title": "DPA and SCCs",
+      "body": "EU/UK prospects use the Data Processing Agreement on this site. Standard Contractual Clauses apply where a sub-processor transfers data outside the EEA, as stated on each vendor DPA (AWS, Stripe)."
+    },
+    {
+      "title": "Sub-processors",
+      "body": "The public list is limited to vendors actually in use. Names prefixed for internal drafting are never shown."
+    },
+    {
+      "title": "SOC 2",
+      "body": "SOC 2 Type I is in progress. The Trust Center links a report only after PO and auditor sign-off. We do not display a badge before that."
+    },
+    {
+      "title": "SSO and MFA",
+      "body": "Enterprise SSO (SAML/OIDC) and MFA are on the product roadmap for IT checklists of 80+ staff. They are not claimed as generally available on this site."
+    },
+    {
+      "title": "Availability",
+      "body": "Target is 99.9% monthly uptime for the marketing site, demo API, and public CMS read path. The status page publishes incidents and a 90-day history only after production monitoring has enough measured days."
+    }
+  ],
+  "seo": {
+    "title": "Security pack | PTTCRM Trust",
+    "description": "Encryption, residency, DPA/SCCs, SOC 2 status, and SSO roadmap for PTTCRM procurement."
+  }
+}
