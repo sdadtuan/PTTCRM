@@ -75,10 +75,14 @@ export function SiteChrome({ locale, pathname, children }: Props) {
       <header className="top" onMouseLeave={closeMega}>
         <div className="top-in wrap">
           <Link className="brand" href={home} onMouseEnter={closeMega} onClick={closeMobile}>
-            <span className="brand-mark">
-              <Image src="/pttcrm-logo-monogram.png" alt="" width={28} height={28} />
-            </span>
-            <span>PTTCRM</span>
+            <Image
+              className="brand-logo"
+              src="/gomira-logo.png"
+              alt="Gomira"
+              width={132}
+              height={36}
+              priority
+            />
           </Link>
           <nav className="nav" aria-label="Main">
             {nav.map((group) =>
@@ -268,7 +272,7 @@ export function SiteChrome({ locale, pathname, children }: Props) {
             </ul>
           </div>
         </div>
-        <p className="wrap footer-copy">© 2026 PTTCRM</p>
+        <p className="wrap footer-copy">© 2026 Gomira</p>
       </footer>
     </div>
   );

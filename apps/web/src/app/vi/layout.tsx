@@ -17,6 +17,7 @@ export default async function ViLayout({ children }: { children: React.ReactNode
           href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=IBM+Plex+Mono:wght@500;600&display=swap"
           rel="stylesheet"
         />
+        <link rel="icon" href="/gomira-logo.png" type="image/png" />
       </head>
       <body>
         <SiteChrome locale={'vi' satisfies Locale} pathname={pathname}>
