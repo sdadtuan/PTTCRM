@@ -97,6 +97,8 @@ const COPY = {
     featAseanP: 'English playbooks for TH, ID, PH, SG — timezone, WhatsApp, demo prefill.',
     allMarkets: 'All markets',
     partners: 'Partners',
+    trust: 'Trust Center',
+    systemStatus: 'System status',
   },
 } as const;
 
@@ -156,6 +158,8 @@ export function buildNav(locale: Locale): NavGroup[] {
           { id: 'events', href: '/en/events', label: t.events },
           { id: 'customers', href: '/en/customers', label: t.customers },
           { id: 'about', href: '/en/about', label: t.about },
+          { id: 'trust', href: '/en/trust', label: t.trust },
+          { id: 'status', href: '/en/status', label: t.systemStatus },
           { id: 'demo', href: demo, label: t.demo },
         ],
       },

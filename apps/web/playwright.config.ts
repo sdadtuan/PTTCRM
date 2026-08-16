@@ -10,10 +10,11 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   webServer: {
-    command: 'npm run start',
+    command:
+      'NEXT_PUBLIC_GTM_API_BASE=http://127.0.0.1:3300 npm run build && NEXT_PUBLIC_GTM_API_BASE=http://127.0.0.1:3300 npm run start',
     url: 'http://127.0.0.1:3300/vi',
     reuseExistingServer: !process.env.CI,
-    timeout: 120_000,
+    timeout: 180_000,
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
 });

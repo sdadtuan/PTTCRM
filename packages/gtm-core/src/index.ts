@@ -33,3 +33,11 @@ export {
   whatsappLink,
   marketTimezone,
 } from './asean-markets';
+
+export type {
+  PublicComponentStatus,
+  PublicStatusComponent,
+  PublicStatusResponse,
+  SubprocessorRow,
+} from './trust-types';
+export { isPublicComponentStatus, parsePublicStatusResponse } from './trust-types';

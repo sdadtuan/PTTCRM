@@ -3,6 +3,7 @@ import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import { showUsdPrices } from '../src/lib/pricing-env';
 import { MARKET_SLUGS, getMarketPlaybook } from '../src/lib/market-content';
+import { getTrustContent } from '../src/lib/trust-content';
 
 const root = join(__dirname);
 
@@ -21,6 +22,13 @@ describe('content contract', () => {
       const raw = readFileSync(join(root, 'en/markets', `${slug}.json`), 'utf8');
       expect(raw).not.toMatch(/RNOSAI/);
     }
+  });
+
+  test('trust JSON does not claim certified SOC2 before PO approval', () => {
+    const trust = getTrustContent();
+    expect(trust.soc2.po_approved).toBe(false);
+    expect(trust.soc2.report_url).toBeNull();
+    expect(trust.data_residency.primary_region.toLowerCase()).toContain('singapore');
   });
 
   test('ASEAN market JSON matches slug', () => {

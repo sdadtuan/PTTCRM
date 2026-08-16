@@ -14,5 +14,8 @@ describe('buildNav', () => {
     expect(nav.map((n) => n.id)).toContain('markets');
     const markets = nav.find((n) => n.id === 'markets');
     expect(markets?.items?.some((i) => i.href === '/en/partners')).toBe(true);
+    const res = nav.find((n) => n.id === 'resources');
+    expect(res?.items?.some((i) => i.href === '/en/trust')).toBe(true);
+    expect(res?.items?.some((i) => i.href === '/en/status')).toBe(true);
   });
 });

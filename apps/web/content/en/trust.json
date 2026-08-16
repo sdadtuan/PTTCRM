@@ -1,0 +1,24 @@
+{
+  "title": "Trust Center",
+  "lead": "Security, data residency, and compliance information for PTTCRM prospects in the US, EU, and UK.",
+  "security_overview": "PTTCRM is a marketing CRM operated with least-privilege access, encrypted transport (TLS 1.2+), and audit logging on demo and staff paths. Staff authentication uses the existing operations app — not embedded on this marketing site.",
+  "soc2": {
+    "type": "SOC 2 Type I",
+    "status": "in_progress",
+    "report_url": null,
+    "po_approved": false,
+    "period_end": "TBD"
+  },
+  "data_residency": {
+    "primary_region": "Singapore (AWS ap-southeast-1)",
+    "statement_en": "Production CRM and portal data for PTTCRM customers is hosted in Singapore unless contractually agreed otherwise."
+  },
+  "sla": {
+    "availability_pct": 99.9,
+    "status_page_href": "/en/status"
+  },
+  "seo": {
+    "title": "Trust Center | PTTCRM",
+    "description": "SOC 2 Type I progress, Singapore data residency, and 99.9% availability target for PTTCRM."
+  }
+}

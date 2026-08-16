@@ -1,0 +1,11 @@
+{
+  "title": "System status",
+  "lead": "Public availability for pttcrm.com and the demo request API. Target: 99.9% monthly uptime.",
+  "sla_statement": "PTTCRM targets 99.9% monthly availability for the marketing site, demo form API, and public CMS read path.",
+  "availability_pct": 99.9,
+  "fallback_degraded_message": "Live status is temporarily unavailable. Components may still be operational — contact hello@pttcrm.com for urgent issues.",
+  "seo": {
+    "title": "System status | PTTCRM",
+    "description": "PTTCRM public system status and 99.9% availability target."
+  }
+}
