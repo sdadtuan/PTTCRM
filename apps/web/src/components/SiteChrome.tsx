@@ -85,7 +85,7 @@ export function SiteChrome({ locale, pathname, children }: Props) {
         <div className="top-in wrap">
           <Link className="brand" href={home} onMouseEnter={closeMega} onClick={closeMobile}>
             {/* Plain img keeps PNG alpha; Next/Image optimizer can flatten halos */}
-            <img className="brand-logo" src="/gomira-logo.svg" alt="Gomira" width={199} height={50} />
+            <img className="brand-logo" src="/gomira-logo.png" alt="Gomira" width={199} height={48} />
           </Link>
           <nav className="nav" aria-label="Main">
             {nav.map((group) =>
