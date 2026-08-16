@@ -145,6 +145,8 @@ Chi tiết: [w4-useu](./2026-08-16-pttcrm-w4-useu.md).
 
 **W4D enterprise SSO/MFA (code):** [w4d-enterprise-sso](./2026-08-16-pttcrm-w4d-enterprise-sso.md) — server-driven login SSO, `mfa_enforced` API, [deploy runbook](../runbooks/staff-sso-mfa-deploy.md).
 
+**W4E kinh doanh (không code):** [checklist PO/Sales/IT](../runbooks/w4e-business-signoff.md) — 3 demo ASEAN, 1 case/partner thật, SOC2 auditor, CNAME, SSO prod flip.
+
 ## W4+ (ngoài plan W4)
 
 - Dịch toàn bộ ops-web EN (129 màn) — wave riêng sau Trust.
