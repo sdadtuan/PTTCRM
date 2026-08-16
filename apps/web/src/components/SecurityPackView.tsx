@@ -30,6 +30,8 @@ export function SecurityPackView({ content }: Props) {
             <Link href="/en/trust">← Back to Trust Center</Link>
             {' · '}
             <Link href="/en/legal/dpa">Data Processing Agreement</Link>
+            {' · '}
+            <Link href="/en/trust/enterprise">Enterprise IT questionnaire</Link>
           </p>
         </div>
       </section>

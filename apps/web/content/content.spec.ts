@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import { showUsdPrices } from '../src/lib/pricing-env';
 import { MARKET_SLUGS, getMarketPlaybook } from '../src/lib/market-content';
-import { getSecurityPack, getSubprocessorsContent, getTrustContent } from '../src/lib/trust-content';
+import { getEnterpriseQuestionnaire, getSecurityPack, getSubprocessorsContent, getTrustContent } from '../src/lib/trust-content';
 import { publicSubprocessorRows } from '../src/lib/public-trust';
 
 const root = join(__dirname);
@@ -40,12 +40,18 @@ describe('content contract', () => {
     }
   });
 
-  test('security pack does not claim SSO GA or issued SOC2', () => {
+  test('security pack references SOC2 in progress and enterprise IT', () => {
     const pack = getSecurityPack();
     const body = pack.sections.map((s) => s.body).join(' ');
     expect(body).toMatch(/in progress/i);
-    expect(body).toMatch(/roadmap/i);
-    expect(body).toMatch(/not claimed as generally available/i);
+    expect(body).toMatch(/Enterprise IT questionnaire/i);
+  });
+
+  test('enterprise questionnaire has SIG Lite categories', () => {
+    const q = getEnterpriseQuestionnaire();
+    expect(q.categories.length).toBeGreaterThanOrEqual(3);
+    expect(JSON.stringify(q)).toMatch(/SSO|Permission Sets/i);
+    expect(JSON.stringify(q)).not.toMatch(/RNOSAI/);
   });
 
   test('ASEAN market JSON matches slug', () => {

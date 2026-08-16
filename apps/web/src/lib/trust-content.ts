@@ -2,11 +2,13 @@ import trust from '../../content/en/trust.json';
 import subprocessors from '../../content/en/subprocessors.json';
 import statusCopy from '../../content/en/status.json';
 import security from '../../content/en/security.json';
+import enterprise from '../../content/en/enterprise-questionnaire.json';
 
 export type TrustContent = typeof trust;
 export type SubprocessorsContent = typeof subprocessors;
 export type StatusCopyContent = typeof statusCopy;
 export type SecurityPackContent = typeof security;
+export type EnterpriseQuestionnaireContent = typeof enterprise;
 
 export function getTrustContent(): TrustContent {
   return trust;
@@ -22,4 +24,8 @@ export function getStatusCopy(): StatusCopyContent {
 
 export function getSecurityPack(): SecurityPackContent {
   return security;
+}
+
+export function getEnterpriseQuestionnaire(): EnterpriseQuestionnaireContent {
+  return enterprise;
 }

@@ -41,6 +41,34 @@ test.describe('W4 Trust & Status', () => {
     await expect(page.getByText('No incidents recorded in this window.')).toBeVisible();
   });
 
+  test('enterprise IT questionnaire and live posture mock', async ({ page }) => {
+    await page.route('**/api/v1/public/gtm/enterprise-readiness', async (route) => {
+      await route.fulfill({
+        status: 200,
+        contentType: 'application/json',
+        body: JSON.stringify({
+          updated_at: '2026-08-16T08:00:00.000Z',
+          identity: {
+            sso_mode: 'dual',
+            sso_configured: true,
+            mfa_required_positions: ['gdkd'],
+            nest_password_login: true,
+          },
+          rbac: { permission_sets: true, row_level_scope_pilot: false },
+          login: {
+            staff_url: 'https://rs.pttads.vn/login',
+            branded_staff_url: null,
+          },
+        }),
+      });
+    });
+    await page.goto('/en/trust/enterprise');
+    await expect(page.getByRole('heading', { level: 1 })).toContainText(/Enterprise IT/i);
+    await expect(page.getByRole('heading', { name: 'Live deployment posture' })).toBeVisible();
+    await expect(page.getByText(/SSO mode:/)).toContainText('dual');
+    expect(await page.content()).not.toMatch(/RNOSAI/);
+  });
+
   test('security pack and no placeholders on trust surfaces', async ({ page }) => {
     await page.goto('/en/trust/security');
     await expect(page.getByRole('heading', { level: 1 })).toContainText(/Security pack/i);

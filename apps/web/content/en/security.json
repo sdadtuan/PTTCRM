@@ -24,7 +24,7 @@
     },
     {
       "title": "SSO and MFA",
-      "body": "Enterprise SSO (SAML/OIDC) and MFA are on the product roadmap for IT checklists of 80+ staff. They are not claimed as generally available on this site."
+      "body": "Enterprise SSO (Keycloak OIDC) and MFA for selected roles are implemented on the staff path — availability depends on deployment configuration. See the Enterprise IT questionnaire for SIG Lite answers and live posture."
     },
     {
       "title": "Availability",

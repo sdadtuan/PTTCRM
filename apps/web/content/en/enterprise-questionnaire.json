@@ -1,0 +1,74 @@
+{
+  "title": "Enterprise IT questionnaire",
+  "lead": "SIG Lite–style answers for procurement and security review. Live posture (SSO mode, MFA, RBAC pilots) loads from the public API when configured — we do not claim features that are not enabled in your environment.",
+  "categories": [
+    {
+      "id": "identity",
+      "title": "Identity & access",
+      "items": [
+        {
+          "question": "Do you support enterprise SSO (SAML/OIDC)?",
+          "answer": "Staff authentication supports Nest password, Keycloak OIDC, or dual mode (STAFF_AUTH_MODE). SAML/OIDC via Keycloak is available when PTT_STAFF_KEYCLOAK_ISSUER is configured. The live posture panel shows the current mode for this deployment."
+        },
+        {
+          "question": "Is MFA enforced?",
+          "answer": "OTP MFA is required for positions listed in STAFF_MFA_REQUIRED_POSITIONS (default: GDKD and super-admin). Other roles follow your IdP policy when SSO is enabled."
+        },
+        {
+          "question": "Can IT use Permission Sets instead of editing the full matrix?",
+          "answer": "Yes — Permission Sets are available on the staff RBAC admin path when PostgreSQL staff is enabled. Sets bundle section caps and can be assigned per user."
+        },
+        {
+          "question": "Do you support row-level lead scope?",
+          "answer": "Client/workspace scope for leads is available when STAFF_SCOPE_PILOT=1. This is a pilot capability for agency multi-client deployments — not a substitute for full ABAC."
+        }
+      ]
+    },
+    {
+      "id": "data",
+      "title": "Data protection",
+      "items": [
+        {
+          "question": "Where is production data hosted?",
+          "answer": "Singapore (AWS ap-southeast-1) unless contractually agreed otherwise. See Trust Center → Data residency."
+        },
+        {
+          "question": "Do you offer a DPA and SCCs for EU/UK?",
+          "answer": "Yes — /en/legal/dpa and sub-processor DPAs (AWS, Stripe). SCCs apply per vendor DPA where data leaves the EEA."
+        },
+        {
+          "question": "Is data encrypted in transit?",
+          "answer": "TLS 1.2+ for all public and staff paths. Object storage and database use provider encryption at rest."
+        }
+      ]
+    },
+    {
+      "id": "compliance",
+      "title": "Compliance & audit",
+      "items": [
+        {
+          "question": "SOC 2 status?",
+          "answer": "SOC 2 Type I is in progress. A report link appears on the Trust Center only after PO and auditor sign-off — never before."
+        },
+        {
+          "question": "Can we export audit logs?",
+          "answer": "Staff RBAC and GTM actions are audit-logged. Enterprise access-review ZIP export is on the WIN roadmap; contact sales for current export options on your contract tier."
+        }
+      ]
+    },
+    {
+      "id": "availability",
+      "title": "Availability",
+      "items": [
+        {
+          "question": "What is your uptime commitment?",
+          "answer": "99.9% monthly target for marketing site, demo API, and public CMS read. See /en/status for live component health and incident history (published only after measured production days)."
+        }
+      ]
+    }
+  ],
+  "seo": {
+    "title": "Enterprise IT questionnaire | PTTCRM Trust",
+    "description": "SSO, MFA, Permission Sets, DPA/SCCs, and SOC 2 answers for IT and procurement."
+  }
+}

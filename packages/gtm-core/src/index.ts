@@ -51,3 +51,12 @@ export {
   isPublishablePartner,
   parsePublicStatusResponse,
 } from './trust-types';
+
+export type {
+  PublicEnterpriseIdentity,
+  PublicEnterpriseLogin,
+  PublicEnterpriseRbac,
+  PublicEnterpriseReadiness,
+  StaffSsoMode,
+} from './enterprise-types';
+export { parsePublicEnterpriseReadiness } from './enterprise-types';

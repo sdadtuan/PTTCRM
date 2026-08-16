@@ -17,6 +17,7 @@ describe('buildNav', () => {
     const res = nav.find((n) => n.id === 'resources');
     expect(res?.items?.some((i) => i.href === '/en/trust')).toBe(true);
     expect(res?.items?.some((i) => i.href === '/en/trust/security')).toBe(true);
+    expect(res?.items?.some((i) => i.href === '/en/trust/enterprise')).toBe(true);
     expect(res?.items?.some((i) => i.href === '/en/status')).toBe(true);
   });
 });

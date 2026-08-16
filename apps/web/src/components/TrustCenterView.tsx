@@ -62,6 +62,11 @@ export function TrustCenterView({ content }: Props) {
             <Link href="/en/trust/security">Encryption, DPA/SCCs, and IT FAQ →</Link>
           </p>
 
+          <h2>Enterprise IT</h2>
+          <p>
+            <Link href="/en/trust/enterprise">SIG Lite–style questionnaire + live SSO/RBAC posture →</Link>
+          </p>
+
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap', marginTop: 28 }}>
             <Link className="btn btn-solid" href="/en/request-demo">
               Request demo
