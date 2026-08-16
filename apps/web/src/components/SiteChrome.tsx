@@ -89,7 +89,7 @@ export function SiteChrome({ locale, pathname, children }: Props) {
               className="brand-logo"
               src="/gomira-logo.png"
               alt="Gomira"
-              width={176}
+              width={190}
               height={48}
               priority
             />
