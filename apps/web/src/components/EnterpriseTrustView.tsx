@@ -54,6 +54,10 @@ export function EnterpriseTrustView({ content }: Props) {
                   Nest password login: <strong>{yesNo(live.identity.nest_password_login)}</strong>
                 </li>
                 <li>
+                  MFA enforced (SSO + OTP positions):{' '}
+                  <strong>{yesNo(live.identity.mfa_enforced)}</strong>
+                </li>
+                <li>
                   MFA required positions:{' '}
                   <strong>
                     {live.identity.mfa_required_positions.length > 0

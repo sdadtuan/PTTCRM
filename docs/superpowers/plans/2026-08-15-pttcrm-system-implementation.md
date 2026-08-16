@@ -143,6 +143,8 @@ Chi tiết: [w4-useu](./2026-08-16-pttcrm-w4-useu.md).
 
 **W4C moat demo (code):** [w4c-moat-demo](./2026-08-16-pttcrm-w4c-moat-demo.md) — hub map ≥80% demo UI, sandbox industry boards, portal attribution preview, [60-min runbook](../runbooks/demo-60-minute-moat.md).
 
+**W4D enterprise SSO/MFA (code):** [w4d-enterprise-sso](./2026-08-16-pttcrm-w4d-enterprise-sso.md) — server-driven login SSO, `mfa_enforced` API, [deploy runbook](../runbooks/staff-sso-mfa-deploy.md).
+
 ## W4+ (ngoài plan W4)
 
 - Dịch toàn bộ ops-web EN (129 màn) — wave riêng sau Trust.

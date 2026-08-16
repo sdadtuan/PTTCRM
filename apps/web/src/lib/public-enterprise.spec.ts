@@ -9,6 +9,7 @@ describe('parsePublicEnterpriseReadiness', () => {
         sso_mode: 'nest',
         sso_configured: false,
         mfa_required_positions: [],
+        mfa_enforced: false,
         nest_password_login: true,
       },
       rbac: { permission_sets: true, row_level_scope_pilot: false },

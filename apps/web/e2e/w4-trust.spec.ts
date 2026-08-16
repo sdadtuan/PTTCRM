@@ -52,6 +52,7 @@ test.describe('W4 Trust & Status', () => {
             sso_mode: 'dual',
             sso_configured: true,
             mfa_required_positions: ['gdkd'],
+            mfa_enforced: true,
             nest_password_login: true,
           },
           rbac: { permission_sets: true, row_level_scope_pilot: false },

@@ -4,6 +4,7 @@ export type PublicEnterpriseIdentity = {
   sso_mode: StaffSsoMode;
   sso_configured: boolean;
   mfa_required_positions: string[];
+  mfa_enforced: boolean;
   nest_password_login: boolean;
 };
 
@@ -37,10 +38,12 @@ function parseIdentity(raw: unknown): PublicEnterpriseIdentity | null {
   const mfa_required_positions = row.mfa_required_positions.filter(
     (p): p is string => typeof p === 'string',
   );
+  if (typeof row.mfa_enforced !== 'boolean') return null;
   return {
     sso_mode: sso_mode as StaffSsoMode,
     sso_configured: row.sso_configured,
     mfa_required_positions,
+    mfa_enforced: row.mfa_enforced,
     nest_password_login: row.nest_password_login,
   };
 }
