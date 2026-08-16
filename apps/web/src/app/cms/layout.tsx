@@ -1,10 +1,17 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import '../globals.css';
 import './cms-desk.css';
 
 export const metadata: Metadata = {
   title: 'CMS — PTTCRM',
   robots: { index: false, follow: false },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  viewportFit: 'cover',
+  themeColor: '#0090a0',
 };
 
 export default function CmsLayout({ children }: { children: React.ReactNode }) {

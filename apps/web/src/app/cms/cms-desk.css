@@ -187,7 +187,47 @@
 }
 
 @media (max-width: 800px) {
+  .cms-shell {
+    padding: 16px 14px 48px;
+  }
+
+  .cms-top {
+    flex-direction: column;
+  }
+
+  .cms-top h1 {
+    font-size: 22px;
+  }
+
+  .cms-tabs {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--ptt-paper);
+    padding: 8px 0;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+  }
+
+  .cms-tabs button {
+    flex: 0 0 auto;
+  }
+
   .cms-grid {
     grid-template-columns: 1fr;
+  }
+
+  .cms-list {
+    max-height: 40vh;
+  }
+
+  .cms-form input,
+  .cms-form select,
+  .cms-form textarea {
+    font-size: 16px;
+  }
+
+  .cms-login {
+    margin: 8vh 16px;
   }
 }

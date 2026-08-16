@@ -21,7 +21,9 @@ Header (không hiện số điện thoại):
 | Đăng nhập | Staff | `https://rs.pttads.vn/login` | cùng |
 | Demo | Form | `/vi/dang-ky-demo` | `/en/request-demo` |
 
-Mega menu: hover/click nhóm → panel ngành hoặc module + ô «xem nhanh». Đóng bằng click ra ngoài hoặc Esc.
+Mega menu (desktop): hover/click nhóm → panel ngành hoặc module + ô «xem nhanh». Đóng bằng click ra ngoài hoặc Esc.
+
+**Mobile:** header gọn (logo · VI|EN · Demo · menu). Nút menu mở drawer đầy chiều cao — nhóm Giải pháp / Nền tảng / Tài nguyên bung accordion. Login và Đăng ký Demo nằm đáy drawer.
 
 ---
 

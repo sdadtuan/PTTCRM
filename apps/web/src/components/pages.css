@@ -522,6 +522,10 @@
 }
 
 @media (max-width: 900px) {
+  .hero {
+    padding: 40px 0 48px;
+  }
+
   .hero-grid,
   .mod-row,
   .ind-grid,
@@ -529,8 +533,47 @@
   .price-grid,
   .split,
   .form-page,
-  .news-grid {
+  .news-grid,
+  .grid-3 {
     grid-template-columns: 1fr;
+  }
+
+  .hero h1,
+  .page-hero h1 {
+    font-size: clamp(28px, 8vw, 40px);
+  }
+
+  .hero .sub,
+  .lead {
+    font-size: 16px;
+    line-height: 26px;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+  }
+
+  .page-hero {
+    padding: 32px 0 24px;
+  }
+
+  .edit-row {
+    grid-template-columns: 36px 1fr;
+    gap: 12px;
+    padding: 18px 0;
+  }
+
+  .mod-row a,
+  .step,
+  .price,
+  .card,
+  .resource-tile {
+    padding: 20px;
   }
 
   .case-grid {
@@ -544,5 +587,36 @@
   .news-card.feature {
     grid-column: span 1;
     flex-direction: column;
+  }
+
+  .news-grid {
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .form-page {
+    gap: 28px;
+    padding: 24px 0 64px;
+  }
+
+  .form-page input,
+  .form-page select,
+  .form-page textarea {
+    font-size: 16px;
+    min-height: 44px;
+  }
+
+  .compare {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .cta-band {
+    padding: 40px 0;
+  }
+
+  .cta-band .btn {
+    width: min(100%, 360px);
   }
 }

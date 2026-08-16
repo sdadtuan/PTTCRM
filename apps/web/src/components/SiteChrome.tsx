@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { switchLocalePath, type Locale } from '@pttcrm/gtm-core';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { buildNav, navCopy } from './nav';
 import './chrome.css';
 
@@ -23,11 +23,38 @@ export function SiteChrome({ locale, pathname, children }: Props) {
   const home = locale === 'en' ? '/en' : '/vi';
 
   const [openMega, setOpenMega] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [openGroup, setOpenGroup] = useState<string | null>(null);
   const [feat, setFeat] = useState<{ title: string; body: string; cta: string; href: string } | null>(
     nav.find((g) => g.id === 'solutions')?.featured ?? null,
   );
 
   const closeMega = useCallback(() => setOpenMega(null), []);
+  const closeMobile = useCallback(() => {
+    setMobileOpen(false);
+    setOpenGroup(null);
+  }, []);
+
+  useEffect(() => {
+    closeMobile();
+    closeMega();
+  }, [pathname, closeMobile, closeMega]);
+
+  useEffect(() => {
+    document.body.classList.toggle('nav-locked', mobileOpen);
+    return () => document.body.classList.remove('nav-locked');
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        closeMobile();
+        closeMega();
+      }
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [closeMobile, closeMega]);
 
   const footer = {
     platform: nav.find((g) => g.id === 'platform')?.items ?? [],
@@ -42,20 +69,17 @@ export function SiteChrome({ locale, pathname, children }: Props) {
 
   return (
     <div className="site-chrome">
-      <a className="skip" href="#main" style={{ position: 'absolute', left: '-9999px' }}>
+      <a className="skip" href="#main">
         {locale === 'en' ? 'Skip to content' : 'Tới nội dung'}
       </a>
       <header className="top" onMouseLeave={closeMega}>
         <div className="top-in wrap">
-          <Link className="brand" href={home} onMouseEnter={closeMega}>
+          <Link className="brand" href={home} onMouseEnter={closeMega} onClick={closeMobile}>
             <span className="brand-mark">
               <Image src="/pttcrm-logo-monogram.png" alt="" width={28} height={28} />
             </span>
             <span>PTTCRM</span>
           </Link>
-          <button className="menu-toggle" type="button" aria-label="Menu">
-            ☰
-          </button>
           <nav className="nav" aria-label="Main">
             {nav.map((group) =>
               group.href ? (
@@ -119,21 +143,74 @@ export function SiteChrome({ locale, pathname, children }: Props) {
               <Link href={locale === 'vi' ? pathname : switchPath} className={locale === 'vi' ? 'active' : ''}>
                 VI
               </Link>
-              <span>|</span>
+              <span aria-hidden="true">|</span>
               <Link href={locale === 'en' ? pathname : switchPath} className={locale === 'en' ? 'active' : ''}>
                 EN
               </Link>
             </div>
-            <a className="btn btn-ghost" href={loginUrl}>
+            <a className="btn btn-ghost btn-login" href={loginUrl}>
               {t.login}
             </a>
-            <Link className="btn btn-solid" href={demoHref} onMouseEnter={closeMega}>
-              {t.demo}
+            <Link className="btn btn-solid btn-demo" href={demoHref} onMouseEnter={closeMega} onClick={closeMobile}>
+              <span className="demo-full">{t.demo}</span>
+              <span className="demo-short">Demo</span>
             </Link>
+            <button
+              className={`menu-toggle${mobileOpen ? ' is-open' : ''}`}
+              type="button"
+              aria-label={mobileOpen ? (locale === 'en' ? 'Close menu' : 'Đóng menu') : 'Menu'}
+              aria-expanded={mobileOpen}
+              aria-controls="mobile-nav"
+              onClick={() => setMobileOpen((v) => !v)}
+            >
+              <span />
+              <span />
+            </button>
           </div>
         </div>
       </header>
-      <div className={`nav-dim ${openMega ? 'open' : ''}`} onClick={closeMega} aria-hidden />
+      <div className={`nav-dim ${openMega || mobileOpen ? 'open' : ''}`} onClick={() => { closeMega(); closeMobile(); }} aria-hidden />
+      <aside className={`mnav${mobileOpen ? ' open' : ''}`} id="mobile-nav" aria-hidden={!mobileOpen}>
+        <div className="mnav-scroll">
+          {nav.map((group) =>
+            group.href ? (
+              <Link key={group.id} className="mnav-link" href={group.href} onClick={closeMobile}>
+                {group.label}
+              </Link>
+            ) : (
+              <div key={group.id} className="mnav-group">
+                <button
+                  className="mnav-acc"
+                  type="button"
+                  aria-expanded={openGroup === group.id}
+                  onClick={() => setOpenGroup((cur) => (cur === group.id ? null : group.id))}
+                >
+                  {group.label}
+                  <span aria-hidden="true">{openGroup === group.id ? '−' : '+'}</span>
+                </button>
+                {openGroup === group.id && (
+                  <div className="mnav-sub">
+                    {group.items?.map((item) => (
+                      <Link key={item.id} className="mnav-sublink" href={item.href} onClick={closeMobile}>
+                        <strong>{item.label}</strong>
+                        {item.desc && <span>{item.desc}</span>}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ),
+          )}
+        </div>
+        <div className="mnav-foot">
+          <a className="btn btn-ghost" href={loginUrl}>
+            {t.login}
+          </a>
+          <Link className="btn btn-solid" href={demoHref} onClick={closeMobile}>
+            {t.demo}
+          </Link>
+        </div>
+      </aside>
       <main id="main" className="site-main">
         {children}
       </main>
@@ -191,9 +268,7 @@ export function SiteChrome({ locale, pathname, children }: Props) {
             </ul>
           </div>
         </div>
-        <p className="wrap" style={{ marginTop: '2rem', fontSize: 13, opacity: 0.7 }}>
-          © 2026 PTTCRM
-        </p>
+        <p className="wrap footer-copy">© 2026 PTTCRM</p>
       </footer>
     </div>
   );

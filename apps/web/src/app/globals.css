@@ -21,6 +21,7 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -31,6 +32,19 @@ body {
   color: var(--ptt-ink);
   background: var(--ptt-paper);
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+body.nav-locked {
+  overflow: hidden;
+}
+
+@media (hover: none) {
+  a,
+  button,
+  .btn {
+    -webkit-tap-highlight-color: transparent;
+  }
 }
 
 a {
@@ -53,6 +67,20 @@ a:hover {
 .wrap {
   width: min(var(--content-max), calc(100% - 3rem));
   margin-inline: auto;
+}
+
+@media (max-width: 880px) {
+  .wrap {
+    width: min(var(--content-max), calc(100% - 1.5rem));
+  }
+
+  .section {
+    padding: 2.75rem 0;
+  }
+
+  .btn {
+    min-height: 44px;
+  }
 }
 
 .btn {
