@@ -3,6 +3,12 @@
   "lead": "News, events, customers, and about — one hub instead of scattered menu links.",
   "tiles": [
     {
+      "id": "markets",
+      "title": "ASEAN markets",
+      "desc": "English playbooks for Thailand, Indonesia, Philippines, Singapore.",
+      "href": "/en/markets"
+    },
+    {
       "id": "news",
       "title": "News",
       "desc": "GTM perspectives and guides — no fabricated case numbers.",

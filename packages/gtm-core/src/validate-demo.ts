@@ -1,3 +1,4 @@
+import { isAseanMarket, type AseanMarket } from './asean-markets';
 import type { Locale } from './paths';
 
 export type Industry = 'bds' | 'agency' | 'fnb' | 'education' | 'pharma' | 'other';
@@ -17,6 +18,7 @@ export type DemoPayload = {
   locale: Locale;
   landing_path: string;
   website?: string;
+  market_country?: AseanMarket;
 };
 
 const INDUSTRIES = new Set<Industry>(['bds', 'agency', 'fnb', 'education', 'pharma', 'other']);
@@ -81,6 +83,19 @@ export function validateDemoPayload(
     field_errors.company_size = 'invalid';
   }
 
+  const localeVal = locale as Locale;
+  const rawMarket = input.market_country;
+  let market_country: AseanMarket | undefined;
+  if (rawMarket !== undefined && rawMarket !== null && rawMarket !== '') {
+    if (locale !== 'en') {
+      field_errors.market_country = 'invalid';
+    } else if (typeof rawMarket !== 'string' || !isAseanMarket(rawMarket)) {
+      field_errors.market_country = 'invalid';
+    } else {
+      market_country = rawMarket;
+    }
+  }
+
   if (Object.keys(field_errors).length > 0) {
     return { ok: false, field_errors };
   }
@@ -93,10 +108,12 @@ export function validateDemoPayload(
     industry: industry as Industry,
     sku_interest: sku_interest as SkuInterest,
     consent_privacy: true,
-    locale: locale as Locale,
+    locale: localeVal,
     landing_path,
     website: typeof input.website === 'string' ? input.website : undefined,
   };
+
+  if (market_country) value.market_country = market_country;
 
   if (company_size && typeof company_size === 'string') {
     value.company_size = company_size as CompanySize;

@@ -1,0 +1,20 @@
+{
+  "market": "sg",
+  "hero_title": "Agency OS for Singapore & regional HQ",
+  "hero_sub": "HQ teams in Singapore run English demos, USD quotes, and per-client ROAS — while delivery stays in-market across ASEAN.",
+  "pain_points": [
+    "Regional HQ needs one CRM motion for TH/ID/PH clients without four different tools",
+    "Sandbox and demo must be English-first for buyers comparing HubSpot and Pipedrive",
+    "Partner-led deals need a clear partner page and qualified demo pipeline"
+  ],
+  "persona": "P-SEA — performance agency",
+  "timezone_label": "GMT+8 · Asia/Singapore",
+  "business_hours_en": "Mon–Fri 9:00–18:00 Singapore time",
+  "whatsapp_prefill": "Hi PTTCRM — Requesting info on Agency OS for Singapore.",
+  "recommended_sku": "agy",
+  "recommended_industry": "agency",
+  "seo": {
+    "title": "PTTCRM for Singapore agencies | Marketing CRM",
+    "description": "Singapore GTM playbook: English site, USD pricing, partner-ready demo flow."
+  }
+}

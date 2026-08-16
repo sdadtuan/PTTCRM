@@ -3,7 +3,7 @@ import type { Locale } from '@pttcrm/gtm-core';
 export type NavItemLink = { id: string; href: string; label: string; desc?: string; icon?: string };
 
 export type NavGroup = {
-  id: 'solutions' | 'platform' | 'pricing' | 'resources';
+  id: 'solutions' | 'platform' | 'pricing' | 'markets' | 'resources';
   label: string;
   href?: string;
   megaKicker?: string;
@@ -91,13 +91,19 @@ const COPY = {
     about: 'About',
     customers: 'Customers',
     hub: 'All resources',
+    markets: 'Markets',
+    megaAsean: 'ASEAN playbooks',
+    featAseanH: 'Sell across ASEAN',
+    featAseanP: 'English playbooks for TH, ID, PH, SG — timezone, WhatsApp, demo prefill.',
+    allMarkets: 'All markets',
+    partners: 'Partners',
   },
 } as const;
 
 export function buildNav(locale: Locale): NavGroup[] {
-  const t = COPY[locale];
   const demo = locale === 'en' ? '/en/request-demo' : '/vi/dang-ky-demo';
   if (locale === 'en') {
+    const t = COPY.en;
     return [
       {
         id: 'solutions',
@@ -126,6 +132,20 @@ export function buildNav(locale: Locale): NavGroup[] {
       },
       { id: 'pricing', label: t.pricing, href: '/en/pricing' },
       {
+        id: 'markets',
+        label: t.markets,
+        megaKicker: t.megaAsean,
+        featured: { title: t.featAseanH, body: t.featAseanP, cta: t.demo, href: demo },
+        items: [
+          { id: 'hub', href: '/en/markets', label: t.allMarkets },
+          { id: 'th', href: '/en/markets/th', label: 'Thailand' },
+          { id: 'id', href: '/en/markets/id', label: 'Indonesia' },
+          { id: 'ph', href: '/en/markets/ph', label: 'Philippines' },
+          { id: 'sg', href: '/en/markets/sg', label: 'Singapore' },
+          { id: 'partners', href: '/en/partners', label: t.partners },
+        ],
+      },
+      {
         id: 'resources',
         label: t.resources,
         megaKicker: t.megaRes,
@@ -141,6 +161,7 @@ export function buildNav(locale: Locale): NavGroup[] {
       },
     ];
   }
+  const t = COPY.vi;
   return [
     {
       id: 'solutions',

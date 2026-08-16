@@ -1,0 +1,20 @@
+{
+  "market": "id",
+  "hero_title": "Agency OS for Indonesia performance teams",
+  "hero_sub": "Run multiple brand accounts with per-client ROAS on the portal — aligned to WIB business hours and English sales motion.",
+  "pain_points": [
+    "Handoffs between media, CRM, and client success break when leads sit outside one pipeline",
+    "Clients ask for CPL proof per campaign but data is scattered across tools",
+    "Regional buyers expect English product UI without a 129-screen ERP rollout"
+  ],
+  "persona": "P-SEA — performance agency",
+  "timezone_label": "GMT+7 · Asia/Jakarta",
+  "business_hours_en": "Mon–Fri 9:00–18:00 WIB",
+  "whatsapp_prefill": "Hi PTTCRM — I'd like to discuss Agency OS for Indonesia.",
+  "recommended_sku": "agy",
+  "recommended_industry": "agency",
+  "seo": {
+    "title": "PTTCRM for Indonesia agencies | Marketing CRM",
+    "description": "English GTM playbook for Indonesian performance agencies: closed-loop ads to ROAS portal."
+  }
+}

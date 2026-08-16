@@ -8,4 +8,11 @@ describe('buildNav', () => {
     const res = nav.find((n) => n.id === 'resources');
     expect(res?.items?.map((i) => i.id)).toEqual(['hub', 'news', 'events', 'customers', 'about', 'demo']);
   });
+
+  test('EN nav includes ASEAN markets', () => {
+    const nav = buildNav('en');
+    expect(nav.map((n) => n.id)).toContain('markets');
+    const markets = nav.find((n) => n.id === 'markets');
+    expect(markets?.items?.some((i) => i.href === '/en/partners')).toBe(true);
+  });
 });

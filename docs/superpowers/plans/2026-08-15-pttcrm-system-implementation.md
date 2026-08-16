@@ -70,7 +70,7 @@ Mỗi wave = một plan chi tiết riêng (TDD, commit). **Chỉ viết/chạy p
 | **W0** | [w0-v12](./2026-08-15-pttcrm-w0-v12.md) — **chạy ngay** | 6 tuần | Form → lead; CMS publish → site; Lighthouse SEO ≥ 90; 1 demo/ngày UAT |
 | **W1** | [w1-close](./2026-08-16-pttcrm-w1-close.md) — **chạy sau W0 exit** | 6 tuần | 3 case `po_signed`; sandbox 14 ngày hết hạn đúng |
 | **W2** | [w2-d0](./2026-08-16-pttcrm-w2-d0.md) — **chạy sau W1 exit** | 8 tuần | Stripe test USD; sandbox EN lead list |
-| **W3** | `YYYY-MM-DD-pttcrm-w3-asean.md` | 8 tuần | 3 demo ASEAN trong pipeline |
+| **W3** | [w3-asean](./2026-08-16-pttcrm-w3-asean.md) — **chạy sau W2 exit** | 8 tuần | 3 demo ASEAN trong pipeline |
 | **W4** | `YYYY-MM-DD-pttcrm-w4-useu.md` | sau W3 | SOC2 type 1 — **cấm** bắt đầu nếu W3 chưa đủ 3 demo ASEAN |
 
 ---
@@ -112,11 +112,16 @@ Ba luồng song song, ghép ở Task 9–12 của W0-v12.
 
 ---
 
-## W3 — D1 ASEAN
+## W3 — D1 ASEAN (sau W2)
 
-- Playbook TH / ID / PH / SG (copy EN, timezone, WhatsApp **link** — không WhatsApp Business API trừ PO).
-- `/en/partners` — 1 trang partner.
-- `app.pttcrm.com` CNAME khi PO cutover.
+Chi tiết: [w3-asean](./2026-08-16-pttcrm-w3-asean.md).
+
+- Playbook TH / ID / PH / SG (`/en/markets/*` — copy EN, timezone, WhatsApp **link**).
+- Form EN `market_country` + inbox filter ASEAN (RNOSAI).
+- `/en/partners` — 1 partner (SG hoặc TH, PO chọn).
+- Runbook `app.pttcrm.com` CNAME khi PO cutover.
+
+**Exit:** 3 demo ASEAN trong pipeline; KPI demo/tuần ≥ 25, close ≥ 22%, ACV EN ≥ 399 USD.
 
 ---
 
@@ -138,17 +143,20 @@ SOC2 type 1, region Singapore, SLA 99.9%. Chỉ sau exit W3.
 
 ## Traceability → wave
 
-| Artifact | W0 | W1 | W2+ |
-|----------|----|----|-----|
-| FR-WEB-001…035, FR-CMS-001…020, FR-GTM-001…017 | Yes | | |
-| FR-SAN-001…005, FR-WEB-016 case, ngành mới | | Yes | |
-| FR-WEB-040, FR-GTM-020, FR-SAN-008 | | | Yes |
-| GTM-UC-001…039 trừ 021–023, 026–028 | Yes | | |
-| GTM-UC-021…023, 026 | | Yes | |
-| GTM-UC-027, 028 | | | Yes |
-| SCR-WEB-001…015, 018…021, SCR-OPS-001…005 | Yes | | |
-| SCR-WEB-016 | | Yes | |
-| SCR-WEB-017 | | | W2 hub |
+| Artifact | W0 | W1 | W2 | W3 |
+|----------|----|----|----|-----|
+| FR-WEB-001…035, FR-CMS-001…020, FR-GTM-001…017 | Yes | | | |
+| FR-SAN-001…005, FR-WEB-016 case, ngành mới | | Yes | | |
+| FR-WEB-040, FR-GTM-020, FR-SAN-008 | | | Yes | |
+| FR-WEB-041…043, FR-GTM-021…022 | | | | Yes |
+| GTM-UC-001…039 trừ 021–023, 026–028 | Yes | | | |
+| GTM-UC-021…023, 026 | | Yes | | |
+| GTM-UC-027, 028 | | | Yes | |
+| GTM-UC-040…043 | | | | Yes |
+| SCR-WEB-001…015, 018…021, SCR-OPS-001…005 | Yes | | | |
+| SCR-WEB-016 | | Yes | | |
+| SCR-WEB-017 | | | Yes | |
+| SCR-WEB-018…019 | | | | Yes |
 
 ---
 

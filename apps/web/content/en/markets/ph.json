@@ -1,0 +1,20 @@
+{
+  "market": "ph",
+  "hero_title": "Marketing CRM for Philippine agencies",
+  "hero_sub": "Track leads, deals, and client ROAS in one stack — English UI, GMT+8 support window, WhatsApp for quick questions.",
+  "pain_points": [
+    "Agency growth outpaces spreadsheet-based client reporting",
+    "No standardized demo-to-contract flow for multi-brand retainers",
+    "Need USD-friendly pricing motion without self-serve trial noise"
+  ],
+  "persona": "P-SEA — performance agency",
+  "timezone_label": "GMT+8 · Asia/Manila",
+  "business_hours_en": "Mon–Fri 9:00–18:00 Manila time",
+  "whatsapp_prefill": "Hi PTTCRM — exploring Agency OS for our Philippines clients.",
+  "recommended_sku": "agy",
+  "recommended_industry": "agency",
+  "seo": {
+    "title": "PTTCRM for Philippines agencies | Marketing CRM",
+    "description": "ASEAN playbook for Philippine performance agencies: demo, sandbox, and ROAS portal."
+  }
+}

@@ -1,6 +1,7 @@
 'use client';
 
 import type { Locale } from '@pttcrm/gtm-core';
+import { ASEAN_MARKETS, isAseanMarket, type AseanMarket } from '@pttcrm/gtm-core';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { useState } from 'react';
@@ -41,6 +42,10 @@ export function DemoForm({ locale }: Props) {
 
   const [industry, setIndustry] = useState(searchParams.get('industry') ?? 'bds');
   const [sku, setSku] = useState(searchParams.get('sku') ?? 'ind');
+  const initialMarket = searchParams.get('market') ?? '';
+  const [marketCountry, setMarketCountry] = useState(
+    initialMarket && isAseanMarket(initialMarket) ? initialMarket : '',
+  );
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -63,6 +68,7 @@ export function DemoForm({ locale }: Props) {
       landing_path: pathname,
       website: String(fd.get('website') ?? ''),
       utm_json: readUtmCookie(),
+      market_country: marketCountry && isAseanMarket(marketCountry) ? (marketCountry as AseanMarket) : undefined,
     });
 
     try {
@@ -99,6 +105,7 @@ export function DemoForm({ locale }: Props) {
     if (k === 'email') return t ? 'Email không hợp lệ' : 'Invalid email';
     if (k === 'phone') return t ? 'SĐT 0xxxxxxxxx hoặc E.164' : 'Phone format invalid';
     if (k === 'consent_privacy') return t ? 'Cần đồng ý bảo mật' : 'Privacy consent required';
+    if (k === 'market_country') return t ? 'Thị trường không hợp lệ' : 'Invalid market';
     return code;
   };
 
@@ -146,6 +153,26 @@ export function DemoForm({ locale }: Props) {
           </option>
         ))}
       </select>
+
+      {!t ? (
+        <>
+          <label htmlFor="market_country">Market (optional)</label>
+          <select
+            id="market_country"
+            name="market_country"
+            value={marketCountry}
+            onChange={(e) => setMarketCountry(e.target.value)}
+          >
+            <option value="">Other / not listed</option>
+            {(Object.keys(ASEAN_MARKETS) as AseanMarket[]).map((code) => (
+              <option key={code} value={code}>
+                {ASEAN_MARKETS[code].name}
+              </option>
+            ))}
+          </select>
+          <div className="err">{errLabel('market_country')}</div>
+        </>
+      ) : null}
 
       <label htmlFor="company_size">{t ? 'Quy mô (không bắt buộc)' : 'Company size (optional)'}</label>
       <select id="company_size" name="company_size" defaultValue="">

@@ -37,6 +37,7 @@ export function buildDemoRequest(input: DemoFormInput): DemoPayload & UtmOut {
     locale: input.locale,
     landing_path: input.landing_path,
     website: input.website ?? '',
+    ...(input.market_country ? { market_country: input.market_country } : {}),
     ...utm,
   };
 }

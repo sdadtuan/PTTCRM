@@ -1,0 +1,20 @@
+{
+  "market": "th",
+  "hero_title": "Performance agency CRM for Thailand",
+  "hero_sub": "Multi-client ROAS, English UI, and handoff SLA — built for agencies scaling Meta and Google spend in Bangkok and beyond.",
+  "pain_points": [
+    "Client reports live in spreadsheets while media buyers work in separate ad accounts",
+    "No single view of CPL and ROAS per client contract on the portal",
+    "English demo and onboarding for regional HQ while ops runs GMT+7"
+  ],
+  "persona": "P-SEA — performance agency",
+  "timezone_label": "GMT+7 · Asia/Bangkok",
+  "business_hours_en": "Mon–Fri 9:00–18:00 Bangkok time",
+  "whatsapp_prefill": "Hi PTTCRM — I'm interested in Agency OS for our Thailand clients.",
+  "recommended_sku": "agy",
+  "recommended_industry": "agency",
+  "seo": {
+    "title": "PTTCRM for Thailand agencies | Marketing CRM",
+    "description": "English playbook for performance agencies in Thailand: multi-client ROAS portal, demo in Bangkok timezone."
+  }
+}

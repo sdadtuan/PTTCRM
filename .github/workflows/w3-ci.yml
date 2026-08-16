@@ -1,0 +1,34 @@
+name: w3
+on:
+  push:
+    paths:
+      - 'packages/gtm-core/**'
+      - 'apps/web/**'
+      - 'docs/runbooks/**'
+      - '.github/workflows/w3-ci.yml'
+  pull_request:
+    paths:
+      - 'packages/gtm-core/**'
+      - 'apps/web/**'
+      - 'docs/runbooks/**'
+      - '.github/workflows/w3-ci.yml'
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      NEXT_PUBLIC_USD_PRICE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+      - run: pnpm install
+      - run: rg -n 'RNOSAI' apps/web && exit 1 || true
+      - run: pnpm exec vitest run
+      - run: pnpm --filter web build
+      - run: pnpm --filter web exec playwright install chromium --with-deps
+      - run: pnpm --filter web exec playwright test e2e/w3-asean.spec.ts

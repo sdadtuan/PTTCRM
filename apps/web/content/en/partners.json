@@ -1,0 +1,18 @@
+{
+  "featured": {
+    "country_code": "sg",
+    "name": "PO_PARTNER_NAME",
+    "logo_path": "/partners/po-partner.svg",
+    "description_en": "PO-approved partner profile — replace with signed partner bio, services, and territory before production launch.",
+    "website_url": "https://example.com",
+    "po_approved": true
+  },
+  "cta": {
+    "label": "Become a partner",
+    "href": "/en/request-demo?market=sg"
+  },
+  "seo": {
+    "title": "PTTCRM partners | ASEAN",
+    "description": "Featured PTTCRM partner for Singapore and regional agency introductions."
+  }
+}

@@ -1,7 +1,8 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, test } from 'vitest';
 import { showUsdPrices } from '../src/lib/pricing-env';
+import { MARKET_SLUGS, getMarketPlaybook } from '../src/lib/market-content';
 
 const root = join(__dirname);
 
@@ -9,10 +10,23 @@ describe('content contract', () => {
   test('no RNOSAI and no trial CTA in content', () => {
     for (const loc of ['vi', 'en']) {
       for (const f of readdirSync(join(root, loc))) {
-        const raw = readFileSync(join(root, loc, f), 'utf8');
+        const path = join(root, loc, f);
+        if (statSync(path).isDirectory()) continue;
+        const raw = readFileSync(path, 'utf8');
         expect(raw).not.toMatch(/RNOSAI/);
         expect(raw.toLowerCase()).not.toMatch(/30 ngày|30-day trial|dùng thử 30/);
       }
+    }
+    for (const slug of MARKET_SLUGS) {
+      const raw = readFileSync(join(root, 'en/markets', `${slug}.json`), 'utf8');
+      expect(raw).not.toMatch(/RNOSAI/);
+    }
+  });
+
+  test('ASEAN market JSON matches slug', () => {
+    for (const slug of MARKET_SLUGS) {
+      const content = getMarketPlaybook(slug);
+      expect(content?.market).toBe(slug);
     }
   });
 
