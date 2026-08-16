@@ -5,8 +5,14 @@
     "kicker": "Marketing CRM",
     "subtitle": "Nhìn ads nào ra hợp đồng. CPL, ROAS, SLA — một hệ, đúng ngành của bạn.",
     "ctaDemo": "Đăng ký Demo 60 phút",
-    "ctaPricing": "Bảng giá"
+    "ctaPricing": "Bảng giá",
+    "stats": [
+      { "value": "3", "label": "Ngành vertical W0" },
+      { "value": "4", "label": "Module lõi" },
+      { "value": "14 ngày", "label": "Sandbox sau demo" }
+    ]
   },
+  "learnMore": "Tìm hiểu thêm",
   "trust": "Cho đội đang chạy ads thật — không phải sổ danh bạ.",
   "position": {
     "kicker": "Vị trí",

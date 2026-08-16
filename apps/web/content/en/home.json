@@ -5,8 +5,14 @@
     "kicker": "Marketing CRM",
     "subtitle": "See which ads become contracts. CPL, ROAS, SLA — one system, built around your industry.",
     "ctaDemo": "Book a 60-minute demo",
-    "ctaPricing": "Pricing"
+    "ctaPricing": "Pricing",
+    "stats": [
+      { "value": "3", "label": "Wave-0 industries" },
+      { "value": "4", "label": "Core modules" },
+      { "value": "14 days", "label": "Sandbox after demo" }
+    ]
   },
+  "learnMore": "Learn more",
   "trust": "For teams that run real ads — not a contact notebook.",
   "position": {
     "kicker": "Position",
