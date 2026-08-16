@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import Link from 'next/link';
 import { switchLocalePath, type Locale } from '@pttcrm/gtm-core';
 import { useCallback, useEffect, useState } from 'react';
@@ -85,14 +84,8 @@ export function SiteChrome({ locale, pathname, children }: Props) {
       <header className={`top${scrolled ? ' top-scrolled' : ''}`} onMouseLeave={closeMega}>
         <div className="top-in wrap">
           <Link className="brand" href={home} onMouseEnter={closeMega} onClick={closeMobile}>
-            <Image
-              className="brand-logo"
-              src="/gomira-logo.png"
-              alt="Gomira"
-              width={190}
-              height={48}
-              priority
-            />
+            {/* Plain img keeps PNG alpha; Next/Image optimizer can flatten halos */}
+            <img className="brand-logo" src="/gomira-logo.png" alt="Gomira" width={199} height={48} />
           </Link>
           <nav className="nav" aria-label="Main">
             {nav.map((group) =>
