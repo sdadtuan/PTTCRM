@@ -27,6 +27,12 @@
       "href": "/en/customers"
     },
     {
+      "id": "demo-moat",
+      "title": "60-minute demo script",
+      "desc": "Five-scene moat walkthrough for Sales — hub map, portal ROAS, industry sandbox.",
+      "href": "/en/request-demo"
+    },
+    {
       "id": "about",
       "title": "About",
       "desc": "One platform, specialized by industry.",

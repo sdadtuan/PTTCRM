@@ -60,3 +60,12 @@ export type {
   StaffSsoMode,
 } from './enterprise-types';
 export { parsePublicEnterpriseReadiness } from './enterprise-types';
+
+export type {
+  SandboxAttribution,
+  SandboxMoatBoard,
+  SandboxPipelineStage,
+  SandboxPortalPreview,
+  SandboxSpendMapRow,
+} from './sandbox-types';
+export { hubMapPass, parseSandboxMoatBoard } from './sandbox-types';

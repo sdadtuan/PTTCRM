@@ -141,6 +141,8 @@ Chi tiết: [w4-useu](./2026-08-16-pttcrm-w4-useu.md).
 
 **W4B enterprise IT (code):** [w4b-enterprise](./2026-08-16-pttcrm-w4b-enterprise.md) — questionnaire SIG Lite + public enterprise-readiness API (SSO/MFA/Permission Sets posture).
 
+**W4C moat demo (code):** [w4c-moat-demo](./2026-08-16-pttcrm-w4c-moat-demo.md) — hub map ≥80% demo UI, sandbox industry boards, portal attribution preview, [60-min runbook](../runbooks/demo-60-minute-moat.md).
+
 ## W4+ (ngoài plan W4)
 
 - Dịch toàn bộ ops-web EN (129 màn) — wave riêng sau Trust.
