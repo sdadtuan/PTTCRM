@@ -10,8 +10,8 @@ export async function EventListView({ locale, when }: Props) {
   const title = locale === 'vi' ? 'Sự kiện' : 'Events';
   const empty =
     locale === 'vi'
-      ? 'Chưa có sự kiện published — tạo trong CMS hoặc chạy seed.'
-      : 'No published events yet — use CMS or run seed.';
+      ? 'Chưa có sự kiện published — tạo tại /cms trên site PTTCRM.'
+      : 'No published events yet — create them at /cms on the PTTCRM site.';
   const demoHref = locale === 'en' ? '/en/request-demo' : '/vi/dang-ky-demo';
 
   return (

@@ -25,3 +25,7 @@ blob-report/
 # misc
 .turbo/
 .vercel/
+
+# CMS uploads (keep store.json in git)
+apps/web/public/cms-media/*
+!apps/web/public/cms-media/.gitkeep

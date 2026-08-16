@@ -16,8 +16,8 @@ export async function NewsListView({ locale, category }: Props) {
   const title = locale === 'vi' ? 'Tin tức' : 'News';
   const empty =
     locale === 'vi'
-      ? 'Chưa có bài published — tạo trong CMS hoặc chạy seed.'
-      : 'No published articles yet — use CMS or run seed.';
+      ? 'Chưa có bài published — tạo tại /cms trên site PTTCRM.'
+      : 'No published articles yet — create them at /cms on the PTTCRM site.';
   const demoHref = locale === 'en' ? '/en/request-demo' : '/vi/dang-ky-demo';
 
   return (

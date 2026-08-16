@@ -1,5 +1,6 @@
 import type { Locale } from '@pttcrm/gtm-core';
 import Link from 'next/link';
+import { CmsBody } from '@/lib/cms-body';
 import { formatArticleDate } from '@/lib/cms';
 import type { EventDetail } from '@/lib/cms';
 import './pages.css';
@@ -37,9 +38,7 @@ export function EventView({ locale, event, listHref, listLabel }: Props) {
       </section>
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap article-body">
-          {event.body.split('\n\n').map((para) => (
-            <p key={para.slice(0, 40)}>{para}</p>
-          ))}
+          <CmsBody body={event.body} />
           {!cancelled && event.cta_url && (
             <p style={{ marginTop: 32 }}>
               <a className="btn btn-solid" href={event.cta_url}>

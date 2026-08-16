@@ -1,5 +1,6 @@
 import type { Locale } from '@pttcrm/gtm-core';
 import Link from 'next/link';
+import { CmsBody } from '@/lib/cms-body';
 import { formatArticleDate } from '@/lib/cms';
 import type { ArticleDetail } from '@/lib/cms';
 import './pages.css';
@@ -28,9 +29,7 @@ export function ArticleView({ locale, article, listHref, listLabel }: Props) {
       </section>
       <section className="section" style={{ paddingTop: 0 }}>
         <div className="wrap article-body">
-          {article.body.split('\n\n').map((para) => (
-            <p key={para.slice(0, 40)}>{para}</p>
-          ))}
+          <CmsBody body={article.body} />
           <p style={{ marginTop: 32 }}>
             <Link className="btn btn-solid" href={demoHref}>
               {locale === 'vi' ? 'Đăng ký Demo' : 'Request demo'}

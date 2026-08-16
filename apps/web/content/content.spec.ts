@@ -76,6 +76,14 @@ describe('content contract', () => {
     expect(showUsdPrices()).toBe(process.env.NEXT_PUBLIC_USD_PRICE === '1');
   });
 
+  test('PTTCRM CMS store has no RNOSAI', () => {
+    const store = readFileSync(join(__dirname, '../data/cms/store.json'), 'utf8');
+    expect(store).not.toMatch(/RNOSAI/);
+    const parsed = JSON.parse(store);
+    expect(parsed.articles.length).toBeGreaterThanOrEqual(6);
+    expect(parsed.articles.every((a: { status: string }) => a.status === 'published')).toBe(true);
+  });
+
   test('home has no sku teaser key', () => {
     const h = JSON.parse(readFileSync(join(root, 'vi/home.json'), 'utf8'));
     expect(h.skus).toBeUndefined();

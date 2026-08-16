@@ -1,103 +1,42 @@
 import type { Locale } from '@pttcrm/gtm-core';
 import type { CmsArticleCategory } from '@pttcrm/gtm-core';
 import { unstable_cache } from 'next/cache';
+import type { ArticleCard, ArticleDetail, EventCard, EventDetail } from './cms-public';
+import { getPublicArticle, getPublicEvent, listPublicArticles, listPublicEvents } from './cms-store';
 
-export type ArticleCard = {
-  slug: string;
-  title: string;
-  dek: string;
-  category: CmsArticleCategory;
-  published_at: string;
-  cover_url?: string;
-  alt?: string;
-};
-
-export type ArticleDetail = ArticleCard & {
-  body: string;
-  alt: string;
-};
-
-export type EventCard = {
-  slug: string;
-  title: string;
-  dek: string;
-  start_at: string;
-  end_at: string;
-  status: 'published' | 'cancelled';
-  cover_url?: string;
-  location?: string;
-  cta_type?: string;
-  cta_url?: string;
-};
-
-export type EventDetail = EventCard & {
-  body: string;
-};
-
-function cmsBase(): string | null {
-  const base = process.env.NEXT_PUBLIC_CMS_API_BASE;
-  if (!base?.trim()) return null;
-  return base.replace(/\/$/, '');
-}
+export type { ArticleCard, ArticleDetail, EventCard, EventDetail } from './cms-public';
 
 export function publicCmsPath(path: string, params: Record<string, string>): string {
   const q = new URLSearchParams(params);
   return `/api/v1/public/cms${path}?${q.toString()}`;
 }
 
-async function cmsFetch<T>(path: string): Promise<T | null> {
-  const base = cmsBase();
-  if (!base) return null;
-  try {
-    const res = await fetch(`${base}${path}`, {
-      next: { revalidate: 300, tags: ['articles', 'events', 'sitemap'] },
-    });
-    if (!res.ok) return null;
-    return (await res.json()) as T;
-  } catch {
-    return null;
-  }
-}
-
 const cachedArticles = unstable_cache(
-  async (locale: Locale, category?: string) => {
-    const params: Record<string, string> = { locale };
-    if (category) params.category = category;
-    return cmsFetch<ArticleCard[]>(publicCmsPath('/articles', params));
-  },
+  async (locale: Locale, category?: string) => listPublicArticles(locale, category),
   ['cms-articles'],
-  { tags: ['articles'], revalidate: 300 },
+  { tags: ['articles'], revalidate: 60 },
 );
 
 const cachedArticle = unstable_cache(
-  async (locale: Locale, slug: string) => {
-    return cmsFetch<ArticleDetail>(publicCmsPath(`/articles/${slug}`, { locale }));
-  },
+  async (locale: Locale, slug: string) => getPublicArticle(locale, slug),
   ['cms-article'],
-  { tags: ['articles'], revalidate: 300 },
+  { tags: ['articles'], revalidate: 60 },
 );
 
 const cachedEvents = unstable_cache(
-  async (locale: Locale, when?: string) => {
-    const params: Record<string, string> = { locale };
-    if (when) params.when = when;
-    return cmsFetch<EventCard[]>(publicCmsPath('/events', params));
-  },
+  async (locale: Locale, when?: string) => listPublicEvents(locale, when),
   ['cms-events'],
-  { tags: ['events'], revalidate: 300 },
+  { tags: ['events'], revalidate: 60 },
 );
 
 const cachedEvent = unstable_cache(
-  async (locale: Locale, slug: string) => {
-    return cmsFetch<EventDetail>(publicCmsPath(`/events/${slug}`, { locale }));
-  },
+  async (locale: Locale, slug: string) => getPublicEvent(locale, slug),
   ['cms-event'],
-  { tags: ['events'], revalidate: 300 },
+  { tags: ['events'], revalidate: 60 },
 );
 
 export async function fetchArticles(locale: Locale, category?: string): Promise<ArticleCard[]> {
-  const rows = await cachedArticles(locale, category);
-  return rows ?? [];
+  return cachedArticles(locale, category);
 }
 
 export async function fetchArticle(locale: Locale, slug: string): Promise<ArticleDetail | null> {
@@ -105,8 +44,7 @@ export async function fetchArticle(locale: Locale, slug: string): Promise<Articl
 }
 
 export async function fetchEvents(locale: Locale, when?: string): Promise<EventCard[]> {
-  const rows = await cachedEvents(locale, when);
-  return rows ?? [];
+  return cachedEvents(locale, when);
 }
 
 export async function fetchEvent(locale: Locale, slug: string): Promise<EventDetail | null> {
@@ -138,6 +76,6 @@ export function formatArticleDate(iso: string, locale: Locale): string {
 }
 
 export const CATEGORY_LABELS: Record<Locale, Record<CmsArticleCategory, string>> = {
-  vi: { insight: 'INSIGHT', 'nganh': 'NGÀNH', 'huong-dan': 'HƯỚNG DẪN' },
-  en: { insight: 'INSIGHT', 'nganh': 'INDUSTRY', 'huong-dan': 'GUIDE' },
+  vi: { insight: 'INSIGHT', nganh: 'NGÀNH', 'huong-dan': 'HƯỚNG DẪN' },
+  en: { insight: 'INSIGHT', nganh: 'INDUSTRY', 'huong-dan': 'GUIDE' },
 };

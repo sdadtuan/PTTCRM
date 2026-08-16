@@ -19,11 +19,12 @@ Marketing CRM — brand công khai. Engine vận hành: RNOSAI (`../RNOSAI`).
 | SRS | [`docs/specs/2026-08-15-pttcrm-srs.md`](docs/specs/2026-08-15-pttcrm-srs.md) |
 | UX/UI | [`docs/specs/2026-08-15-pttcrm-ui-ux.md`](docs/specs/2026-08-15-pttcrm-ui-ux.md) |
 | Use Case | [`docs/use-cases/01-PTTCRM-COMMERCIAL.md`](docs/use-cases/01-PTTCRM-COMMERCIAL.md) |
+| **Hướng dẫn sử dụng** | [`docs/huong-dan-su-dung/README.md`](docs/huong-dan-su-dung/README.md) |
 | Design index | [`docs/superpowers/specs/2026-08-15-pttcrm-commercial-platform-design.md`](docs/superpowers/specs/2026-08-15-pttcrm-commercial-platform-design.md) |
 
 Logo monogram: [`brand/pttcrm-logo-monogram.png`](brand/pttcrm-logo-monogram.png)
 
 ## Ranh giới
 
-Repo này chứa **nền tảng thương mại** (site, GTM, đóng gói, i18n cửa).  
+Repo này chứa **nền tảng thương mại** (site, GTM, đóng gói, i18n cửa) và **CMS tin/sự kiện** (`/cms` trong `apps/web`).  
 Không fork CRM. Sản phẩm staff/portal tiếp tục sống trong RNOSAI (`rs.pttads.vn`, `portal.pttads.vn`).
