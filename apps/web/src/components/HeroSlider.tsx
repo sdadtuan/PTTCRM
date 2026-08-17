@@ -5,42 +5,31 @@ import { useCallback, useEffect, useState } from 'react';
 
 export type HeroSlide = {
   kicker: string;
-  headlineBefore: string;
-  headlineAccent: string;
+  title: string[];
   subtitle: string;
   visual: string;
-};
-
-type Mock = {
-  title: string;
-  live: string;
-  cols: string[];
-  rows: { campaign: string; spend: string; leads: string; deals: string; roas: string; hot: boolean }[];
-  loop: string[];
-};
-
-type Stat = { value: string; label: string };
-
-const SCENE: Record<string, string> = {
-  bds: '/editorial-bds.svg',
-  agency: '/editorial-agency.svg',
-  fnb: '/editorial-fnb.svg',
+  stats: { value: string; label: string }[];
 };
 
 type Props = {
   slides: HeroSlide[];
-  mock: Mock;
   demoHref: string;
-  pricingHref: string;
   ctaDemo: string;
-  ctaPricing: string;
-  stats: Stat[];
 };
 
-export function HeroSlider({ slides, mock, demoHref, pricingHref, ctaDemo, ctaPricing, stats }: Props) {
+const SCENE: Record<string, string> = {
+  crm: '/hero-crm.svg',
+  mock: '/hero-crm.svg',
+  bds: '/hero-bds.svg',
+  agency: '/hero-agency.svg',
+  fnb: '/hero-fnb.svg',
+};
+
+export function HeroSlider({ slides, demoHref, ctaDemo }: Props) {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const count = slides.length;
+  const slide = slides[index] ?? slides[0];
 
   const go = useCallback(
     (next: number) => {
@@ -52,111 +41,84 @@ export function HeroSlider({ slides, mock, demoHref, pricingHref, ctaDemo, ctaPr
   useEffect(() => {
     if (paused || count < 2) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    const id = window.setInterval(() => go(index + 1), 5600);
+    const id = window.setInterval(() => go(index + 1), 6000);
     return () => window.clearInterval(id);
   }, [index, paused, count, go]);
 
+  if (!slide) return null;
+
   return (
     <div
-      className="pro-slider"
+      className={`orbit-hero orbit-hero-${slide.visual}`}
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <div className="pro-slider-viewport">
-        <div className="pro-slider-track" style={{ transform: `translateX(-${index * 100}%)` }}>
-          {slides.map((slide) => (
-            <div className="pro-hero-grid pro-slide" key={`${slide.kicker}-${slide.visual}`}>
-              <div className="pro-hero-copy">
-                <span className="pro-badge">{slide.kicker}</span>
-                <h1>
-                  {slide.headlineBefore} <span className="pro-accent">{slide.headlineAccent}</span>
-                </h1>
-                <p className="pro-hero-sub">{slide.subtitle}</p>
-                <div className="pro-hero-cta">
-                  <Link className="btn pro-btn" href={demoHref}>
-                    {ctaDemo} →
-                  </Link>
-                  <Link className="btn pro-btn-ghost" href={pricingHref}>
-                    {ctaPricing}
-                  </Link>
-                </div>
-                <div className="pro-stats">
-                  {stats.map((stat) => (
-                    <div key={stat.label}>
-                      <strong>{stat.value}</strong>
-                      <span>{stat.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              {slide.visual === 'mock' ? (
-                <figure className="pro-mock">
-                  <div className="pro-mock-bar">
-                    <span className="pro-mock-dots" aria-hidden>
-                      <i />
-                      <i />
-                      <i />
-                    </span>
-                    <em>{mock.title}</em>
-                    <b>{mock.live}</b>
-                  </div>
-                  <div className="pro-mock-loop">
-                    {mock.loop.map((step, i) => (
-                      <span key={step}>
-                        {i > 0 ? <i aria-hidden>→</i> : null}
-                        {step}
-                      </span>
-                    ))}
-                  </div>
-                  <table>
-                    <thead>
-                      <tr>
-                        {mock.cols.map((col) => (
-                          <th key={col}>{col}</th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {mock.rows.map((row) => (
-                        <tr key={row.campaign} className={row.hot ? 'hot' : undefined}>
-                          <td>{row.campaign}</td>
-                          <td>{row.spend}</td>
-                          <td>{row.leads}</td>
-                          <td>{row.deals}</td>
-                          <td>{row.roas}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </figure>
-              ) : (
-                <figure className="pro-slide-visual">
-                  <img src={SCENE[slide.visual] ?? SCENE.bds} alt="" />
-                </figure>
-              )}
+      {slides.map((item, i) => (
+        <div
+          key={item.visual}
+          className={`orbit-hero-bg${i === index ? ' is-active' : ''}`}
+          style={{ backgroundImage: `url(${SCENE[item.visual] ?? SCENE.crm})` }}
+          aria-hidden
+        />
+      ))}
+      <div className="orbit-hero-veil" aria-hidden />
+      <div className="orbit-hero-fx" aria-hidden>
+        <div className="orbit-ring orbit-ring-a">
+          <i />
+        </div>
+        <div className="orbit-ring orbit-ring-b">
+          <i />
+        </div>
+        <span className="orbit-orb orbit-orb-a" />
+        <span className="orbit-orb orbit-orb-b" />
+        <span className="orbit-orb orbit-orb-c" />
+        <svg className="orbit-weave" viewBox="0 0 1200 400" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="orbitWeave" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="hsl(var(--current-theme))" stopOpacity="0" />
+              <stop offset="50%" stopColor="hsl(var(--current-theme))" stopOpacity="0.55" />
+              <stop offset="100%" stopColor="hsl(var(--current-theme))" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <path d="M0 120 Q200 60 400 120 T800 120 T1200 120" fill="none" stroke="url(#orbitWeave)" strokeWidth="2" />
+          <path d="M0 220 Q300 160 600 220 T1200 220" fill="none" stroke="url(#orbitWeave)" strokeWidth="1" />
+        </svg>
+      </div>
+
+      <div className="orbit-hero-copy" key={slide.visual}>
+        <span className="orbit-badge">{slide.kicker}</span>
+        <h1>
+          <span>{slide.title[0]}</span>
+          <span className="orbit-title-accent">{slide.title[1]}</span>
+          <span>{slide.title[2]}</span>
+        </h1>
+        <p className="orbit-hero-sub">{slide.subtitle}</p>
+        <div className="orbit-hero-cta">
+          <Link className="btn orbit-cta" href={demoHref}>
+            {ctaDemo}
+            <span aria-hidden>→</span>
+          </Link>
+        </div>
+        <div className="orbit-stats">
+          {slide.stats.map((stat) => (
+            <div key={stat.label}>
+              <strong>{stat.value}</strong>
+              <span>{stat.label}</span>
             </div>
           ))}
         </div>
-      </div>
-      <div className="pro-slider-nav">
-        <button type="button" className="pro-slider-arrow" aria-label="Previous" onClick={() => go(index - 1)}>
-          ‹
-        </button>
-        <div className="pro-slider-dots">
-          {slides.map((slide, i) => (
+        <div className="orbit-dots">
+          {slides.map((item, i) => (
             <button
-              key={slide.visual}
+              key={item.visual}
               type="button"
               className={i === index ? 'is-active' : undefined}
-              aria-label={slide.kicker}
+              aria-label={item.kicker}
               aria-current={i === index}
               onClick={() => go(i)}
             />
           ))}
         </div>
-        <button type="button" className="pro-slider-arrow" aria-label="Next" onClick={() => go(index + 1)}>
-          ›
-        </button>
       </div>
     </div>
   );

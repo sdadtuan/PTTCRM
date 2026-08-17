@@ -18,31 +18,55 @@
     "slides": [
       {
         "kicker": "Marketing CRM",
+        "title": ["See which ads", "become contracts", "on one loop"],
         "headlineBefore": "See which",
         "headlineAccent": "ads become contracts",
         "subtitle": "The same ads → lead → close loop. Different numbers: bookings, client ROAS, reservations.",
-        "visual": "mock"
+        "visual": "crm",
+        "stats": [
+          { "value": "3", "label": "Specialized industries" },
+          { "value": "4", "label": "Core modules" },
+          { "value": "60'", "label": "Qualified demo" }
+        ]
       },
       {
         "kicker": "Real estate",
+        "title": ["Project leads to", "bookings with source", "for broker and developer"],
         "headlineBefore": "Project leads to",
         "headlineAccent": "bookings with source",
         "subtitle": "CPL by channel. One pipeline for broker and developer.",
-        "visual": "bds"
+        "visual": "bds",
+        "stats": [
+          { "value": "CPL", "label": "By each channel" },
+          { "value": "1", "label": "Project pipeline" },
+          { "value": "100%", "label": "Leads with source" }
+        ]
       },
       {
         "kicker": "Agency",
+        "title": ["Per-client ROAS", "on the portal", "never mixed"],
         "headlineBefore": "Per-client ROAS",
         "headlineAccent": "on the portal",
         "subtitle": "Each client sees only their contract numbers — never another client.",
-        "visual": "agency"
+        "visual": "agency",
+        "stats": [
+          { "value": "1", "label": "Portal / client" },
+          { "value": "0", "label": "Mixed numbers" },
+          { "value": "ROAS", "label": "Per contract" }
+        ]
       },
       {
         "kicker": "F&B",
+        "title": ["Campaign to", "reservation", "by store"],
         "headlineBefore": "Campaign to",
         "headlineAccent": "reservation by store",
         "subtitle": "Tie ad spend to reservations on one chain CRM.",
-        "visual": "fnb"
+        "visual": "fnb",
+        "stats": [
+          { "value": "1", "label": "Chain CRM" },
+          { "value": "Store", "label": "By location" },
+          { "value": "Ads", "label": "Tied to seats" }
+        ]
       }
     ],
     "mock": {

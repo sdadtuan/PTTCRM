@@ -28,7 +28,6 @@ export async function HomeView({ locale }: Props) {
   const customers = (await fetchCustomers(locale)).slice(0, 3);
 
   const demoHref = locale === 'en' ? '/en/request-demo' : '/vi/dang-ky-demo';
-  const pricingHref = locale === 'en' ? '/en/pricing' : '/vi/bang-gia';
   const productBase = locale === 'en' ? '/en/product' : '/vi/san-pham';
   const solutionBase = locale === 'en' ? '/en/solutions' : '/vi/giai-phap';
 
@@ -55,19 +54,7 @@ export async function HomeView({ locale }: Props) {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
 
       <section className="pro-hero">
-        <div className="pro-hero-glow pro-hero-glow-a" aria-hidden />
-        <div className="pro-hero-glow pro-hero-glow-b" aria-hidden />
-        <div className="wrap">
-          <HeroSlider
-            slides={c.hero.slides}
-            mock={c.hero.mock}
-            demoHref={demoHref}
-            pricingHref={pricingHref}
-            ctaDemo={c.hero.ctaDemo}
-            ctaPricing={c.hero.ctaPricing}
-            stats={c.hero.stats}
-          />
-        </div>
+        <HeroSlider slides={c.hero.slides} demoHref={demoHref} ctaDemo={c.hero.ctaDemo} />
       </section>
 
       <div className="pro-trust">

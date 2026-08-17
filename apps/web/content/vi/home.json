@@ -18,31 +18,55 @@
     "slides": [
       {
         "kicker": "Marketing CRM",
+        "title": ["Biết ads nào", "ra hợp đồng", "trên một vòng"],
         "headlineBefore": "Biết",
         "headlineAccent": "ads nào ra hợp đồng",
         "subtitle": "Cùng một vòng ads → lead → chốt. Khác số: booking, ROAS client, đặt chỗ.",
-        "visual": "mock"
+        "visual": "crm",
+        "stats": [
+          { "value": "3", "label": "Ngành chuyên biệt" },
+          { "value": "4", "label": "Module lõi" },
+          { "value": "60'", "label": "Demo đạt chuẩn" }
+        ]
       },
       {
         "kicker": "Bất động sản",
+        "title": ["Lead dự án tới", "booking có nguồn", "cho sàn và CĐT"],
         "headlineBefore": "Lead dự án tới",
         "headlineAccent": "booking có nguồn",
         "subtitle": "CPL theo kênh. Một pipeline cho sàn và CĐT.",
-        "visual": "bds"
+        "visual": "bds",
+        "stats": [
+          { "value": "CPL", "label": "Theo từng kênh" },
+          { "value": "1", "label": "Pipeline dự án" },
+          { "value": "100%", "label": "Lead có nguồn" }
+        ]
       },
       {
         "kicker": "Agency",
+        "title": ["ROAS từng client", "trên portal", "không lẫn số"],
         "headlineBefore": "ROAS từng client",
         "headlineAccent": "trên portal",
         "subtitle": "Khách xem đúng số hợp đồng của họ — không thấy client khác.",
-        "visual": "agency"
+        "visual": "agency",
+        "stats": [
+          { "value": "1", "label": "Portal / client" },
+          { "value": "0", "label": "Lẫn số khách" },
+          { "value": "ROAS", "label": "Từng hợp đồng" }
+        ]
       },
       {
         "kicker": "F&B",
+        "title": ["Campaign tới", "đặt chỗ", "theo cửa hàng"],
         "headlineBefore": "Campaign tới",
         "headlineAccent": "đặt chỗ theo cửa hàng",
         "subtitle": "Gắn spend ads với đặt chỗ và tái đặt trên một CRM chuỗi.",
-        "visual": "fnb"
+        "visual": "fnb",
+        "stats": [
+          { "value": "1", "label": "CRM chuỗi" },
+          { "value": "Store", "label": "Theo cửa hàng" },
+          { "value": "Ads", "label": "Gắn đặt chỗ" }
+        ]
       }
     ],
     "mock": {
