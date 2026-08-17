@@ -15,6 +15,36 @@
       { "value": "4", "label": "Module lõi" },
       { "value": "60'", "label": "Demo đạt chuẩn" }
     ],
+    "slides": [
+      {
+        "kicker": "Marketing CRM",
+        "headlineBefore": "Biết",
+        "headlineAccent": "ads nào ra hợp đồng",
+        "subtitle": "Cùng một vòng ads → lead → chốt. Khác số: booking, ROAS client, đặt chỗ.",
+        "visual": "mock"
+      },
+      {
+        "kicker": "Bất động sản",
+        "headlineBefore": "Lead dự án tới",
+        "headlineAccent": "booking có nguồn",
+        "subtitle": "CPL theo kênh. Một pipeline cho sàn và CĐT.",
+        "visual": "bds"
+      },
+      {
+        "kicker": "Agency",
+        "headlineBefore": "ROAS từng client",
+        "headlineAccent": "trên portal",
+        "subtitle": "Khách xem đúng số hợp đồng của họ — không thấy client khác.",
+        "visual": "agency"
+      },
+      {
+        "kicker": "F&B",
+        "headlineBefore": "Campaign tới",
+        "headlineAccent": "đặt chỗ theo cửa hàng",
+        "subtitle": "Gắn spend ads với đặt chỗ và tái đặt trên một CRM chuỗi.",
+        "visual": "fnb"
+      }
+    ],
     "mock": {
       "title": "Gomira · Closed-loop",
       "live": "Live",

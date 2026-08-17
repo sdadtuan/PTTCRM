@@ -2,6 +2,7 @@ import type { Locale } from '@pttcrm/gtm-core';
 import Link from 'next/link';
 import { customerHref, customersListHref, fetchCustomers } from '@/lib/cms';
 import { getHome, solutionSlugForLocale } from '@/lib/content';
+import { HeroSlider } from './HeroSlider';
 import './pages.css';
 
 type Props = {
@@ -56,70 +57,16 @@ export async function HomeView({ locale }: Props) {
       <section className="pro-hero">
         <div className="pro-hero-glow pro-hero-glow-a" aria-hidden />
         <div className="pro-hero-glow pro-hero-glow-b" aria-hidden />
-        <div className="wrap pro-hero-grid">
-          <div className="pro-hero-copy">
-            <span className="pro-badge">{c.hero.kicker}</span>
-            <h1>
-              {c.hero.headlineBefore}{' '}
-              <span className="pro-accent">{c.hero.headlineAccent}</span>
-            </h1>
-            <p className="pro-hero-sub">{c.hero.subtitle}</p>
-            <div className="pro-hero-cta">
-              <Link className="btn pro-btn" href={demoHref}>
-                {c.hero.ctaDemo} →
-              </Link>
-              <Link className="btn pro-btn-ghost" href={pricingHref}>
-                {c.hero.ctaPricing}
-              </Link>
-            </div>
-            <div className="pro-stats">
-              {c.hero.stats.map((stat) => (
-                <div key={stat.label}>
-                  <strong>{stat.value}</strong>
-                  <span>{stat.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <figure className="pro-mock">
-            <div className="pro-mock-bar">
-              <span className="pro-mock-dots" aria-hidden>
-                <i />
-                <i />
-                <i />
-              </span>
-              <em>{c.hero.mock.title}</em>
-              <b>{c.hero.mock.live}</b>
-            </div>
-            <div className="pro-mock-loop">
-              {c.hero.mock.loop.map((step, i) => (
-                <span key={step}>
-                  {i > 0 ? <i aria-hidden>→</i> : null}
-                  {step}
-                </span>
-              ))}
-            </div>
-            <table>
-              <thead>
-                <tr>
-                  {c.hero.mock.cols.map((col) => (
-                    <th key={col}>{col}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {c.hero.mock.rows.map((row) => (
-                  <tr key={row.campaign} className={row.hot ? 'hot' : undefined}>
-                    <td>{row.campaign}</td>
-                    <td>{row.spend}</td>
-                    <td>{row.leads}</td>
-                    <td>{row.deals}</td>
-                    <td>{row.roas}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </figure>
+        <div className="wrap">
+          <HeroSlider
+            slides={c.hero.slides}
+            mock={c.hero.mock}
+            demoHref={demoHref}
+            pricingHref={pricingHref}
+            ctaDemo={c.hero.ctaDemo}
+            ctaPricing={c.hero.ctaPricing}
+            stats={c.hero.stats}
+          />
         </div>
       </section>
 
