@@ -1,36 +1,38 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
   <defs>
-    <linearGradient id="warm" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#1a100c"/>
-      <stop offset="60%" stop-color="#140e0b"/>
-      <stop offset="100%" stop-color="#0c0908"/>
+    <linearGradient id="fnbSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3a1810"/>
+      <stop offset="45%" stop-color="#1a0e0a"/>
+      <stop offset="100%" stop-color="#0a0604"/>
     </linearGradient>
-    <radialGradient id="amber" cx="60%" cy="35%" r="40%">
-      <stop offset="0%" stop-color="#f0a04b" stop-opacity=".26"/>
-      <stop offset="100%" stop-color="#f0a04b" stop-opacity="0"/>
+    <radialGradient id="lamp" cx="50%" cy="18%" r="28%">
+      <stop offset="0%" stop-color="#ffb45a" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="#ffb45a" stop-opacity="0"/>
     </radialGradient>
   </defs>
-  <rect width="1600" height="900" fill="url(#warm)"/>
-  <rect width="1600" height="900" fill="url(#amber)"/>
-  <g fill="#2a1c14">
-    <rect x="200" y="380" width="360" height="320" rx="8"/>
-    <rect x="620" y="340" width="400" height="360" rx="8"/>
-    <rect x="1080" y="400" width="320" height="300" rx="8"/>
+  <rect width="1600" height="900" fill="url(#fnbSky)"/>
+  <rect width="1600" height="900" fill="url(#lamp)"/>
+  <ellipse cx="800" cy="120" rx="220" ry="40" fill="#f0a04b" opacity=".15"/>
+  <g fill="#2a1610">
+    <rect x="120" y="430" width="380" height="280" rx="20"/>
+    <rect x="610" y="390" width="380" height="320" rx="20"/>
+    <rect x="1100" y="450" width="380" height="260" rx="20"/>
   </g>
-  <g fill="#f0a04b" opacity=".35">
-    <ellipse cx="380" cy="420" rx="90" ry="18"/>
-    <ellipse cx="820" cy="380" rx="110" ry="20"/>
-    <ellipse cx="1240" cy="440" rx="80" ry="16"/>
-    <rect x="250" y="500" width="80" height="10" rx="5"/>
-    <rect x="250" y="524" width="140" height="8" rx="4" opacity=".6"/>
-    <rect x="670" y="460" width="90" height="10" rx="5"/>
-    <rect x="670" y="484" width="160" height="8" rx="4" opacity=".6"/>
-    <rect x="1120" y="520" width="70" height="10" rx="5"/>
-    <rect x="1120" y="544" width="130" height="8" rx="4" opacity=".6"/>
+  <g fill="#f0a04b">
+    <ellipse cx="310" cy="470" rx="120" ry="22" opacity=".35"/>
+    <ellipse cx="800" cy="430" rx="130" ry="24" opacity=".4"/>
+    <ellipse cx="1290" cy="490" rx="110" ry="20" opacity=".3"/>
+    <rect x="180" y="530" width="90" height="12" rx="6" opacity=".45"/>
+    <rect x="180" y="560" width="160" height="8" rx="4" opacity=".25"/>
+    <rect x="670" y="500" width="100" height="12" rx="6" opacity=".5"/>
+    <rect x="670" y="530" width="180" height="8" rx="4" opacity=".25"/>
+    <rect x="1160" y="550" width="80" height="12" rx="6" opacity=".4"/>
+    <rect x="1160" y="580" width="150" height="8" rx="4" opacity=".22"/>
   </g>
-  <rect y="700" width="1600" height="200" fill="#100c0a"/>
-  <g stroke="#f0a04b" stroke-opacity=".12" fill="none">
-    <path d="M0 700 Q400 640 800 700 T1600 700"/>
-    <path d="M0 760 Q400 700 800 760 T1600 760"/>
+  <path d="M0 720 Q400 680 800 720 T1600 720 V900 H0 Z" fill="#120a08"/>
+  <g fill="#f0a04b" opacity=".2">
+    <circle cx="240" cy="200" r="8"/>
+    <circle cx="1280" cy="240" r="6"/>
+    <circle cx="980" cy="160" r="5"/>
   </g>
 </svg>
