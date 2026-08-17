@@ -13,8 +13,8 @@
   --gomira-green-bright: #00c278;
   --gomira-green-dark: #007a4d;
   --gomira-green-soft: hsl(152 76% 36% / 0.14);
-  --header-h: 76px;
-  --content-max: 1120px;
+  --header-h: 68px;
+  --content-max: 1200px;
   --orbit-fg: #e8f4f6;
   --orbit-muted: #9aadaf;
   --orbit-gradient-hero: linear-gradient(
@@ -55,10 +55,9 @@ body {
   overflow-x: hidden;
 }
 
-body:has(.orbit-hero) {
+body:has(.pro-home) {
   color: var(--orbit-fg);
-  background: var(--orbit-gradient-hero);
-  background-attachment: fixed;
+  background: #070b10;
 }
 
 body.nav-locked {
@@ -123,8 +122,8 @@ a:hover {
 }
 
 .btn-solid {
-  background: var(--ptt-teal);
-  color: var(--ptt-node);
+  background: var(--gomira-green);
+  color: #fff;
 }
 
 .btn-solid:hover {

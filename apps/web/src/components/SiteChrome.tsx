@@ -85,7 +85,7 @@ export function SiteChrome({ locale, pathname, children }: Props) {
         <div className="top-in wrap">
           <Link className="brand" href={home} onMouseEnter={closeMega} onClick={closeMobile}>
             {/* Plain img keeps PNG alpha; Next/Image optimizer can flatten halos */}
-            <img className="brand-logo" src="/gomira-logo.png" alt="Gomira" width={199} height={48} />
+            <img className="brand-logo" src="/gomira-logo.png" alt="Gomira" width={132} height={32} />
           </Link>
           <nav className="nav" aria-label="Main">
             {nav.map((group) =>
@@ -222,6 +222,10 @@ export function SiteChrome({ locale, pathname, children }: Props) {
         {children}
       </main>
       <footer className="site-footer">
+        <div className="wrap footer-brand">
+          <img src="/gomira-logo.png" alt="Gomira" width={120} height={29} />
+          <p>{locale === 'en' ? 'Marketing CRM. Ads to contracts, by industry.' : 'Marketing CRM. Ads tới hợp đồng, đúng ngành.'}</p>
+        </div>
         <div className="wrap footer-grid">
           <div>
             <h4>{t.platform}</h4>

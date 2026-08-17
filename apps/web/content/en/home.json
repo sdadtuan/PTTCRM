@@ -2,18 +2,33 @@
   "slogan": "One platform, specialized by industry",
   "metaDescription": "Marketing CRM. Closed-loop ads → contract → ROAS. Built for real estate, agencies, and F&B.",
   "hero": {
-    "kicker": "Marketing CRM",
-    "subtitle": "See which ads become contracts. CPL, ROAS, SLA — one system, built around your industry.",
+    "kicker": "Marketing CRM · Real estate · Agency · F&B",
+    "headline": "See which ads become contracts.",
+    "headlineBefore": "See which",
+    "headlineAccent": "ads become contracts",
+    "subtitle": "The same ads → lead → close loop. Different numbers: bookings, client ROAS, reservations.",
     "ctaDemo": "Book a 60-minute demo",
     "ctaPricing": "Pricing",
+    "channels": ["Meta", "Google", "Zalo"],
     "stats": [
-      { "value": "3", "label": "Wave-0 industries" },
+      { "value": "3", "label": "Specialized industries" },
       { "value": "4", "label": "Core modules" },
-      { "value": "14 days", "label": "Sandbox after demo" }
-    ]
+      { "value": "60'", "label": "Qualified demo" }
+    ],
+    "mock": {
+      "title": "Gomira · Closed-loop",
+      "live": "Live",
+      "cols": ["Campaign", "Spend", "Lead", "Deal", "ROAS"],
+      "rows": [
+        { "campaign": "Meta · Lookalike RE", "spend": "24.8m", "leads": "186", "deals": "12", "roas": "4.2×", "hot": true },
+        { "campaign": "Google · Search Agency", "spend": "18.1m", "leads": "94", "deals": "9", "roas": "3.1×", "hot": false },
+        { "campaign": "Zalo · OA F&B", "spend": "6.4m", "leads": "41", "deals": "5", "roas": "2.8×", "hot": false }
+      ],
+      "loop": ["Ads", "Lead", "Contract", "ROAS"]
+    }
   },
   "learnMore": "Learn more",
-  "trust": "For teams that run real ads — not a contact notebook.",
+  "trust": "Connect the ad channels you already run",
   "position": {
     "kicker": "Position",
     "title": "Not a contact CRM. Not an HR suite.",
@@ -48,26 +63,29 @@
     ]
   },
   "industries": {
-    "kicker": "Industry",
-    "title": "Same platform. Different closing metric.",
-    "lead": "Wave 0: real estate, agency, F&B. Wave 1: education and pharma.",
+    "kicker": "Industry stories",
+    "title": "Three industries. Three closing numbers.",
+    "lead": "Real estate, agency, F&B — same pipeline, different closing number.",
     "items": [
       {
         "slug": "bds",
         "title": "Real estate",
         "body": "Leads by project. Metric: lead → booking, CPL by channel. Industry plan.",
+        "metric": "Lead → Booking",
         "link": "View real estate →"
       },
       {
         "slug": "agency",
         "title": "Agency",
         "body": "Per-client ROAS on the portal. Handoff SLA has an owner. Agency OS.",
+        "metric": "ROAS / client",
         "link": "View agency →"
       },
       {
         "slug": "fnb",
         "title": "F&B",
         "body": "Campaign to reservation / store. One CRM for the chain. Industry plan.",
+        "metric": "Campaign → Booking",
         "link": "View F&B →"
       }
     ]
@@ -94,7 +112,7 @@
     "allLink": "All customers →"
   },
   "cta": {
-    "title": "Ready to see closed-loop on your industry data?",
+    "title": "See ads to contracts on your industry data.",
     "button": "Request demo"
   }
 }

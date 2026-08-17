@@ -2,18 +2,33 @@
   "slogan": "Một nền tảng, chuyên biệt từng ngành",
   "metaDescription": "CRM tốt nhất về Marketing. Closed-loop ads → hợp đồng → ROAS. Chuyên biệt BĐS, agency, F&B.",
   "hero": {
-    "kicker": "Marketing CRM",
-    "subtitle": "Nhìn ads nào ra hợp đồng. CPL, ROAS, SLA — một hệ, đúng ngành của bạn.",
+    "kicker": "Marketing CRM · BĐS · Agency · F&B",
+    "headline": "Biết ads nào ra hợp đồng.",
+    "headlineBefore": "Biết",
+    "headlineAccent": "ads nào ra hợp đồng",
+    "subtitle": "Cùng một vòng ads → lead → chốt. Khác số: booking, ROAS client, đặt chỗ.",
     "ctaDemo": "Đăng ký Demo 60 phút",
     "ctaPricing": "Bảng giá",
+    "channels": ["Meta", "Google", "Zalo"],
     "stats": [
-      { "value": "3", "label": "Ngành vertical W0" },
+      { "value": "3", "label": "Ngành chuyên biệt" },
       { "value": "4", "label": "Module lõi" },
-      { "value": "14 ngày", "label": "Sandbox sau demo" }
-    ]
+      { "value": "60'", "label": "Demo đạt chuẩn" }
+    ],
+    "mock": {
+      "title": "Gomira · Closed-loop",
+      "live": "Live",
+      "cols": ["Campaign", "Spend", "Lead", "HĐ", "ROAS"],
+      "rows": [
+        { "campaign": "Meta · Lookalike BĐS", "spend": "24.8tr", "leads": "186", "deals": "12", "roas": "4.2×", "hot": true },
+        { "campaign": "Google · Search Agency", "spend": "18.1tr", "leads": "94", "deals": "9", "roas": "3.1×", "hot": false },
+        { "campaign": "Zalo · OA F&B", "spend": "6.4tr", "leads": "41", "deals": "5", "roas": "2.8×", "hot": false }
+      ],
+      "loop": ["Ads", "Lead", "Hợp đồng", "ROAS"]
+    }
   },
   "learnMore": "Tìm hiểu thêm",
-  "trust": "Cho đội đang chạy ads thật — không phải sổ danh bạ.",
+  "trust": "Kết nối kênh ads bạn đang chạy",
   "position": {
     "kicker": "Vị trí",
     "title": "Không phải CRM ghi chép. Không phải suite HR.",
@@ -48,26 +63,29 @@
     ]
   },
   "industries": {
-    "kicker": "Ngành",
-    "title": "Cùng nền tảng. Khác metric chốt.",
-    "lead": "W0: bất động sản, agency, F&B. W1: thêm giáo dục, pharma.",
+    "kicker": "Câu chuyện ngành",
+    "title": "Ba ngành. Ba số chốt.",
+    "lead": "BĐS, agency, F&B — cùng pipeline, khác số chốt.",
     "items": [
       {
         "slug": "bds",
         "title": "Bất động sản",
         "body": "Lead theo dự án. Metric: lead → booking, CPL theo kênh. Gói Industry.",
+        "metric": "Lead → Booking",
         "link": "Xem BĐS →"
       },
       {
         "slug": "agency",
         "title": "Agency",
         "body": "ROAS từng client trên portal. SLA handoff có chủ. Gói Agency OS.",
+        "metric": "ROAS / client",
         "link": "Xem Agency →"
       },
       {
         "slug": "fnb",
         "title": "F&B",
         "body": "Campaign tới đặt chỗ / cửa hàng. Một CRM cho chuỗi. Gói Industry.",
+        "metric": "Campaign → Đặt chỗ",
         "link": "Xem F&B →"
       }
     ]
@@ -94,7 +112,7 @@
     "allLink": "Tất cả khách hàng →"
   },
   "cta": {
-    "title": "Sẵn sàng xem closed-loop trên data ngành của bạn?",
+    "title": "Xem ads → hợp đồng trên data ngành của bạn.",
     "button": "Đăng ký Demo"
   }
 }
